@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Boostedmedia — More Sales, Less Social Media Stress</title>
-  <meta name="description" content="Boostedmedia creates scroll‑stopping social media content for UK small businesses. Get more customers while we handle your posts end‑to‑end." />
+  <meta name="description" content="Boostedmedia creates scroll-stopping social media content for UK small businesses. Get more customers while we handle your posts end-to-end." />
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
   <style>
     :root{ --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb; --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --accent-ink:#0a1320; --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px; --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
@@ -112,9 +112,17 @@
       .benefits h3{font-size:20px}
       .benefits p{font-size:16px; max-width:52ch; margin:0 auto}
 
+      /* --- Proof slider: make the card use full width, arrows overlaid --- */
       #proof .section__title{margin:0 auto 16px; text-align:center}
+      #proof .t-slider{grid-template-columns:1fr; position:relative}
       #proof .t-track{width:calc(100% - var(--insetX)); margin:0 auto}
-      #proof .quote{max-width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
+      #proof .t-prev,#proof .t-next{
+        position:absolute; top:50%; transform:translateY(-50%);
+        z-index:2
+      }
+      #proof .t-prev{left:6px}
+      #proof .t-next{right:6px}
+      #proof .quote{max-width:100%; width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
       #proof .metric{font-size:16px; padding:14px 12px}
       #proof #dyn-metrics{width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
 
@@ -207,15 +215,13 @@
   <!-- SOLUTION (Image LEFT on desktop) -->
   <section id="solution">
     <div class="container solution">
-      <!-- LEFT: reliable team image (loads from Unsplash) -->
       <div class="hero__img">
         <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop" alt="Boostedmedia team with local owner">
       </div>
-      <!-- RIGHT: text content -->
       <div>
-        <span class="solution__badge">Hands‑Off for You • Results On for Business</span>
+        <span class="solution__badge">Hands-Off for You • Results On for Business</span>
         <h2 class="section__title">We’ll Handle the Posts — <em>You</em> Handle the Business</h2>
-        <p class="section__sub">Imagine an active, engaging presence that attracts customers — without you lifting a finger. Boostedmedia creates <strong>scroll‑stopping</strong> content at small‑business prices. From eye‑catching posts and videos to comment replies, we cover it all so <strong>your business gets noticed</strong> and you get back hours every week.</p>
+        <p class="section__sub">Imagine an active, engaging presence that attracts customers — without you lifting a finger. Boostedmedia creates <strong>scroll-stopping</strong> content at small-business prices. From eye-catching posts and videos to comment replies, we cover it all so <strong>your business gets noticed</strong> and you get back hours every week.</p>
         <div style="margin-top:16px"><a class="btn" href="#book">Boost Your Business Today!</a></div>
       </div>
     </div>
@@ -227,8 +233,8 @@
       <h2 class="section__title">What You Get with Boostedmedia</h2>
       <div class="benefits">
         <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-10.59 3.3 1.91a1 1 0 0 0 1-1.73l-3.8-2.2V6a1 1 0 1 0-2 0v4a1 1 0 0 0 .5.87l1 .54z"/></svg></span><h3>More Time for You</h3><p>No more DIY stress. We plan, create, and schedule weekly content so you can focus on customers and growth.</p></div>
-        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 2v14H8V4h8zm-4 16a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span><h3>Reach More Customers Online</h3><p>Our creative, eye‑catching posts turn scrollers into buyers. Proven tactics that drive people through your door.</p></div>
-        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v12h14a1 1 0 1 1 0 2H4zm3-5 4-4 3 3 5-5v3a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1h-6a1 1 0 1 0 0 2h3l-4 4-3-3-5 5a1 1 0 0 0 1.4 1.4z"/></svg></span><h3>High Quality at a Small‑Business Price</h3><p>Get premium content and management at a budget‑friendly rate. Built for local shops who want real results.</p></div>
+        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 2v14H8V4h8zm-4 16a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span><h3>Reach More Customers Online</h3><p>Our creative, eye-catching posts turn scrollers into buyers. Proven tactics that drive people through your door.</p></div>
+        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v12h14a1 1 0 1 1 0 2H4zm3-5 4-4 3 3 5-5v3a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1h-6a1 1 0 1 0 0 2h3l-4 4-3-3-5 5a1 1 0 0 0 1.4 1.4z"/></svg></span><h3>High Quality at a Small-Business Price</h3><p>Get premium content and management at a budget-friendly rate. Built for local shops who want real results.</p></div>
       </div>
     </div>
   </section>
@@ -241,11 +247,15 @@
         <button class="t-prev" aria-label="Previous testimonial">‹</button>
         <div class="t-track">
           <div class="t-track-inner">
-            <article class="t-slide" aria-label="Testimonial 1" data-metrics='["100k+ monthly views","Hands‑off content plan","Built for local shops"]'>
+            <article class="t-slide" aria-label="Testimonial 1" data-metrics='["100k+ monthly views","Hands-off content plan","Built for local shops"]'>
               <div class="quote">“Boostedmedia has handled all our social media posts, and we <strong>couldn’t be happier</strong>. Our stats have <strong>skyrocketed — 100,000 views in one month on Facebook</strong> alone! We 100% recommend Boostedmedia to any business looking to grow online.”<br>— <strong>Sugar Crush</strong></div>
             </article>
-            <article class="t-slide" aria-label="Testimonial 2" data-metrics='["(test) fast setup","(test) flexible plan","(test) local-first focus"]'>
-              <div class="quote">“test”</div>
+
+            <!-- UPDATED testimonial 2 -->
+            <article class="t-slide" aria-label="Testimonial 2" data-metrics='["5★ rated service","Pro video editing","Local trades"]'>
+              <div class="quote">“5★ service !! Very professional!
+                I would like to say thank you to George for his amazing work by bringing my simple amateur videos to life 👌 and making me a video for my kitchen business. A lot more to come — George, we will be in touch again soon 👍👍”
+                <br>— <strong>J A Joinery &amp; Bathrooms</strong></div>
             </article>
           </div>
         </div>
@@ -270,7 +280,7 @@
         <label style="display:block; margin-top:12px">What do you need help with?<br><textarea name="needs" rows="4" placeholder="e.g., 3 posts/week, short videos, community reach"></textarea></label>
         <div style="display:flex; gap:10px; margin-top:16px; align-items:center; flex-wrap:wrap">
           <button class="btn" type="submit">Boost Your Business Today!</button>
-          <span style="color:var(--muted); font-size:.95rem">No obligation • 15‑minute call • Clear next steps</span>
+          <span style="color:var(--muted); font-size:.95rem">No obligation • 15-minute call • Clear next steps</span>
         </div>
         <div id="form-alert" class="alert" role="status" aria-live="polite"></div>
       </form>
@@ -316,13 +326,9 @@
     // ===== ONE-FILENAME PATH FALLBACK for logo.png =====
     (function(){
       const candidates = [
-        'logo.png',
-        './logo.png',
-        '/logo.png',
-        'assets/logo.png',
-        '/assets/logo.png',
-        'images/logo.png',
-        '/images/logo.png'
+        'logo.png','./logo.png','/logo.png',
+        'assets/logo.png','/assets/logo.png',
+        'images/logo.png','/images/logo.png'
       ].map(u => u + '?v=' + Date.now());
 
       function attach(img){
@@ -351,15 +357,35 @@
       const next = slider.querySelector('.t-next');
       const metrics = document.getElementById('dyn-metrics');
       let index = 0;
+
       function width(){ return Math.round(track.getBoundingClientRect().width); }
-      function setWidths(){ const w = width(); inner.style.width=(w*slides.length)+'px'; slides.forEach(s=>{ s.style.width=w+'px'; s.style.minWidth=w+'px'; s.style.flex='0 0 '+w+'px'; }); inner.style.transform='translateX('+(-index*w)+'px)'; }
+      function setWidths(){
+        const w = width();
+        inner.style.width=(w*slides.length)+'px';
+        slides.forEach(s=>{ s.style.width=w+'px'; s.style.minWidth=w+'px'; s.style.flex='0 0 '+w+'px'; });
+        inner.style.transform='translateX('+(-index*w)+'px)';
+      }
       setWidths();
       if('ResizeObserver' in window){ new ResizeObserver(setWidths).observe(track); } else { window.addEventListener('resize', setWidths); }
-      function paintMetrics(){ let arr=[]; try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){} metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join(''); }
+
+      function paintMetrics(){
+        let arr=[];
+        try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){}
+        metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join('');
+      }
       paintMetrics();
-      function go(step){ const w = width(); index = (index + step + slides.length) % slides.length; metrics.classList.add('is-fading'); inner.style.transform='translateX('+(-index*w)+'px)'; setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320); }
+
+      function go(step){
+        const w = width();
+        index = (index + step + slides.length) % slides.length;
+        metrics.classList.add('is-fading');
+        inner.style.transform='translateX('+(-index*w)+'px)';
+        setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320);
+      }
       prev.addEventListener('click', ()=> go(-1));
       next.addEventListener('click', ()=> go(1));
+
+      // swipe
       let sx=0; track.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
       track.addEventListener('touchend', e=>{ const dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx)>40) go(dx<0?1:-1); }, {passive:true});
     })();
@@ -379,3 +405,4 @@
   </script>
 </body>
 </html>
+
