@@ -59,10 +59,28 @@
 
     /* ===== Quotes & metrics ===== */
     .quote{font-size:1.05rem; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; max-width:100%; overflow-wrap:anywhere}
-    .metrics{display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; justify-content:center}
-    .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:10px 14px; border-radius:12px; font-weight:700}
-    #dyn-metrics{transition:opacity .28s ease}
-    #dyn-metrics.is-fading{opacity:0}
+
+    /* NEW: uniform “chips” grid – 2 columns with the 3rd centered beneath */
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(2, auto);
+      justify-content:center;
+      justify-items:center;
+      align-items:center;
+      gap:14px 18px;
+      margin-top:16px;
+    }
+    .metrics.three .metric:nth-child(3){ grid-column:1 / -1; } /* center the 3rd when there are exactly 3 */
+    .metric{
+      background:rgba(30,115,190,.12);
+      border:1px solid rgba(30,115,190,.28);
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+    }
 
     /* ===== Testimonial slider ===== */
     .t-slider{position:relative; display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; margin:10px 0 12px}
@@ -78,7 +96,6 @@
       .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--text); padding:10px 14px; border-radius:12px}
       .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12); box-shadow:0 14px 30px rgba(0,0,0,.35)}
       .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
-      .mobile-menu a.btn{background:transparent !important; border:1px solid rgba(255,255,255,.28); color:#e8f3ff} /* outline CTA */
       .nav--open + .mobile-menu{display:flex}
 
       :root{ --m-pad:60px; --insetX:28px }
@@ -114,11 +131,17 @@
       .benefits p{font-size:16px; max-width:52ch; margin:0 auto}
 
       #proof .section__title{margin:0 auto 16px; text-align:center}
-      /* widen testimonial area slightly on mobile */
-      #proof .t-track{width:calc(100% - 16px); margin:0 auto}
-      #proof .quote{max-width:100%; margin:0 auto; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
+      #proof .t-track{width:calc(100% - var(--insetX)); margin:0 auto}
+      #proof .quote{max-width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
+
+      /* Mobile: keep the same 2-column + centered third layout */
+      #proof .metrics{
+        grid-template-columns:repeat(2, minmax(0, max-content));
+        gap:14px 14px;
+      }
       #proof .metric{font-size:16px; padding:14px 12px}
-      #proof #dyn-metrics{width:calc(100% - 16px); margin-left:auto; margin-right:auto}
+
+      #proof #dyn-metrics{width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
 
       #book .section__sub{display:none !important}
       #lead-form{padding:18px 20px; border-radius:18px; margin-top:10px; width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
@@ -167,7 +190,7 @@
       <a href="#benefits">Benefits</a>
       <a href="#proof">Results</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn--ghost" href="#book">Boost Your Business Today!</a>
+      <a class="btn" href="#book">Boost Your Business Today!</a>
       <a href="#top" onclick="document.getElementById('nav').classList.remove('nav--open')" style="text-align:center; color:#98a2b3; padding-top:8px">Close</a>
     </div>
   </header>
@@ -183,7 +206,7 @@
           <a class="btn" href="#book">Boost Your Business Today!</a>
           <a class="btn btn--ghost" href="#proof">See Real Results</a>
         </div>
-        <div class="hero__card" style="margin-top:16px"><strong>Free 15-minute strategy call:</strong> This allows us to make sure we understand your business and can start planning content.</div>
+        <div class="hero__card" style="margin-top:16px"><strong>FREE Strategy Call:</strong> in 15 minutes we’ll map a weekly content plan for your shop. No pressure, no jargon.</div>
       </div>
       <div class="hero__img"><img src="https://images.unsplash.com/photo-1556741533-411cf82e4e2d?q=80&w=1400&auto=format&fit=crop" alt="Local owner at the till"></div>
     </div>
@@ -244,7 +267,7 @@
               <div class="quote">“Boostedmedia has handled all our social media posts, and we <strong>couldn’t be happier</strong>. Our stats have <strong>skyrocketed — 100,000 views in one month on Facebook</strong> alone! We 100% recommend Boostedmedia to any business looking to grow online.”<br>— <strong>Sugar Crush</strong></div>
             </article>
             <article class="t-slide" aria-label="Testimonial 2" data-metrics='["5★ rated service","Hands-off content plan","Local trades"]'>
-              <div class="quote">“5★ service!! Very professional! I would like to say thank you to George for his amazing work by bringing my simple amateur videos to life 👌 and making me a video for my kitchen business. A lot more to come, George — we will be in touch again soon 👍👍.”<br>— <strong>J A Joinery &amp; Bathrooms</strong></div>
+              <div class="quote">“test”</div>
             </article>
           </div>
         </div>
@@ -312,12 +335,11 @@
       img.addEventListener('error', ()=> parent.remove(), {once:true});
     });
 
-    // ===== ONE-FILENAME PATH FALLBACK for logo (now includes assets/logo-icon.png) =====
+    // ===== ONE-FILENAME PATH FALLBACK for logo.png =====
     (function(){
       const candidates = [
         'logo.png','./logo.png','/logo.png',
         'assets/logo.png','/assets/logo.png',
-        'assets/logo-icon.png','/assets/logo-icon.png',
         'images/logo.png','/images/logo.png'
       ].map(u => u + '?v=' + Date.now());
 
@@ -337,7 +359,7 @@
       document.querySelectorAll('img.logo-img').forEach(attach);
     })();
 
-    // ===== Testimonial Slider =====
+    // ===== Testimonial Slider + uniform chips grid =====
     (function(){
       const slider = document.querySelector('#proof .t-slider'); if(!slider) return;
       const track = slider.querySelector('.t-track');
@@ -362,6 +384,8 @@
         let arr=[];
         try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){}
         metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join('');
+        // add a class so CSS can center the 3rd chip when there are exactly three
+        metrics.classList.toggle('three', arr.length === 3);
       }
       paintMetrics();
 
@@ -372,16 +396,13 @@
         inner.style.transform='translateX('+(-index*w)+'px)';
         setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320);
       }
+
       prev.addEventListener('click', ()=> go(-1));
       next.addEventListener('click', ()=> go(1));
 
-      // swipe
-      let sx=0;
-      track.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
-      track.addEventListener('touchend', e=>{
-        const dx = e.changedTouches[0].clientX - sx;
-        if(Math.abs(dx)>40) go(dx<0?1:-1);
-      }, {passive:true});
+      // touch swipe
+      let sx=0; track.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
+      track.addEventListener('touchend', e=>{ const dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx)>40) go(dx<0?1:-1); }, {passive:true});
     })();
 
     // Formspree endpoint (live)
@@ -399,3 +420,4 @@
   </script>
 </body>
 </html>
+
