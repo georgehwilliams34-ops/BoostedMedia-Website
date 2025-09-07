@@ -1,1 +1,195 @@
+<!-- =========================
+       privacy.html
+     ========================= -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Boostedmedia</title>
+  <meta name="description" content="Boostedmedia Privacy Policy" />
+  <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
+  <style>
+    :root{
+      --bg:#0B0E1A; --panel:#0F1220; --text:#fff; --muted:#c7ccdb;
+      --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400;
+      --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px;
+      --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65}
+    a{color:#e6f2ff; text-decoration:none}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+
+    /* Header / nav (mirrors main site) */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.75rem}
+    .brand__logo{width:48px; height:48px; display:grid; place-items:center}
+    .brand__logo img{width:100%; height:100%; object-fit:contain}
+    .brand__name{font-family:var(--font-head); font-weight:800; letter-spacing:.2px}
+    .nav__links{display:flex; gap:22px; align-items:center}
+    .nav__links a{color:var(--muted); font-weight:700}
+    .nav__links a:hover{color:#e8f3ff}
+    .mobile-toggle{display:none}
+
+    /* Buttons */
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff;
+      font-weight:800; padding:14px 20px; border-radius:14px; border:0; cursor:pointer;
+      box-shadow:0 8px 24px rgba(30,115,190,.25); transition:transform .12s ease, box-shadow .12s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(30,115,190,.45)}
+    .btn--ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18)}
+
+    /* Page intro */
+    .hero{padding:64px 0}
+    .eyebrow{display:inline-block; font-weight:800; font-family:var(--font-head); color:#0a1320;
+      background:var(--accent); padding:6px 10px; border-radius:999px}
+    h1{font-family:var(--font-head); font-weight:800; font-size:clamp(32px,5vw,54px); line-height:1.08; margin:18px 0 8px}
+    .lede{color:var(--muted); font-size:clamp(16px,2vw,18px); max-width:70ch}
+
+    /* Legal content panel */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow)}
+    .panel h2{font-family:var(--font-head); font-size:clamp(22px,3.3vw,30px); margin:22px 0 10px}
+    .panel h3{font-family:var(--font-head); font-size:clamp(18px,2.4vw,22px); margin:18px 0 8px}
+    .panel p{margin:10px 0; color:#e9edf6}
+    .panel ul{padding-left:20px}
+    .muted{color:var(--muted)}
+    .toc{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 2px}
+    .toc a{border:1px solid rgba(255,255,255,.16); padding:8px 12px; border-radius:12px; color:#e8f3ff}
+
+    footer{margin-top:60px; padding:24px 0; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
+    footer .foot{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap}
+
+    /* Mobile */
+    @media (max-width:980px){
+      .nav__links{display:none}
+      .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--text); padding:10px 14px; border-radius:12px}
+      .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
+      .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
+      .nav--open + .mobile-menu{display:flex}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" id="nav">
+      <a href="index.html#top" class="brand" aria-label="Boostedmedia Home">
+        <span class="brand__logo"><img src="assets/logo-icon.png" alt="Boostedmedia logo"></span>
+        <span class="brand__name">Boostedmedia</span>
+      </a>
+      <nav class="nav__links">
+        <a href="index.html#problem">Problems We Solve</a>
+        <a href="index.html#solution">How We Help</a>
+        <a href="index.html#benefits">Benefits</a>
+        <a href="index.html#proof">Results</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="btn" href="index.html#book">Boost Your Business Today!</a>
+      </nav>
+      <button class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('nav--open')">Menu</button>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html#problem">Problems We Solve</a>
+      <a href="index.html#solution">How We Help</a>
+      <a href="index.html#benefits">Benefits</a>
+      <a href="index.html#proof">Results</a>
+      <a href="index.html#faq">FAQ</a>
+      <a class="btn" href="index.html#book">Boost Your Business Today!</a>
+      <a href="#" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="container">
+      <span class="eyebrow">Privacy Policy</span>
+      <h1>Your Privacy Matters</h1>
+      <p class="lede">This Privacy Policy explains what data we collect, how we use it, and the rights you have under UK GDPR and the Data Protection Act 2018.</p>
+      <p class="muted">Last updated: 7 September 2025</p>
+
+      <div class="panel" style="margin-top:18px">
+        <div class="toc">
+          <a href="#summary">Summary</a>
+          <a href="#who">Who we are</a>
+          <a href="#data-we-collect">Data we collect</a>
+          <a href="#how-use">How we use data</a>
+          <a href="#lawful">Lawful bases</a>
+          <a href="#sharing">Sharing</a>
+          <a href="#cookies">Cookies</a>
+          <a href="#retention">Retention</a>
+          <a href="#rights">Your rights</a>
+          <a href="#contact">Contact</a>
+          <a href="#changes">Changes</a>
+        </div>
+
+        <h2 id="summary">1) Summary</h2>
+        <p>We collect only what we need to deliver and improve our services (e.g., respond to enquiries, schedule calls, and manage projects). We never sell your data.</p>
+
+        <h2 id="who">2) Who we are</h2>
+        <p><strong>Boostedmedia</strong> (“we”, “us”) — Scunthorpe, UK.<br>
+        Email: <a href="mailto:boostedmediabusiness@gmail.com">boostedmediabusiness@gmail.com</a></p>
+
+        <h2 id="data-we-collect">3) Data we collect</h2>
+        <ul>
+          <li><strong>Contact data</strong> — name, email, phone, business details submitted via forms.</li>
+          <li><strong>Usage data</strong> — basic analytics (page views, device, referrer) to improve the website.</li>
+          <li><strong>Client content</strong> — assets you supply for projects (text, images, video).</li>
+        </ul>
+
+        <h2 id="how-use">4) How we use data</h2>
+        <ul>
+          <li>Respond to enquiries and deliver our services.</li>
+          <li>Schedule calls and manage projects.</li>
+          <li>Send service updates and essential notices.</li>
+          <li>Improve our website and offerings.</li>
+        </ul>
+
+        <h2 id="lawful">5) Lawful bases (UK GDPR)</h2>
+        <ul>
+          <li><strong>Contract</strong> — to provide the services you request.</li>
+          <li><strong>Legitimate interests</strong> — to run and improve our business in ways that do not override your rights.</li>
+          <li><strong>Consent</strong> — where required (e.g., certain marketing). You can withdraw consent at any time.</li>
+        </ul>
+
+        <h2 id="sharing">6) Sharing</h2>
+        <p>We may share data with trusted processors (e.g., hosting, analytics, customer support tools) under data-processing agreements. We do not sell your data.</p>
+
+        <h2 id="cookies">7) Cookies & analytics</h2>
+        <p>We use essential cookies and minimal analytics to understand site usage. You can control cookies via your browser settings.</p>
+
+        <h2 id="retention">8) Retention</h2>
+        <p>We keep personal data only as long as necessary for the purposes outlined above or to comply with legal obligations, then delete or anonymise it.</p>
+
+        <h2 id="rights">9) Your rights</h2>
+        <p>Under UK GDPR you can request: access, correction, deletion, restriction, portability, and objection to processing. You may also complain to the ICO.</p>
+
+        <h2 id="contact">10) Contact</h2>
+        <p>Email us at <a href="mailto:boostedmediabusiness@gmail.com">boostedmediabusiness@gmail.com</a> for any privacy request.</p>
+
+        <h2 id="changes">11) Changes</h2>
+        <p>We may update this policy from time to time. We’ll post the new version here and update the “Last updated” date.</p>
+
+        <p style="margin-top:20px"><a class="btn btn--ghost" href="index.html#top">← Back to site</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div style="display:flex; align-items:center; gap:10px">
+        <span class="brand__logo"><img src="assets/logo-icon.png" alt="" /></span>
+        <div><strong style="font-family:var(--font-head); font-weight:800">Boostedmedia</strong><br>
+          <span class="muted">Serving Scunthorpe & surrounding areas • UK</span></div>
+      </div>
+      <div class="muted">© <span id="year"></span> Boostedmedia.
+        All rights reserved. • <a href="privacy.html">Privacy Policy</a> • <a href="terms.html">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
 
