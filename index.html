@@ -1,252 +1,381 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boosted Media Marketing</title>
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-Xx8Bv0qtrLNyPwkZWVGUTTrOvfDGE34M8i8qa6RQfOfQ3RHblAhdyS8XAw+cX4BGH8tFC9I5aYdB+IbLncKD8Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Header & Navigation -->
-    <header class="header">
-      <div class="container nav-container">
-        <a href="index.html" class="logo">
-          <img src="assets/logo-icon.png" alt="Boosted Media Logo" class="logo-icon" />
-          <span class="logo-text">Boosted Media</span>
-        </a>
-        <nav class="nav" id="navbar">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="work.html">Our Work</a></li>
-          </ul>
-        </nav>
-        <div class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boostedmedia — More Sales, Less Social Media Stress</title>
+  <meta name="description" content="Boostedmedia creates scroll‑stopping social media content for UK small businesses. Get more customers while we handle your posts end‑to‑end." />
+  <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
+  <style>
+    :root{ --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb; --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --accent-ink:#0a1320; --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px; --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:var(--font-body); color:var(--text); background:var(--bg); line-height:1.6; text-rendering:optimizeLegibility}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; height:auto; display:block}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="container hero-container">
-        <div class="hero-text">
-          <h1>Elevate Your Brand with Our Powerful Media Strategies</h1>
-          <p>
-            Amplify your online presence through tailored social media
-            management, engaging content creation and data‑driven advertising
-            campaigns.
-          </p>
-          <a href="#contact" class="btn primary-btn">Get Started</a>
-        </div>
-        <div class="hero-image">
-          <!-- Using a high‑quality public domain illustration from FreeSVG
-               that represents digital marketing. The image is linked
-               remotely because direct download requires authentication. -->
-          <img
-            src="https://openclipart.org/image/2000px/257201"
-            alt="Digital Marketing Illustration"
-          />
-        </div>
-      </div>
-    </section>
+    /* ===== Header ===== */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.75rem}
+    .brand__logo{width:64px; height:64px; display:grid; place-items:center}
+    .brand__logo img.logo-img{width:100%; height:100%; object-fit:contain; background:transparent}
+    .brand__name{font-family:var(--font-head); font-weight:800; letter-spacing:.2px}
+    .nav__links{display:flex; gap:22px; align-items:center}
+    .nav__links a{color:var(--muted); font-weight:700}
+    .nav__links a:hover{color:#e8f3ff}
+    .mobile-toggle{display:none}
+    .mobile-menu{display:none}
 
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="container about-container">
-        <h2>About Us</h2>
-        <p class="about-intro">
-          Boosted Media is a forward‑thinking marketing agency dedicated to
-          boosting your brand across digital platforms. We craft bespoke
-          strategies to help you reach and engage your ideal audience.
-        </p>
-        <div class="about-features">
-          <div class="feature">
-            <i class="fas fa-bullhorn"></i>
-            <h3>Comprehensive Social Media Management</h3>
-            <p>
-              We handle every aspect of your social media presence, from
-              content planning to community engagement, ensuring your brand
-              stays top of mind.
-            </p>
-          </div>
-          <div class="feature">
-            <i class="fas fa-chart-line"></i>
-            <h3>Targeted Advertising Campaigns</h3>
-            <p>
-              Our data‑driven approach ensures your ads reach the right
-              people at the right time, maximising return on investment.
-            </p>
-          </div>
-          <div class="feature">
-            <i class="fas fa-pen-nib"></i>
-            <h3>Content Creation &amp; Design</h3>
-            <p>
-              We create engaging graphics, videos and copy that tell your
-              story and inspire your audience to take action.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    /* ===== Buttons ===== */
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff; font-weight:800; padding:16px 22px; border-radius:14px; border:0; cursor:pointer; box-shadow:0 8px 24px rgba(30,115,190,.25); transition:transform .12s ease, box-shadow .12s ease; text-align:center}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(30,115,190,.45)}
+    .btn--ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.16)}
 
-    <!-- Packages Section -->
-    <section class="packages" id="packages">
-      <div class="container packages-container">
-        <h2>Our Packages</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>Basic</h3>
-            <p class="price"><span>$</span>499<span class="per">/mo</span></p>
-            <ul class="card-features">
-              <li>3 social media platforms</li>
-              <li>2 advert campaigns</li>
-              <li>Monthly analytics report</li>
-              <li>Email support</li>
-            </ul>
-            <a href="#contact" class="btn secondary-btn">Start Now</a>
-          </div>
-          <div class="card recommended">
-            <div class="badge">Popular</div>
-            <h3>Standard</h3>
-            <p class="price"><span>$</span>999<span class="per">/mo</span></p>
-            <ul class="card-features">
-              <li>5 social media platforms</li>
-              <li>4 advert campaigns</li>
-              <li>Bi‑weekly analytics report</li>
-              <li>Priority email &amp; chat support</li>
-            </ul>
-            <a href="#contact" class="btn primary-btn">Start Now</a>
-          </div>
-          <div class="card">
-            <h3>Premium</h3>
-            <p class="price"><span>$</span>1499<span class="per">/mo</span></p>
-            <ul class="card-features">
-              <li>Unlimited platforms</li>
-              <li>Custom advert strategy</li>
-              <li>Weekly analytics report</li>
-              <li>Dedicated account manager</li>
-            </ul>
-            <a href="#contact" class="btn secondary-btn">Start Now</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    /* ===== Hero ===== */
+    .hero{padding:72px 0}
+    .hero__wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center}
+    .eyebrow{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
+    h1{font-family:var(--font-head); font-weight:800; font-size:clamp(36px,5.5vw,60px); line-height:1.05; margin:18px 0 10px; letter-spacing:.2px}
+    .lead{font-size:clamp(16px,2.4vw,19px); color:var(--muted)}
+    .hero__cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px}
+    .hero__card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
+    .hero__img{position:relative; border-radius:var(--radius-lg); overflow:hidden; border:1px solid rgba(255,255,255,.08); background:var(--panel)}
 
-    <!-- Reviews Section -->
-    <section class="reviews" id="reviews">
-      <div class="container reviews-container">
-        <h2>Client Reviews</h2>
-        <div class="review-cards">
-          <div class="review-card">
-            <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
-            <div class="review-content">
-              <p class="review-text">
-                “Boosted Media delivered above and beyond our expectations.
-                Their team helped us grow our audience and drive real sales.”
-              </p>
-              <p class="review-author">— Sarah W.</p>
-              <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                  class="fas fa-star"
-                ></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
-            <div class="review-content">
-              <p class="review-text">
-                “Their creative content and targeted ads got our brand the
-                attention it needed. We highly recommend Boosted Media!”
-              </p>
-              <p class="review-author">— Michael T.</p>
-              <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                  class="fas fa-star"
-                ></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
-            <div class="review-content">
-              <p class="review-text">
-                “Amazing service! The team’s insights and strategies
-                transformed our online presence. Exceptional results.”
-              </p>
-              <p class="review-author">— Emily R.</p>
-              <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                  class="fas fa-star"
-                ></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    /* ===== Sections ===== */
+    section{padding:72px 0}
+    .section__title{font-family:var(--font-head); font-weight:800; font-size:clamp(28px,4vw,44px); margin:0 0 12px}
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="container contact-container">
-        <h2>Get In Touch</h2>
-        <p>
-          Ready to take your brand to new heights? Fill out the form below and
-          we’ll be in touch shortly.
-        </p>
-        <form class="contact-form" action="#" method="post" onsubmit="return false;">
-          <div class="form-row">
-            <input type="text" placeholder="Name" required />
-            <input type="email" placeholder="Email" required />
+    .problem{display:grid; grid-template-columns:.95fr 1.05fr; gap:28px; align-items:center}
+    .solution{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
+    .solution__badge{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
+
+    /* ===== Benefits ===== */
+    .benefits{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px}
+    .icon{width:28px; height:28px; display:inline-block; vertical-align:middle; margin-right:8px}
+    .icon svg{width:100%; height:100%; fill:var(--accent)}
+
+    /* ===== Quotes & metrics ===== */
+    .quote{font-size:1.05rem; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; max-width:100%; overflow-wrap:anywhere}
+    .metrics{display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; justify-content:center}
+    .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:10px 14px; border-radius:12px; font-weight:700}
+    #dyn-metrics{transition:opacity .28s ease}
+    #dyn-metrics.is-fading{opacity:0}
+
+    /* ===== Testimonial slider ===== */
+    .t-slider{position:relative; display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; margin:10px 0 12px}
+    .t-track{overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.10); background:var(--panel)}
+    .t-track-inner{display:flex; transition:transform .38s ease; will-change:transform}
+    .t-slide{min-width:100%; padding:0; flex:0 0 100%}
+    .t-prev,.t-next{width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff; font-size:28px; line-height:1; display:grid; place-items:center; cursor:pointer}
+    .t-prev:hover,.t-next:hover{transform:translateY(-2px)}
+
+    /* ===== MOBILE (≤980px) ===== */
+    @media (max-width:980px){
+      .nav__links{display:none}
+      .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--text); padding:10px 14px; border-radius:12px}
+      .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12); box-shadow:0 14px 30px rgba(0,0,0,.35)}
+      .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
+      .nav--open + .mobile-menu{display:flex}
+
+      :root{ --m-pad:60px; --insetX:28px }
+      section{padding:var(--m-pad) 0 !important}
+      .hero{padding:var(--m-pad) 0 !important}
+      .container{padding:0 14px}
+
+      h1,.section__title{text-align:center; line-height:1.14; max-width:30ch; margin:0 auto 12px}
+      .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
+      .lead{ max-width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
+      #problem .section__sub{ max-width: calc(100% - 28px); font-size:17px; margin:10px auto 18px; }
+
+      .eyebrow,.solution__badge{display:block; width:max-content; margin:0 auto 12px}
+
+      .hero__wrap,.problem,.solution{display:flex; flex-direction:column; align-items:center}
+      .hero__img{width:100%; max-width:740px; border-radius:22px; margin-top:14px}
+      .hero__wrap>div:first-child{width:100%; max-width:740px}
+
+      .solution>div:first-child{width:100%; max-width:740px}
+      .solution .btn{display:block; margin-left:auto !important; margin-right:auto !important; min-width:54%; max-width:340px}
+
+      .hero__cta{display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap}
+      .hero__cta .btn{margin:0; min-width:46%; max-width:320px}
+      .hero__card{text-align:center}
+
+      .problem__list{max-width:52ch; margin:12px auto 0; font-size:18px; line-height:1.75; text-align:left; padding:16px 26px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; list-style-position:outside}
+      .problem__list li{margin:6px 0}
+
+      .benefits{display:grid !important; grid-template-columns:1fr !important; gap:20px !important; width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
+      .benefits .card{text-align:center; padding:24px; border-radius:20px}
+      .benefits .icon{width:56px; height:56px; margin:0 auto 10px}
+      .benefits h3{font-size:20px}
+      .benefits p{font-size:16px; max-width:52ch; margin:0 auto}
+
+      #proof .section__title{margin:0 auto 16px; text-align:center}
+      #proof .t-track{width:calc(100% - var(--insetX)); margin:0 auto}
+      #proof .quote{max-width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
+      #proof .metric{font-size:16px; padding:14px 12px}
+      #proof #dyn-metrics{width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
+
+      #book .section__sub{display:none !important}
+      #lead-form{padding:18px 20px; border-radius:18px; margin-top:10px; width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
+      #lead-form>.form-grid{display:grid; grid-template-columns:1fr !important; gap:18px}
+      #lead-form label{font-weight:800; color:#e6ebf7}
+      input,textarea{font-size:18px; padding:18px; min-height:60px; border-radius:16px; width:100%; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); color:var(--text)}
+      textarea{min-height:140px}
+      #book .btn{width:100%; min-height:56px}
+
+      section .btn{display:inline-flex; margin-left:auto !important; margin-right:auto !important}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" id="nav">
+      <a href="#top" class="brand" aria-label="Boostedmedia Home">
+        <span class="brand__logo" aria-hidden="true">
+          <!-- ONE filename, many common paths. The first that exists will be used. -->
+          <img class="logo-img" alt="Boostedmedia logo" width="64" height="64"/>
+          <template id="logo-fallback">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:64px;height:64px">
+              <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="20"/>
+              <g transform="translate(50,50) rotate(25) translate(-50,-50)">
+                <rect x="36" y="40" width="28" height="20" rx="10" fill="#1E73BE"/>
+                <polygon points="64,40 76,50 64,60" fill="#F5B400"/>
+                <polygon points="36,44 28,50 36,56" fill="#F5B400"/>
+              </g>
+            </svg>
+          </template>
+        </span>
+        <span class="brand__name">Boostedmedia</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#problem">Problems We Solve</a>
+        <a href="#solution">How We Help</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#proof">Results</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#book">Boost Your Business Today!</a>
+      </nav>
+      <button class="mobile-toggle" aria-label="Open Menu" onclick="document.getElementById('nav').classList.toggle('nav--open')">Menu</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#problem">Problems We Solve</a>
+      <a href="#solution">How We Help</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#proof">Results</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#book">Boost Your Business Today!</a>
+      <a href="#top" onclick="document.getElementById('nav').classList.remove('nav--open')" style="text-align:center; color:#98a2b3; padding-top:8px">Close</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="container hero__wrap">
+      <div>
+        <span class="eyebrow">Local • Affordable • High Quality</span>
+        <h1>More Sales, Less Social Media Stress for Your Small Business</h1>
+        <p class="lead">You’re juggling everything to grow your business – you <strong>don’t have time</strong> to spend all day on Facebook or Instagram, and frankly, you shouldn’t have to. We get it. Boostedmedia takes the social media burden off your shoulders, so you can focus on what you do best while we turn your online presence into a <strong>customer magnet</strong>.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#book">Boost Your Business Today!</a>
+          <a class="btn btn--ghost" href="#proof">See Real Results</a>
+        </div>
+        <div class="hero__card" style="margin-top:16px"><strong>FREE Strategy Call:</strong> in 15 minutes we’ll map a weekly content plan for your shop. No pressure, no jargon.</div>
+      </div>
+      <div class="hero__img"><img src="https://images.unsplash.com/photo-1556741533-411cf82e4e2d?q=80&w=1400&auto=format&fit=crop" alt="Local owner at the till"></div>
+    </div>
+  </main>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="container problem">
+      <div>
+        <h2 class="section__title">Feeling Invisible Online?</h2>
+        <p class="section__sub">You’re not alone. Many small business owners feel <strong>overwhelmed keeping up</strong> with social media. Maybe you have <strong>no idea what to post</strong>. Maybe you feel <strong>pressured to post constantly</strong> because “that’s what the gurus say,” but it’s exhausting. It’s discouraging to put in hours and still see <strong>little engagement</strong> or sales.</p>
+        <ul class="problem__list">
+          <li>Too many platforms and trends to follow.</li>
+          <li>No time to plan or create content consistently.</li>
+          <li>Unclear if posts are actually bringing in customers.</li>
+        </ul>
+      </div>
+      <div class="hero__img"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Owner stressed at laptop"></div>
+    </div>
+  </section>
+
+  <!-- SOLUTION (Image LEFT on desktop) -->
+  <section id="solution">
+    <div class="container solution">
+      <!-- LEFT: reliable team image (loads from Unsplash) -->
+      <div class="hero__img">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop" alt="Boostedmedia team with local owner">
+      </div>
+      <!-- RIGHT: text content -->
+      <div>
+        <span class="solution__badge">Hands‑Off for You • Results On for Business</span>
+        <h2 class="section__title">We’ll Handle the Posts — <em>You</em> Handle the Business</h2>
+        <p class="section__sub">Imagine an active, engaging presence that attracts customers — without you lifting a finger. Boostedmedia creates <strong>scroll‑stopping</strong> content at small‑business prices. From eye‑catching posts and videos to comment replies, we cover it all so <strong>your business gets noticed</strong> and you get back hours every week.</p>
+        <div style="margin-top:16px"><a class="btn" href="#book">Boost Your Business Today!</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits">
+    <div class="container">
+      <h2 class="section__title">What You Get with Boostedmedia</h2>
+      <div class="benefits">
+        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-10.59 3.3 1.91a1 1 0 0 0 1-1.73l-3.8-2.2V6a1 1 0 1 0-2 0v4a1 1 0 0 0 .5.87l1 .54z"/></svg></span><h3>More Time for You</h3><p>No more DIY stress. We plan, create, and schedule weekly content so you can focus on customers and growth.</p></div>
+        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 2v14H8V4h8zm-4 16a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span><h3>Reach More Customers Online</h3><p>Our creative, eye‑catching posts turn scrollers into buyers. Proven tactics that drive people through your door.</p></div>
+        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v12h14a1 1 0 1 1 0 2H4zm3-5 4-4 3 3 5-5v3a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1h-6a1 1 0 1 0 0 2h3l-4 4-3-3-5 5a1 1 0 0 0 1.4 1.4z"/></svg></span><h3>High Quality at a Small‑Business Price</h3><p>Get premium content and management at a budget‑friendly rate. Built for local shops who want real results.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section id="proof" aria-label="Testimonials">
+    <div class="container">
+      <h2 class="section__title">Don’t Just Take Our Word for It…</h2>
+      <div class="t-slider" aria-roledescription="carousel">
+        <button class="t-prev" aria-label="Previous testimonial">‹</button>
+        <div class="t-track">
+          <div class="t-track-inner">
+            <article class="t-slide" aria-label="Testimonial 1" data-metrics='["100k+ monthly views","Hands‑off content plan","Built for local shops"]'>
+              <div class="quote">“Boostedmedia has handled all our social media posts, and we <strong>couldn’t be happier</strong>. Our stats have <strong>skyrocketed — 100,000 views in one month on Facebook</strong> alone! We 100% recommend Boostedmedia to any business looking to grow online.”<br>— <strong>Sugar Crush</strong></div>
+            </article>
+            <article class="t-slide" aria-label="Testimonial 2" data-metrics='["(test) fast setup","(test) flexible plan","(test) local-first focus"]'>
+              <div class="quote">“test”</div>
+            </article>
           </div>
-          <textarea
-            placeholder="Tell us about your project..."
-            rows="5"
-            required
-          ></textarea>
-          <button type="submit" class="btn primary-btn">Send Message</button>
-        </form>
+        </div>
+        <button class="t-next" aria-label="Next testimonial">›</button>
       </div>
-    </section>
+      <div class="metrics" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container footer-container">
-        <div class="footer-brand">
-          <img src="assets/logo-icon.png" alt="Boosted Media" class="footer-logo" />
-          <span>Boosted Media</span>
+  <!-- FORM -->
+  <section id="book">
+    <div class="container">
+      <h2 class="section__title">Book Your Free Strategy Call</h2>
+      <form id="lead-form" class="card">
+        <div class="form-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px">
+          <label>Full Name<br><input required name="name" placeholder="Jane Doe"></label>
+          <label>Business Name<br><input required name="biz" placeholder="Your Shop Ltd"></label>
+          <label>Email<br><input required type="email" name="email" placeholder="you@example.com"></label>
+          <label>Phone<br><input name="phone" placeholder="07…"></label>
         </div>
-        <div class="footer-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#packages">Packages</a>
-          <a href="#reviews">Reviews</a>
-          <a href="work.html">Our Work</a>
+        <label style="display:block; margin-top:12px">City / Area<br><input name="city" placeholder="Scunthorpe & nearby"></label>
+        <label style="display:block; margin-top:12px">What do you need help with?<br><textarea name="needs" rows="4" placeholder="e.g., 3 posts/week, short videos, community reach"></textarea></label>
+        <div style="display:flex; gap:10px; margin-top:16px; align-items:center; flex-wrap:wrap">
+          <button class="btn" type="submit">Boost Your Business Today!</button>
+          <span style="color:var(--muted); font-size:.95rem">No obligation • 15‑minute call • Clear next steps</span>
         </div>
-        <div class="footer-copy">
-          &copy; <span id="year"></span> Boosted Media. All rights reserved.
-        </div>
+        <div id="form-alert" class="alert" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
+      <div style="display:flex; align-items:center; gap:10px">
+        <span class="brand__logo" aria-hidden="true">
+          <img class="logo-img" alt="Boostedmedia logo" width="64" height="64"/>
+        </span>
+        <div><strong style="font-family:var(--font-head); font-weight:800">Boostedmedia</strong><br><span style="color:var(--muted)">Serving Scunthorpe & surrounding areas • UK</span></div>
       </div>
-    </footer>
+      <div style="color:var(--muted)">&copy; <span id="year"></span> Boostedmedia. All rights reserved.</div>
+    </div>
+  </footer>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-  </body>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll + close mobile menu
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); document.getElementById('nav').classList.remove('nav--open'); }
+      });
+    });
+
+    // Inputs base styling (desktop)
+    document.querySelectorAll('input, textarea').forEach(el=>{
+      el.style.width='100%'; el.style.background='rgba(255,255,255,.04)'; el.style.border='1px solid rgba(255,255,255,.12)'; el.style.color='var(--text)'; el.style.borderRadius='12px'; el.style.padding='12px 14px'; el.style.outline='none';
+    });
+
+    // Remove broken hero images so no empty rounded boxes appear
+    document.querySelectorAll('.hero__img img').forEach(img=>{
+      const parent = img.parentElement;
+      if(img.complete && img.naturalWidth>0) return;
+      img.addEventListener('error', ()=> parent.remove(), {once:true});
+    });
+
+    // ===== ONE-FILENAME PATH FALLBACK for logo.png =====
+    (function(){
+      const candidates = [
+        'logo.png',
+        './logo.png',
+        '/logo.png',
+        'assets/logo.png',
+        '/assets/logo.png',
+        'images/logo.png',
+        '/images/logo.png'
+      ].map(u => u + '?v=' + Date.now());
+
+      function attach(img){
+        let i = 0;
+        function tryNext(){
+          if(i >= candidates.length){
+            const tpl = document.getElementById('logo-fallback');
+            if(tpl){ img.replaceWith(tpl.content.cloneNode(true)); }
+            return;
+          }
+          img.src = candidates[i++];
+        }
+        img.addEventListener('error', tryNext);
+        tryNext();
+      }
+      document.querySelectorAll('img.logo-img').forEach(attach);
+    })();
+
+    // ===== Testimonial Slider =====
+    (function(){
+      const slider = document.querySelector('#proof .t-slider'); if(!slider) return;
+      const track = slider.querySelector('.t-track');
+      const inner = slider.querySelector('.t-track-inner');
+      const slides = Array.from(inner.children);
+      const prev = slider.querySelector('.t-prev');
+      const next = slider.querySelector('.t-next');
+      const metrics = document.getElementById('dyn-metrics');
+      let index = 0;
+      function width(){ return Math.round(track.getBoundingClientRect().width); }
+      function setWidths(){ const w = width(); inner.style.width=(w*slides.length)+'px'; slides.forEach(s=>{ s.style.width=w+'px'; s.style.minWidth=w+'px'; s.style.flex='0 0 '+w+'px'; }); inner.style.transform='translateX('+(-index*w)+'px)'; }
+      setWidths();
+      if('ResizeObserver' in window){ new ResizeObserver(setWidths).observe(track); } else { window.addEventListener('resize', setWidths); }
+      function paintMetrics(){ let arr=[]; try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){} metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join(''); }
+      paintMetrics();
+      function go(step){ const w = width(); index = (index + step + slides.length) % slides.length; metrics.classList.add('is-fading'); inner.style.transform='translateX('+(-index*w)+'px)'; setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320); }
+      prev.addEventListener('click', ()=> go(-1));
+      next.addEventListener('click', ()=> go(1));
+      let sx=0; track.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
+      track.addEventListener('touchend', e=>{ const dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx)>40) go(dx<0?1:-1); }, {passive:true});
+    })();
+
+    // Formspree endpoint (live)
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
+    const form = document.getElementById('lead-form');
+    const alertBox = document.getElementById('form-alert');
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      try{
+        const res = await fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
+        if(res.ok){ form.reset(); alertBox.className = 'alert alert--ok'; alertBox.textContent = "Thanks! We'll email you shortly."; }
+        else { throw new Error('Submission failed'); }
+      }catch(err){ alertBox.className = 'alert alert--err'; alertBox.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com'; }
+    });
+  </script>
+</body>
 </html>
