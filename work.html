@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Work – Boosted Media</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-Xx8Bv0qtrLNyPwkZWVGUTTrOvfDGE34M8i8qa6RQfOfQ3RHblAhdyS8XAw+cX4BGH8tFC9I5aYdB+IbLncKD8Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header (reuse from index) -->
+    <header class="header">
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <img src="assets/logo-icon.png" alt="Boosted Media Logo" class="logo-icon" />
+          <span class="logo-text">Boosted Media</span>
+        </a>
+        <nav class="nav" id="navbar">
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#packages">Packages</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#work" class="active">Our Work</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Work Hero -->
+    <section class="hero" id="work" style="padding-top:6rem;">
+      <div class="container hero-container">
+        <div class="hero-text">
+          <h1>Our Work</h1>
+          <p>
+            Discover some of the projects we’ve crafted for our clients. Each
+            campaign is tailored to the unique goals of the brand and
+            illustrates the results of strategic planning and creative
+            execution.
+          </p>
+        </div>
+        <div class="hero-image">
+          <img
+            src="assets/project1.png"
+            alt="Our Work Illustration"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="packages" style="background-color:#0a0f22;">
+      <div class="container packages-container">
+        <h2>Selected Projects</h2>
+        <div class="cards">
+          <!-- Project 1 -->
+          <div class="card portfolio-item">
+            <img src="assets/project1.png" alt="Social Media Campaign" />
+            <h3>Social Media Campaign</h3>
+            <p>
+              Engaging content and targeted ads increased engagement by 200% for
+              our client’s new product launch.
+            </p>
+          </div>
+          <!-- Project 2 -->
+          <div class="card portfolio-item">
+            <img src="assets/project2.png" alt="Brand Identity Design" />
+            <h3>Brand Identity Design</h3>
+            <p>
+              A cohesive visual identity that reinforced brand recognition
+              across all platforms and materials.
+            </p>
+          </div>
+          <!-- Project 3 -->
+          <div class="card portfolio-item">
+            <img src="assets/project3.png" alt="Advertising Analytics Illustration" />
+            <h3>Advertising Analytics</h3>
+            <p>
+              Sophisticated data analysis informed decision‑making and
+              maximised return on advertising investment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages Section (Repeated) -->
+    <section class="packages" id="packages-page">
+      <div class="container packages-container">
+        <h2>Our Packages</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Basic</h3>
+            <p class="price"><span>$</span>499<span class="per">/mo</span></p>
+            <ul class="card-features">
+              <li>3 social media platforms</li>
+              <li>2 advert campaigns</li>
+              <li>Monthly analytics report</li>
+              <li>Email support</li>
+            </ul>
+            <a href="index.html#contact" class="btn secondary-btn">Start Now</a>
+          </div>
+          <div class="card recommended">
+            <div class="badge">Popular</div>
+            <h3>Standard</h3>
+            <p class="price"><span>$</span>999<span class="per">/mo</span></p>
+            <ul class="card-features">
+              <li>5 social media platforms</li>
+              <li>4 advert campaigns</li>
+              <li>Bi‑weekly analytics report</li>
+              <li>Priority email &amp; chat support</li>
+            </ul>
+            <a href="index.html#contact" class="btn primary-btn">Start Now</a>
+          </div>
+          <div class="card">
+            <h3>Premium</h3>
+            <p class="price"><span>$</span>1499<span class="per">/mo</span></p>
+            <ul class="card-features">
+              <li>Unlimited platforms</li>
+              <li>Custom advert strategy</li>
+              <li>Weekly analytics report</li>
+              <li>Dedicated account manager</li>
+            </ul>
+            <a href="index.html#contact" class="btn secondary-btn">Start Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-brand">
+          <img src="assets/logo-icon.png" alt="Boosted Media" class="footer-logo" />
+          <span>Boosted Media</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#packages">Packages</a>
+          <a href="index.html#reviews">Reviews</a>
+          <a href="#work">Our Work</a>
+        </div>
+        <div class="footer-copy">
+          &copy; <span id="year"></span> Boosted Media. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
