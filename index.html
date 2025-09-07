@@ -49,7 +49,6 @@
 
     .problem{display:grid; grid-template-columns:.95fr 1.05fr; gap:28px; align-items:center}
     .solution{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
-
     .solution__badge{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
 
     /* ===== Benefits ===== */
@@ -60,11 +59,8 @@
 
     /* ===== Quotes & metrics ===== */
     .quote{font-size:1.05rem; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; max-width:100%; overflow-wrap:anywhere}
-
-    /* Make metrics a single, centered vertical stack on all viewports */
-    .metrics{display:grid; grid-template-columns:1fr; gap:14px; max-width:420px; width:calc(100% - 28px); margin:16px auto 0}
-    .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:12px 16px; border-radius:12px; font-weight:700; text-align:center}
-
+    .metrics{display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; justify-content:center}
+    .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:10px 14px; border-radius:12px; font-weight:700}
     #dyn-metrics{transition:opacity .28s ease}
     #dyn-metrics.is-fading{opacity:0}
 
@@ -81,6 +77,7 @@
       .nav__links{display:none}
       .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--text); padding:10px 14px; border-radius:12px}
       .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12); box-shadow:0 14px 30px rgba(0,0,0,.35)}
+      .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
       .nav--open + .mobile-menu{display:flex}
 
       :root{ --m-pad:60px; --insetX:28px }
@@ -103,6 +100,7 @@
       .solution .btn{display:block; margin-left:auto !important; margin-right:auto !important; min-width:54%; max-width:340px}
 
       .hero__cta{display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap}
+      .hero__cta .btn{margin:0; min-width:46%; max-width:320px}
       .hero__card{text-align:center}
 
       .problem__list{max-width:52ch; margin:12px auto 0; font-size:18px; line-height:1.75; text-align:left; padding:16px 26px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; list-style-position:outside}
@@ -116,7 +114,20 @@
 
       #proof .section__title{margin:0 auto 16px; text-align:center}
       #proof .t-track{width:calc(100% - var(--insetX)); margin:0 auto}
-      #proof .quote{max-width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
+
+      /* 🔧 Center the quote inside the track on mobile */
+      #proof .t-slide{display:flex; justify-content:center; align-items:stretch}
+      #proof .quote{
+        width:100%;
+        max-width:100%;
+        margin:0 auto;         /* center within track */
+        text-align:left;       /* keep readable left alignment of text */
+        padding:22px;
+        border-radius:18px;
+        background:var(--panel);
+        border:1px solid rgba(255,255,255,.10)
+      }
+
       #proof .metric{font-size:16px; padding:14px 12px}
       #proof #dyn-metrics{width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
 
@@ -137,8 +148,8 @@
     <div class="container nav" id="nav">
       <a href="#top" class="brand" aria-label="Boostedmedia Home">
         <span class="brand__logo" aria-hidden="true">
-          <!-- Set the primary logo path; robust fallbacks are added in JS -->
-          <img class="logo-img" src="assets/logo-icon.png" alt="Boostedmedia logo" width="64" height="64"/>
+          <!-- ONE filename, many common paths. The first that exists will be used. -->
+          <img class="logo-img" alt="Boostedmedia logo" width="64" height="64"/>
           <template id="logo-fallback">
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:64px;height:64px">
               <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="20"/>
@@ -184,9 +195,7 @@
           <a class="btn" href="#book">Boost Your Business Today!</a>
           <a class="btn btn--ghost" href="#proof">See Real Results</a>
         </div>
-        <div class="hero__card" style="margin-top:16px">
-          <strong>Free 15-minute strategy call:</strong> This allows us to make sure we understand your business and can start planning content.
-        </div>
+        <div class="hero__card" style="margin-top:16px"><strong>FREE Strategy Call:</strong> in 15 minutes we’ll map a weekly content plan for your shop. No pressure, no jargon.</div>
       </div>
       <div class="hero__img"><img src="https://images.unsplash.com/photo-1556741533-411cf82e4e2d?q=80&w=1400&auto=format&fit=crop" alt="Local owner at the till"></div>
     </div>
@@ -211,11 +220,9 @@
   <!-- SOLUTION (Image LEFT on desktop) -->
   <section id="solution">
     <div class="container solution">
-      <!-- LEFT: image -->
       <div class="hero__img">
         <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop" alt="Boostedmedia team with local owner">
       </div>
-      <!-- RIGHT: text content -->
       <div>
         <span class="solution__badge">Hands-Off for You • Results On for Business</span>
         <h2 class="section__title">We’ll Handle the Posts — <em>You</em> Handle the Business</h2>
@@ -245,13 +252,11 @@
         <button class="t-prev" aria-label="Previous testimonial">‹</button>
         <div class="t-track">
           <div class="t-track-inner">
-            <!-- Testimonial 1 -->
             <article class="t-slide" aria-label="Testimonial 1" data-metrics='["100k+ monthly views","Hands-off content plan","Built for local shops"]'>
               <div class="quote">“Boostedmedia has handled all our social media posts, and we <strong>couldn’t be happier</strong>. Our stats have <strong>skyrocketed — 100,000 views in one month on Facebook</strong> alone! We 100% recommend Boostedmedia to any business looking to grow online.”<br>— <strong>Sugar Crush</strong></div>
             </article>
-            <!-- Testimonial 2 -->
-            <article class="t-slide" aria-label="Testimonial 2" data-metrics='["5★ rated service","Hands-off content plan","Local trades"]'>
-              <div class="quote">“5* service !! Very professional! I would like to say thank you to George for his amazing work by bringing my simple amateur videos to life 👌 and making me a video for my kitchen business. A lot more to come — George, we will be in touch again soon 👍👍.”<br>— <strong>J A Joinery &amp; Bathrooms</strong></div>
+            <article class="t-slide" aria-label="Testimonial 2" data-metrics='["(test) fast setup","(test) flexible plan","(test) local-first focus"]'>
+              <div class="quote">“test”</div>
             </article>
           </div>
         </div>
@@ -287,7 +292,7 @@
     <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
       <div style="display:flex; align-items:center; gap:10px">
         <span class="brand__logo" aria-hidden="true">
-          <img class="logo-img" src="assets/logo-icon.png" alt="Boostedmedia logo" width="64" height="64"/>
+          <img class="logo-img" alt="Boostedmedia logo" width="64" height="64"/>
         </span>
         <div><strong style="font-family:var(--font-head); font-weight:800">Boostedmedia</strong><br><span style="color:var(--muted)">Serving Scunthorpe & surrounding areas • UK</span></div>
       </div>
@@ -319,12 +324,9 @@
       img.addEventListener('error', ()=> parent.remove(), {once:true});
     });
 
-    // ===== ONE-FILENAME PATH FALLBACK for logo image =====
+    // ===== ONE-FILENAME PATH FALLBACK for logo.png =====
     (function(){
       const candidates = [
-        'assets/logo-icon.png',
-        './assets/logo-icon.png',
-        '/assets/logo-icon.png',
         'logo.png',
         './logo.png',
         '/logo.png',
@@ -335,8 +337,6 @@
       ].map(u => u + '?v=' + Date.now());
 
       function attach(img){
-        // if it already loaded, great
-        if (img.complete && img.naturalWidth > 0) return;
         let i = 0;
         function tryNext(){
           if(i >= candidates.length){
@@ -347,8 +347,7 @@
           img.src = candidates[i++];
         }
         img.addEventListener('error', tryNext);
-        // kick off in case initial src failed
-        if(!(img.complete && img.naturalWidth>0)) tryNext();
+        tryNext();
       }
       document.querySelectorAll('img.logo-img').forEach(attach);
     })();
@@ -363,35 +362,15 @@
       const next = slider.querySelector('.t-next');
       const metrics = document.getElementById('dyn-metrics');
       let index = 0;
-
       function width(){ return Math.round(track.getBoundingClientRect().width); }
-      function setWidths(){
-        const w = width();
-        inner.style.width=(w*slides.length)+'px';
-        slides.forEach(s=>{ s.style.width=w+'px'; s.style.minWidth=w+'px'; s.style.flex='0 0 '+w+'px'; });
-        inner.style.transform='translateX('+(-index*w)+'px)';
-      }
+      function setWidths(){ const w = width(); inner.style.width=(w*slides.length)+'px'; slides.forEach(s=>{ s.style.width=w+'px'; s.style.minWidth=w+'px'; s.style.flex='0 0 '+w+'px'; }); inner.style.transform='translateX('+(-index*w)+'px)'; }
       setWidths();
       if('ResizeObserver' in window){ new ResizeObserver(setWidths).observe(track); } else { window.addEventListener('resize', setWidths); }
-
-      function paintMetrics(){
-        let arr=[];
-        try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){}
-        metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join('');
-      }
+      function paintMetrics(){ let arr=[]; try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){} metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join(''); }
       paintMetrics();
-
-      function go(step){
-        const w = width();
-        index = (index + step + slides.length) % slides.length;
-        metrics.classList.add('is-fading');
-        inner.style.transform='translateX('+(-index*w)+'px)';
-        setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320);
-      }
+      function go(step){ const w = width(); index = (index + step + slides.length) % slides.length; metrics.classList.add('is-fading'); inner.style.transform='translateX('+(-index*w)+'px)'; setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320); }
       prev.addEventListener('click', ()=> go(-1));
       next.addEventListener('click', ()=> go(1));
-
-      // Touch swipe
       let sx=0; track.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
       track.addEventListener('touchend', e=>{ const dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx)>40) go(dx<0?1:-1); }, {passive:true});
     })();
@@ -411,6 +390,7 @@
   </script>
 </body>
 </html>
+
 
 
 
