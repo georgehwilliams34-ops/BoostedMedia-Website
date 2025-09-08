@@ -68,8 +68,7 @@
     .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:12px 16px; border-radius:12px; font-weight:700}
     #dyn-metrics{transition:opacity .28s ease}
     #dyn-metrics.is-fading{opacity:0}
-
-    /* Slider = full width track; chips row with arrows flanking (desktop) */
+    /* Desktop: full-width track; chips with arrows flanking */
     .t-slider{display:grid; grid-template-columns:44px 1fr 44px; grid-template-rows:auto auto; row-gap:12px; align-items:center; margin:10px 0 12px}
     .t-track{grid-column:1 / -1; grid-row:1; overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.10); background:var(--panel)}
     .t-track-inner{display:flex; transition:transform .38s ease; will-change:transform}
@@ -77,12 +76,24 @@
     .t-prev,.t-next{width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff; font-size:28px; line-height:1; display:grid; place-items:center; cursor:pointer}
     .t-prev{grid-column:1; grid-row:2; justify-self:center}
     .t-next{grid-column:3; grid-row:2; justify-self:center}
+    #proof #dyn-metrics{grid-column:2; grid-row:2; display:flex; gap:16px; justify-content:center; align-items:center}
 
-    /* Chips centered between arrows on desktop */
-    #proof #dyn-metrics{grid-column:2; grid-row:2; display:flex; flex-direction:row; gap:16px; justify-content:center; align-items:center}
+    /* ===== FAQ ===== */
+    .faq{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:8px}
+    .faq details{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:16px 18px}
+    .faq summary{cursor:pointer; list-style:none; font-family:var(--font-head); font-weight:800}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq p{color:#e9edf6; margin:10px 0 0}
 
-    /* ===== Footer spacing (more breathing room at bottom) ===== */
+    /* ===== Footer spacing ===== */
     footer{padding:26px 0 40px}
+
+    /* ===== Modal (form confirmation) ===== */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; z-index:100}
+    .modal.is-open{display:flex}
+    .modal__panel{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.12); border-radius:22px; padding:24px; max-width:520px; width:calc(100% - 32px); box-shadow:var(--shadow); text-align:center}
+    .modal__title{font-family:var(--font-head); font-weight:800; font-size:clamp(22px,3vw,28px); margin:0 0 6px}
+    .modal__text{color:var(--muted); margin:0 0 16px}
 
     /* ===== MOBILE (≤980px) ===== */
     @media (max-width:980px){
@@ -100,7 +111,7 @@
       h1,.section__title{text-align:center; line-height:1.14; max-width:30ch; margin:0 auto 12px}
       .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
       .lead{ max-width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
-      #problem .section__sub{ max_width: calc(100% - 28px); font-size:17px; margin:10px auto 18px; }
+      #problem .section__sub{ max-width: calc(100% - 28px); font-size:17px; margin:10px auto 18px; }
 
       .eyebrow,.solution__badge{display:block; width:max-content; margin:0 auto 12px}
 
@@ -114,13 +125,15 @@
       .hero__cta .btn{margin:0; min-width:46%; max-width:320px}
       .hero__card{text-align:center}
 
-      /* BENEFITS: stack 1 per row on mobile */
+      /* BENEFITS: stack */
       .benefits{grid-template-columns:1fr; gap:14px}
-      .card{width:100%}
 
-      /* MOBILE: chips stacked; arrows flank the stack */
+      /* Testimonials on mobile: arrows flank stacked chips */
       #proof .t-slider{grid-template-columns:44px 1fr 44px; grid-template-rows:auto auto}
       #proof #dyn-metrics{flex-direction:column}
+
+      /* FAQ: one column */
+      .faq{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -255,8 +268,32 @@
 
         <button class="t-next" aria-label="Next testimonial">›</button>
 
-        <!-- Chips -->
         <div class="metrics" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (new) -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section__title">FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>Do I need to be on camera?</summary>
+          <p>Nope. We can create posts with your products, location, customer stories, and graphics. If you like being on camera, we’ll use that too.</p>
+        </details>
+        <details>
+          <summary>How soon can we start?</summary>
+          <p>Usually within a week. The 15-minute call sets your content plan and access; then we begin creating and scheduling.</p>
+        </details>
+        <details>
+          <summary>Can I review content before it goes live?</summary>
+          <p>Yes. We share a weekly content calendar for quick approvals (or we can run fully hands-off if you prefer).</p>
+        </details>
+        <details>
+          <summary>Which platforms do you cover?</summary>
+          <p>Facebook, Instagram, and TikTok by default. We can add others on request.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -295,6 +332,18 @@
     </div>
   </footer>
 
+  <!-- Confirmation Modal -->
+  <div class="modal" id="confirm-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="modal__panel">
+      <h3 class="modal__title" id="confirm-title">Form sent — thank you!</h3>
+      <p class="modal__text">We’ve received your details. We’ll be in touch by email shortly to book your 15-minute call.</p>
+      <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap">
+        <button class="btn" id="confirm-close">Okay</button>
+        <a class="btn btn--ghost" href="#top" id="confirm-back">Back to top</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -312,7 +361,7 @@
       el.style.width='100%'; el.style.background='rgba(255,255,255,.04)'; el.style.border='1px solid rgba(255,255,255,.12)'; el.style.color='var(--text)'; el.style.borderRadius='12px'; el.style.padding='12px 14px'; el.style.outline='none';
     });
 
-    // Logo loader
+    // Logo loader (with SVG fallback)
     (function(){
       const candidates = ['assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'].map(u => u + '?v=' + Date.now());
       function attach(img){
@@ -340,7 +389,7 @@
       });
     });
 
-    // Testimonial Slider
+    // ===== Testimonial Slider =====
     (function(){
       const slider = document.querySelector('#proof .t-slider'); if(!slider) return;
       const track  = slider.querySelector('.t-track');
@@ -386,16 +435,32 @@
       }, {passive:true});
     })();
 
-    // Formspree
+    // ===== Formspree + Confirmation Modal =====
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
     const form = document.getElementById('lead-form');
     const alertBox = document.getElementById('form-alert');
+
+    const modal = document.getElementById('confirm-modal');
+    const openModal = ()=>{ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.getElementById('confirm-close').focus(); };
+    const closeModal = ()=>{ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); };
+
+    document.getElementById('confirm-close').addEventListener('click', closeModal);
+    document.getElementById('confirm-back').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.classList.contains('is-open')) closeModal(); });
+
     form?.addEventListener('submit', async (e)=>{
       e.preventDefault();
       try{
         const res = await fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
-        if(res.ok){ form.reset(); alertBox.className = 'alert alert--ok'; alertBox.textContent = "Thanks! We'll email you shortly."; }
-        else { throw new Error('Submission failed'); }
+        if(res.ok){
+          form.reset();
+          alertBox.className = 'alert alert--ok';
+          alertBox.textContent = "Thanks! We'll email you shortly.";
+          openModal(); // show confirmation popup
+        } else {
+          throw new Error('Submission failed');
+        }
       }catch(err){
         alertBox.className = 'alert alert--err';
         alertBox.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com';
