@@ -62,4 +62,63 @@
       <a href="index.html#benefits">Benefits</a>
       <a href="index.html#proof">Results</a>
       <a href="index.html#faq">FAQ</a>
-      <a class="btn" hre
+      <a class="btn" href="index.html#book">Boost Your Business Today!</a>
+      <a href="index.html#top" style="text-align:center; color:#98a2b3; padding-top:8px" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Privacy Policy</h1>
+    <div class="panel">
+      <p>We only collect the information we need to deliver and improve our services (e.g., contact details you submit via forms). We don’t sell your data.</p>
+
+      <h2>What we collect</h2>
+      <p>Names, emails, phone numbers, and messages you provide. Basic analytics (aggregated, not identifying) to see how our site performs.</p>
+
+      <h2>How we use it</h2>
+      <p>To contact you about your enquiry, deliver services, and improve our website. You can ask us to delete your data at any time.</p>
+
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:boostedmediabusiness@gmail.com">boostedmediabusiness@gmail.com</a></p>
+
+      <h2>Updates</h2>
+      <p>We may update this policy occasionally; the latest version will always be here.</p>
+    </div>
+  </main>
+
+  <!-- Homepage footer copied -->
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
+      <div style="display:flex; align-items:center; gap:10px">
+        <span class="brand__logo" aria-hidden="true">
+          <img class="logo-img" alt="Boostedmedia logo" width="48" height="48"/>
+        </span>
+        <div><strong style="font-family:var(--font-head); font-weight:800">Boostedmedia</strong><br><span style="color:var(--muted)">Serving Scunthorpe & surrounding areas • UK</span></div>
+      </div>
+      <div style="color:#c7ccdb">&copy; <span id="year"></span> Boostedmedia. All rights reserved. &nbsp; <a href="privacy.html">Privacy</a> &nbsp;•&nbsp; <a href="terms.html">Terms</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Robust logo loader like homepage
+    (function(){
+      const candidates = [
+        'assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
+      ].map(u=>u+'?v='+Date.now());
+      document.querySelectorAll('img.logo-img').forEach(img=>{
+        let i=0;
+        function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
+        img.addEventListener('error', next); next();
+      });
+    })();
+
+    // Remove any broken non-logo images (prevents "failed to load" artifacts)
+    document.querySelectorAll('img').forEach(img=>{
+      if(img.classList.contains('logo-img')) return;
+      img.addEventListener('error', ()=> img.remove());
+    });
+  </script>
+</body>
+</html>
