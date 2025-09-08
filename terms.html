@@ -29,5 +29,86 @@
 
     @media (max-width:980px){
       .nav__links{display:none}
-      .mobile-toggle{display:inline-flex; background:transparent; border:1px soli
+      .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:#fff; padding:10px 14px; border-radius:12px}
+      .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
+      .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
+      .nav--open + .mobile-menu{display:flex}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" id="nav">
+      <a href="index.html#top" class="brand">
+        <span class="brand__logo"><img class="logo-img" alt="Boostedmedia logo"></span>
+        <span class="brand__name">Boostedmedia</span>
+      </a>
+      <nav class="nav__links">
+        <a href="index.html#problem">Problems We Solve</a>
+        <a href="index.html#solution">How We Help</a>
+        <a href="index.html#benefits">Benefits</a>
+        <a href="index.html#proof">Results</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="btn" href="index.html#book">Boost Your Business Today!</a>
+      </nav>
+      <button class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('nav--open')">Menu</button>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html#problem">Problems We Solve</a>
+      <a href="index.html#solution">How We Help</a>
+      <a href="index.html#benefits">Benefits</a>
+      <a href="index.html#proof">Results</a>
+      <a href="index.html#faq">FAQ</a>
+      <a class="btn" href="index.html#book">Boost Your Business Today!</a>
+      <a href="index.html#top" style="text-align:center; color:#98a2b3; padding-top:8px" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
+    </div>
+  </header>
 
+  <main class="container">
+    <h1>Terms of Service</h1>
+    <div class="panel">
+      <p>These terms govern your use of Boostedmedia services. By engaging us, you agree to the following:</p>
+
+      <h2>Services</h2>
+      <p>We provide social media content creation and related services as agreed in writing or via email.</p>
+
+      <h2>Your responsibilities</h2>
+      <ul>
+        <li>Provide timely information, brand assets, and approvals.</li>
+        <li>Confirm you have rights to all content/materials supplied to us.</li>
+      </ul>
+
+      <h2>Fees & payment</h2>
+      <p>Fees are as quoted. Unless otherwise stated, invoices are due upon receipt. Late or missing payments may pause work.</p>
+
+      <h2>Intellectual property</h2>
+      <p>Upon full payment, you receive a licence to use delivered content for your business marketing. We may feature work in our portfolio unless you request otherwise in writing.</p>
+
+      <h2>Cancellation</h2>
+      <p>You may cancel at any time; please provide 14 days’ notice so we can wind down scheduled content.</p>
+
+      <h2>Liability</h2>
+      <p>We’ll always act with reasonable care. We’re not liable for indirect or consequential losses arising from your use of the content.</p>
+
+      <h2>Contact</h2>
+      <p>Email: boostedmediabusiness@gmail.com</p>
+
+      <h2>Changes</h2>
+      <p>We may update these terms from time to time; the latest version will always be available here.</p>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const candidates = [
+        'assets/logo-icon.png','./assets/logo-icon.png',
+        'logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
+      ].map(u=>u+'?v='+Date.now());
+      const img = document.querySelector('img.logo-img');
+      let i=0;
+      function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
+      img.addEventListener('error', next); next();
+    })();
+  </script>
+</body>
+</html>
