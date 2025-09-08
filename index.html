@@ -7,7 +7,13 @@
   <meta name="description" content="Boostedmedia creates scroll-stopping social media content for UK small businesses. Get more customers while we handle your posts end-to-end." />
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
   <style>
-    :root{ --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb; --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --accent-ink:#0a1320; --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px; --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    :root{
+      --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb;
+      --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --accent-ink:#0a1320;
+      --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px;
+      --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0; font-family:var(--font-body); color:var(--text); background:var(--bg); line-height:1.6; text-rendering:optimizeLegibility}
@@ -101,13 +107,22 @@
       .hero__cta .btn{margin:0; min-width:46%; max-width:320px}
       .hero__card{text-align:center}
 
-      .problem__list{max-width:52ch; margin:12px auto 0; font-size:18px; line-height:1.75; text-align:left; padding:16px 26px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; list-style-position:outside}
-      .problem__list li{margin:6px 0}
+      /* BENEFITS: stack 1 per row on mobile */
+      .benefits{grid-template-columns:1fr; gap:14px}
+      .card{width:100%}
 
-      /* MOBILE metrics: make both slides identical layout (stacked & centered) */
-      .metrics{flex-direction:column; align-items:center}
-      .metric{width:80%; max-width:360px; text-align:center}
-      #proof .t-track{width:calc(100% - var(--insetX)); margin:0 auto}
+      /* Testimonial layout (quote → metrics chips → buttons underneath) */
+      #proof .t-slider{
+        grid-template-columns:1fr 1fr 1fr;
+        grid-template-rows:auto auto auto;
+        row-gap:12px;
+      }
+      #proof .t-track{grid-column:1 / -1; grid-row:1}
+      #proof #dyn-metrics{grid-column:1 / -1; grid-row:2; display:flex; justify-content:center; flex-wrap:wrap}
+      #proof .metrics{flex-direction:row} /* keep chips in a row */
+      #proof .t-prev{grid-row:3; grid-column:1; justify-self:end}
+      #proof .t-next{grid-row:3; grid-column:3; justify-self:start}
+
       #proof .quote{max-width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
       #book .btn{width:100%; min-height:56px}
 
@@ -204,6 +219,7 @@
         <div class="hero__img teamshot"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop" alt="Boostedmedia team with local owner"></div>
         <div style="margin-top:16px"><a class="btn" href="#book">Boost Your Business Today!</a></div>
       </div>
+      <!-- If this image ever fails to load, the script below will remove the wrapper automatically -->
       <div class="hero__img"><img src="https://images.unsplash.com/photo-1555421689-43cad7100751?q=80&w=1400&auto=format&fit=crop" alt="Content creation on phone"></div>
     </div>
   </section>
@@ -227,6 +243,7 @@
 
       <div class="t-slider" aria-roledescription="carousel">
         <button class="t-prev" aria-label="Previous testimonial">‹</button>
+
         <div class="t-track">
           <div class="t-track-inner">
             <!-- Slide 1 -->
@@ -248,11 +265,12 @@
             </article>
           </div>
         </div>
-        <button class="t-next" aria-label="Next testimonial">›</button>
-      </div>
 
-      <!-- Dynamic facts -->
-      <div class="metrics" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
+        <button class="t-next" aria-label="Next testimonial">›</button>
+
+        <!-- Orange metric chips now live inside the slider so they sit between quote and buttons on mobile -->
+        <div class="metrics" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
+      </div>
     </div>
   </section>
 
@@ -310,12 +328,7 @@
     // ===== Robust logo loader (uses assets/logo-icon.png with fallbacks) =====
     (function(){
       const candidates = [
-        'assets/logo-icon.png',
-        './assets/logo-icon.png',
-        'logo.png',
-        './logo.png',
-        '/assets/logo-icon.png',
-        '/logo.png'
+        'assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
       ].map(u => u + '?v=' + Date.now());
 
       function attach(img){
@@ -334,6 +347,16 @@
       document.querySelectorAll('img.logo-img').forEach(attach);
     })();
 
+    // ===== Remove any broken non-logo images (prevents "failed to load image" pills) =====
+    document.querySelectorAll('img').forEach(img=>{
+      if(img.classList.contains('logo-img')) return; // logos handled by fallback loader
+      img.addEventListener('error', ()=> {
+        const wrap = img.closest('.hero__img');
+        if(wrap) wrap.remove();
+        else img.remove();
+      });
+    });
+
     // ===== Testimonial Slider (2 slides) =====
     (function(){
       const slider = document.querySelector('#proof .t-slider'); if(!slider) return;
@@ -342,7 +365,7 @@
       const slides = Array.from(inner.children);
       const prev = slider.querySelector('.t-prev');
       const next = slider.querySelector('.t-next');
-      const metrics = document.getElementById('dyn-metrics');
+      const metrics = slider.querySelector('#dyn-metrics'); // now inside slider
 
       let index = 0;
       function width(){ return Math.round(track.getBoundingClientRect().width); }
@@ -390,7 +413,10 @@
         const res = await fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
         if(res.ok){ form.reset(); alertBox.className = 'alert alert--ok'; alertBox.textContent = "Thanks! We'll email you shortly."; }
         else { throw new Error('Submission failed'); }
-      }catch(err){ alertBox.className = 'alert alert--err'; alertBox.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com'; }
+      }catch(err){
+        alertBox.className = 'alert alert--err';
+        alertBox.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com';
+      }
     });
   </script>
 </body>
