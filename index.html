@@ -70,12 +70,14 @@
     #dyn-metrics.is-fading{opacity:0}
 
     /* ===== Testimonial slider ===== */
-    .t-slider{position:relative; display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; margin:10px 0 12px}
-    .t-track{overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.10); background:var(--panel)}
+    .t-slider{position:relative; display:block; margin-top:10px}
+    .t-track{overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.10); background:var(--panel); width:100%; margin:0 56px;} /* margin gives room for arrows */
     .t-track-inner{display:flex; transition:transform .38s ease; will-change:transform}
     .t-slide{min-width:100%; padding:0; flex:0 0 100%}
-    .t-prev,.t-next{width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff; font-size:28px; line-height:1; display:grid; place-items:center; cursor:pointer}
-    .t-prev:hover,.t-next:hover{transform:translateY(-2px)}
+    .t-prev,.t-next{width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff; font-size:28px; line-height:1; display:grid; place-items:center; cursor:pointer; position:absolute; top:50%; transform:translateY(-50%);}
+    .t-prev{left:8px}
+    .t-next{right:8px}
+    .t-prev:hover,.t-next:hover{transform:translateY(calc(-50% - 2px))}
 
     /* ===== MOBILE (≤980px) ===== */
     @media (max-width:980px){
@@ -111,19 +113,14 @@
       .benefits{grid-template-columns:1fr; gap:14px}
       .card{width:100%}
 
-      /* Testimonial layout (quote → metrics chips → buttons underneath) */
-      #proof .t-slider{
-        grid-template-columns:1fr 1fr 1fr;
-        grid-template-rows:auto auto auto;
-        row-gap:12px;
-      }
-      #proof .t-track{grid-column:1 / -1; grid-row:1}
-      #proof #dyn-metrics{grid-column:1 / -1; grid-row:2; display:flex; justify-content:center; flex-wrap:wrap}
-      #proof .metrics{flex-direction:row} /* keep chips in a row */
-      #proof .t-prev{grid-row:3; grid-column:1; justify-self:end}
-      #proof .t-next{grid-row:3; grid-column:3; justify-self:start}
+      /* MOBILE reviews layout: quote row, chips centered in middle column, arrows flanking the chips */
+      #proof .t-slider{display:grid; grid-template-columns:44px 1fr 44px; grid-template-rows:auto auto; row-gap:12px; align-items:center}
+      #proof .t-track{grid-column:1 / -1; grid-row:1; margin:0}
+      #proof #dyn-metrics{grid-column:2; grid-row:2; display:flex; flex-direction:column; gap:12px; align-items:center}
+      #proof .t-prev,#proof .t-next{position:static; transform:none}
+      #proof .t-prev{grid-column:1; grid-row:2; justify-self:center}
+      #proof .t-next{grid-column:3; grid-row:2; justify-self:center}
 
-      #proof .quote{max-width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
       #book .btn{width:100%; min-height:56px}
 
       #lead-form{padding:18px 20px; border-radius:18px; margin-top:10px; width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
@@ -219,7 +216,6 @@
         <div class="hero__img teamshot"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop" alt="Boostedmedia team with local owner"></div>
         <div style="margin-top:16px"><a class="btn" href="#book">Boost Your Business Today!</a></div>
       </div>
-      <!-- If this image ever fails to load, the script below will remove the wrapper automatically -->
       <div class="hero__img"><img src="https://images.unsplash.com/photo-1555421689-43cad7100751?q=80&w=1400&auto=format&fit=crop" alt="Content creation on phone"></div>
     </div>
   </section>
@@ -268,7 +264,7 @@
 
         <button class="t-next" aria-label="Next testimonial">›</button>
 
-        <!-- Orange metric chips now live inside the slider so they sit between quote and buttons on mobile -->
+        <!-- Chips (always rebuilt for the active slide) -->
         <div class="metrics" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
       </div>
     </div>
@@ -325,12 +321,11 @@
       el.style.width='100%'; el.style.background='rgba(255,255,255,.04)'; el.style.border='1px solid rgba(255,255,255,.12)'; el.style.color='var(--text)'; el.style.borderRadius='12px'; el.style.padding='12px 14px'; el.style.outline='none';
     });
 
-    // ===== Robust logo loader (uses assets/logo-icon.png with fallbacks) =====
+    // ===== Robust logo loader =====
     (function(){
       const candidates = [
         'assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
       ].map(u => u + '?v=' + Date.now());
-
       function attach(img){
         let i = 0;
         function tryNext(){
@@ -347,25 +342,24 @@
       document.querySelectorAll('img.logo-img').forEach(attach);
     })();
 
-    // ===== Remove any broken non-logo images (prevents "failed to load image" pills) =====
+    // ===== Remove any broken non-logo images =====
     document.querySelectorAll('img').forEach(img=>{
-      if(img.classList.contains('logo-img')) return; // logos handled by fallback loader
-      img.addEventListener('error', ()=> {
+      if(img.classList.contains('logo-img')) return;
+      img.addEventListener('error', ()=>{
         const wrap = img.closest('.hero__img');
-        if(wrap) wrap.remove();
-        else img.remove();
+        if(wrap) wrap.remove(); else img.remove();
       });
     });
 
-    // ===== Testimonial Slider (2 slides) =====
+    // ===== Testimonial Slider =====
     (function(){
       const slider = document.querySelector('#proof .t-slider'); if(!slider) return;
-      const track = slider.querySelector('.t-track');
-      const inner = slider.querySelector('.t-track-inner');
+      const track  = slider.querySelector('.t-track');
+      const inner  = slider.querySelector('.t-track-inner');
       const slides = Array.from(inner.children);
-      const prev = slider.querySelector('.t-prev');
-      const next = slider.querySelector('.t-next');
-      const metrics = slider.querySelector('#dyn-metrics'); // now inside slider
+      const prev   = slider.querySelector('.t-prev');
+      const next   = slider.querySelector('.t-next');
+      const metrics= slider.querySelector('#dyn-metrics');
 
       let index = 0;
       function width(){ return Math.round(track.getBoundingClientRect().width); }
@@ -403,7 +397,7 @@
       }, {passive:true});
     })();
 
-    // Formspree endpoint (live)
+    // Formspree
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
     const form = document.getElementById('lead-form');
     const alertBox = document.getElementById('form-alert');
