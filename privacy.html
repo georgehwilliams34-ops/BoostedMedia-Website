@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
   <style>
     :root{ --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb; --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --font-head:'articulat-cf', system-ui; --font-body:Inter, system-ui; --radius:18px; }
-    *{box-sizing:border-box} body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.6}
-    a{color:inherit; text-decoration:none}
+    *{box-sizing:border-box}
+    body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.6}
+    a{color:#e6f2ff; text-decoration:none}
     .container{max-width:1000px; margin:0 auto; padding:0 20px}
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:.75rem}
-    .brand__logo{width:40px; height:40px; display:grid; place-items:center}
+    .brand__logo{width:48px; height:48px; display:grid; place-items:center}
     .brand__logo img.logo-img{width:100%; height:100%; object-fit:contain}
     .brand__name{font-family:var(--font-head); font-weight:800}
     .nav__links{display:flex; gap:18px; align-items:center}
@@ -33,6 +34,8 @@
       .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
       .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
       .nav--open + .mobile-menu{display:flex}
+      /* same inset as homepage */
+      .container{padding:0 14px}
     }
   </style>
 </head>
@@ -40,7 +43,7 @@
   <header>
     <div class="container nav" id="nav">
       <a href="index.html#top" class="brand">
-        <span class="brand__logo"><img class="logo-img" alt="Boostedmedia logo"></span>
+        <span class="brand__logo"><img class="logo-img" alt="Boostedmedia logo" width="48" height="48"></span>
         <span class="brand__name">Boostedmedia</span>
       </a>
       <nav class="nav__links">
@@ -59,69 +62,4 @@
       <a href="index.html#benefits">Benefits</a>
       <a href="index.html#proof">Results</a>
       <a href="index.html#faq">FAQ</a>
-      <a class="btn" href="index.html#book">Boost Your Business Today!</a>
-      <a href="index.html#top" style="text-align:center; color:#98a2b3; padding-top:8px" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <h1>Privacy Policy</h1>
-    <div class="panel">
-      <p>We respect your privacy and handle your data responsibly. This policy explains what we collect, how we use it, and the rights you have.</p>
-
-      <h2>Who we are</h2>
-      <p>Boostedmedia (“we”, “our”, “us”) provides social media content services for local UK businesses.</p>
-
-      <h2>Data we collect</h2>
-      <ul>
-        <li>Contact details you provide (name, email, phone, business info).</li>
-        <li>Messages/forms you send us and call booking details.</li>
-        <li>Basic analytics (pages viewed, device/browser data).</li>
-      </ul>
-
-      <h2>How we use data</h2>
-      <ul>
-        <li>Respond to enquiries and provide services you request.</li>
-        <li>Send administrative messages about your enquiry or booking.</li>
-        <li>Improve our site and services.</li>
-      </ul>
-
-      <h2>Lawful bases</h2>
-      <p>We process data on the basis of consent, contract, and legitimate interests.</p>
-
-      <h2>Sharing</h2>
-      <p>We don’t sell your data. We may share with trusted providers (e.g., email or booking tools) solely to deliver our services.</p>
-
-      <h2>Retention</h2>
-      <p>We keep personal data only as long as necessary for the purposes above, then securely delete it.</p>
-
-      <h2>Cookies</h2>
-      <p>We use minimal cookies/analytics to keep the site running smoothly and improve performance.</p>
-
-      <h2>Your rights</h2>
-      <p>You have rights to access, correct, delete, object, and withdraw consent. Contact us to exercise these rights.</p>
-
-      <h2>Contact</h2>
-      <p>Email: boostedmediabusiness@gmail.com</p>
-
-      <h2>Changes</h2>
-      <p>We may update this policy from time to time. We’ll post the latest version here.</p>
-    </div>
-  </main>
-
-  <script>
-    // Load the logo with the same robust path list as the homepage
-    (function(){
-      const candidates = [
-        'assets/logo-icon.png','./assets/logo-icon.png',
-        'logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
-      ].map(u=>u+'?v='+Date.now());
-      const img = document.querySelector('img.logo-img');
-      let i=0;
-      function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
-      img.addEventListener('error', next); next();
-    })();
-  </script>
-</body>
-</html>
-
+      <a class="btn" hre
