@@ -48,12 +48,9 @@
     .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow)}
     .panel h2{font-family:var(--font-head); font-size:clamp(22px,3.3vw,30px); margin:22px 0 10px}
-    .panel h3{font-family:var(--font-head); font-size:clamp(18px,2.4vw,22px); margin:18px 0 8px}
     .panel p{margin:10px 0; color:#e9edf6}
     .panel ul{padding-left:20px}
     .muted{color:var(--muted)}
-    .toc{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 2px}
-    .toc a{border:1px solid rgba(255,255,255,.16); padding:8px 12px; border-radius:12px; color:#e8f3ff}
 
     footer{margin-top:60px; padding:24px 0; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
     footer .foot{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap}
@@ -64,8 +61,7 @@
       .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
       .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
       .nav--open + .mobile-menu{display:flex}
-      /* inset the sides like homepage */
-      .container{padding:0 14px}
+      .container{padding:0 14px} /* same inset as home */
     }
   </style>
 </head>
@@ -105,20 +101,7 @@
       <p class="muted">Last updated: 7 September 2025</p>
 
       <div class="panel" style="margin-top:18px">
-        <div class="toc">
-          <a href="#scope">Scope</a>
-          <a href="#quotes">Quotes & payment</a>
-          <a href="#client">Client responsibilities</a>
-          <a href="#content">Content & IP</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#confidentiality">Confidentiality</a>
-          <a href="#warranty">Warranties & disclaimers</a>
-          <a href="#liability">Liability</a>
-          <a href="#changes">Changes & delays</a>
-          <a href="#termination">Termination</a>
-          <a href="#law">Governing law</a>
-          <a href="#contact">Contact</a>
-        </div>
+        <!-- TOC removed per request -->
 
         <h2 id="scope">1) Scope of services</h2>
         <p>We provide social media content planning, creation, scheduling, and related services as described in your agreed plan or proposal.</p>
@@ -173,7 +156,7 @@
     </div>
   </main>
 
-  <!-- Homepage footer copied -->
+  <!-- Footer (same as home) -->
   <footer>
     <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
       <div style="display:flex; align-items:center; gap:10px">
@@ -189,19 +172,18 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Robust logo loader (same as homepage)
+    // Logo loader
     (function(){
       const candidates = [
         'assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
       ].map(u=>u+'?v='+Date.now());
       document.querySelectorAll('img.logo-img').forEach(img=>{
-        let i=0;
-        function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
+        let i=0; function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
         img.addEventListener('error', next); next();
       });
     })();
 
-    // Remove any broken non-logo images (prevents "failed to load" artifacts)
+    // Remove any broken non-logo images
     document.querySelectorAll('img').forEach(img=>{
       if(img.classList.contains('logo-img')) return;
       img.addEventListener('error', ()=> img.remove());
