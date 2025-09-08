@@ -4,43 +4,76 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Terms of Service — Boostedmedia</title>
+  <meta name="description" content="Boostedmedia Terms of Service" />
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
   <style>
-    :root{ --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb; --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --font-head:'articulat-cf', system-ui; --font-body:Inter, system-ui; --radius:18px; }
-    *{box-sizing:border-box} body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.6}
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1000px; margin:0 auto; padding:0 20px}
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
+    :root{
+      --bg:#0B0E1A; --panel:#0F1220; --text:#fff; --muted:#c7ccdb;
+      --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400;
+      --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px;
+      --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65}
+    a{color:#e6f2ff; text-decoration:none}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:.75rem}
-    .brand__logo{width:40px; height:40px; display:grid; place-items:center}
+    .brand__logo{width:48px; height:48px; display:grid; place-items:center}
     .brand__logo img.logo-img{width:100%; height:100%; object-fit:contain}
-    .brand__name{font-family:var(--font-head); font-weight:800}
-    .nav__links{display:flex; gap:18px; align-items:center}
-    .nav__links a{color:#cfd5e6; font-weight:700}
-    .btn{display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff; font-weight:800; padding:12px 18px; border-radius:12px; border:0; cursor:pointer}
+    .brand__name{font-family:var(--font-head); font-weight:800; letter-spacing:.2px}
+    .nav__links{display:flex; gap:22px; align-items:center}
+    .nav__links a{color:var(--muted); font-weight:700}
+    .nav__links a:hover{color:#e8f3ff}
     .mobile-toggle{display:none}
-    .mobile-menu{display:none}
 
-    main{padding:60px 0}
-    h1{font-family:var(--font-head); font-weight:800; font-size:clamp(28px,4vw,42px); margin:0 0 14px}
-    .panel{background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px}
-    h2{font-family:var(--font-head); margin:26px 0 10px; font-size:clamp(20px,2.4vw,26px)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff;
+      font-weight:800; padding:14px 20px; border-radius:14px; border:0; cursor:pointer;
+      box-shadow:0 8px 24px rgba(30,115,190,.25); transition:transform .12s ease, box-shadow .12s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(30,115,190,.45)}
+    .btn--ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18)}
+
+    .hero{padding:64px 0}
+    .eyebrow{display:inline-block; font-weight:800; font-family:var(--font-head); color:#0a1320;
+      background:var(--accent); padding:6px 10px; border-radius:999px}
+    h1{font-family:var(--font-head); font-weight:800; font-size:clamp(32px,5vw,54px); line-height:1.08; margin:18px 0 8px}
+    .lede{color:var(--muted); font-size:clamp(16px,2vw,18px); max-width:70ch}
+
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow)}
+    .panel h2{font-family:var(--font-head); font-size:clamp(22px,3.3vw,30px); margin:22px 0 10px}
+    .panel h3{font-family:var(--font-head); font-size:clamp(18px,2.4vw,22px); margin:18px 0 8px}
+    .panel p{margin:10px 0; color:#e9edf6}
+    .panel ul{padding-left:20px}
+    .muted{color:var(--muted)}
+    .toc{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 2px}
+    .toc a{border:1px solid rgba(255,255,255,.16); padding:8px 12px; border-radius:12px; color:#e8f3ff}
+
+    footer{margin-top:60px; padding:24px 0; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
+    footer .foot{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap}
 
     @media (max-width:980px){
       .nav__links{display:none}
-      .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:#fff; padding:10px 14px; border-radius:12px}
+      .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--text); padding:10px 14px; border-radius:12px}
       .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
       .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
       .nav--open + .mobile-menu{display:flex}
+      /* inset the sides like homepage */
+      .container{padding:0 14px}
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav" id="nav">
-      <a href="index.html#top" class="brand">
-        <span class="brand__logo"><img class="logo-img" alt="Boostedmedia logo"></span>
+      <a href="index.html#top" class="brand" aria-label="Boostedmedia Home">
+        <span class="brand__logo"><img class="logo-img" alt="Boostedmedia logo" width="48" height="48"></span>
         <span class="brand__name">Boostedmedia</span>
       </a>
       <nav class="nav__links">
@@ -60,55 +93,119 @@
       <a href="index.html#proof">Results</a>
       <a href="index.html#faq">FAQ</a>
       <a class="btn" href="index.html#book">Boost Your Business Today!</a>
-      <a href="index.html#top" style="text-align:center; color:#98a2b3; padding-top:8px" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
+      <a href="#" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Terms of Service</h1>
-    <div class="panel">
-      <p>These terms govern your use of Boostedmedia services. By engaging us, you agree to the following:</p>
+  <main class="hero">
+    <div class="container">
+      <span class="eyebrow">Terms of Service</span>
+      <h1>Our Agreement with You</h1>
+      <p class="lede">These Terms set out how we deliver our social media services and how we’ll work together.</p>
+      <p class="muted">Last updated: 7 September 2025</p>
 
-      <h2>Services</h2>
-      <p>We provide social media content creation and related services as agreed in writing or via email.</p>
+      <div class="panel" style="margin-top:18px">
+        <div class="toc">
+          <a href="#scope">Scope</a>
+          <a href="#quotes">Quotes & payment</a>
+          <a href="#client">Client responsibilities</a>
+          <a href="#content">Content & IP</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#confidentiality">Confidentiality</a>
+          <a href="#warranty">Warranties & disclaimers</a>
+          <a href="#liability">Liability</a>
+          <a href="#changes">Changes & delays</a>
+          <a href="#termination">Termination</a>
+          <a href="#law">Governing law</a>
+          <a href="#contact">Contact</a>
+        </div>
 
-      <h2>Your responsibilities</h2>
-      <ul>
-        <li>Provide timely information, brand assets, and approvals.</li>
-        <li>Confirm you have rights to all content/materials supplied to us.</li>
-      </ul>
+        <h2 id="scope">1) Scope of services</h2>
+        <p>We provide social media content planning, creation, scheduling, and related services as described in your agreed plan or proposal.</p>
 
-      <h2>Fees & payment</h2>
-      <p>Fees are as quoted. Unless otherwise stated, invoices are due upon receipt. Late or missing payments may pause work.</p>
+        <h2 id="quotes">2) Quotes, fees & payment</h2>
+        <ul>
+          <li>Quoted prices exclude VAT (if applicable) unless stated otherwise.</li>
+          <li>Invoices are due on receipt or as stated in your plan. Late payments may pause services.</li>
+          <li>Monthly plans renew each month until cancelled per Section 10.</li>
+        </ul>
 
-      <h2>Intellectual property</h2>
-      <p>Upon full payment, you receive a licence to use delivered content for your business marketing. We may feature work in our portfolio unless you request otherwise in writing.</p>
+        <h2 id="client">3) Client responsibilities</h2>
+        <ul>
+          <li>Provide timely access to required accounts, brand assets, and approvals.</li>
+          <li>Ensure you have rights/permissions for any materials you supply.</li>
+          <li>Provide clear, timely feedback to keep schedules on track.</li>
+        </ul>
 
-      <h2>Cancellation</h2>
-      <p>You may cancel at any time; please provide 14 days’ notice so we can wind down scheduled content.</p>
+        <h2 id="content">4) Content ownership & licences</h2>
+        <p>Once invoices are fully paid, you own the final deliverables we create specifically for you, except any third-party assets used under their licences. You grant us a limited licence to use your branding and supplied assets solely to deliver the services.</p>
 
-      <h2>Liability</h2>
-      <p>We’ll always act with reasonable care. We’re not liable for indirect or consequential losses arising from your use of the content.</p>
+        <h2 id="portfolio">5) Portfolio usage</h2>
+        <p>We may display non-confidential work as examples in our portfolio and marketing. If you prefer we don’t, let us know in writing and we’ll honour that.</p>
 
-      <h2>Contact</h2>
-      <p>Email: boostedmediabusiness@gmail.com</p>
+        <h2 id="confidentiality">6) Confidentiality</h2>
+        <p>We’ll keep your confidential information safe and use it only to provide the services. This doesn’t apply to information that’s public or independently obtained.</p>
 
-      <h2>Changes</h2>
-      <p>We may update these terms from time to time; the latest version will always be available here.</p>
+        <h2 id="warranty">7) Warranties & disclaimers</h2>
+        <p>We’ll carry out services with reasonable care and skill. Social media results depend on many factors outside our control; therefore, specific outcomes (e.g., follower counts or sales) are not guaranteed.</p>
+
+        <h2 id="liability">8) Limitation of liability</h2>
+        <p>To the fullest extent permitted by law, our total liability arising from the services is limited to the amount you paid to us in the 3 months before the claim. We’re not liable for indirect or consequential loss.</p>
+
+        <h2 id="changes">9) Changes, delays & force majeure</h2>
+        <p>Schedules may shift if assets or approvals are delayed. Neither party is liable for delays caused by events beyond reasonable control (force majeure).</p>
+
+        <h2 id="termination">10) Cancellation & termination</h2>
+        <ul>
+          <li>You may cancel a monthly plan any time; it will end at the close of your current billing period.</li>
+          <li>Either party may terminate for material breach if not cured within 14 days of written notice.</li>
+          <li>On termination, amounts due remain payable and access we were granted should be revoked.</li>
+        </ul>
+
+        <h2 id="law">11) Governing law</h2>
+        <p>These Terms are governed by the laws of England and Wales, and the courts of England and Wales have exclusive jurisdiction.</p>
+
+        <h2 id="contact">12) Contact</h2>
+        <p>Questions? Email <a href="mailto:boostedmediabusiness@gmail.com">boostedmediabusiness@gmail.com</a>.</p>
+
+        <p style="margin-top:20px"><a class="btn btn--ghost" href="index.html#top">← Back to site</a></p>
+      </div>
     </div>
   </main>
 
+  <!-- Homepage footer copied -->
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
+      <div style="display:flex; align-items:center; gap:10px">
+        <span class="brand__logo" aria-hidden="true">
+          <img class="logo-img" alt="Boostedmedia logo" width="48" height="48"/>
+        </span>
+        <div><strong style="font-family:var(--font-head); font-weight:800">Boostedmedia</strong><br><span style="color:var(--muted)">Serving Scunthorpe & surrounding areas • UK</span></div>
+      </div>
+      <div style="color:var(--muted)">&copy; <span id="year"></span> Boostedmedia. All rights reserved. &nbsp; <a href="privacy.html">Privacy</a> &nbsp;•&nbsp; <a href="terms.html">Terms</a></div>
+    </div>
+  </footer>
+
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Robust logo loader (same as homepage)
     (function(){
       const candidates = [
-        'assets/logo-icon.png','./assets/logo-icon.png',
-        'logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
+        'assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
       ].map(u=>u+'?v='+Date.now());
-      const img = document.querySelector('img.logo-img');
-      let i=0;
-      function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
-      img.addEventListener('error', next); next();
+      document.querySelectorAll('img.logo-img').forEach(img=>{
+        let i=0;
+        function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
+        img.addEventListener('error', next); next();
+      });
     })();
+
+    // Remove any broken non-logo images (prevents "failed to load" artifacts)
+    document.querySelectorAll('img').forEach(img=>{
+      if(img.classList.contains('logo-img')) return;
+      img.addEventListener('error', ()=> img.remove());
+    });
   </script>
 </body>
 </html>
