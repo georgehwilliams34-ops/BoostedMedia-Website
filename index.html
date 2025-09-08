@@ -53,14 +53,12 @@
     .section__title{font-family:var(--font-head); font-weight:800; font-size:clamp(28px,4vw,44px); margin:0 0 12px}
 
     .problem{display:grid; grid-template-columns:.95fr 1.05fr; gap:28px; align-items:center}
-    /* ===== CASE STUDY (replaces old "solution" UI) ===== */
-    .solution{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
-    .solution .metrics{justify-content:flex-start}
+
+    /* ===== Recent Project (centered) ===== */
+    .solution{display:block}
+    .case{max-width:860px; margin:0 auto}
+    .case .metrics{justify-content:flex-start}
     .case-badge{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
-    .logo-tile{display:grid; place-items:center; border:1px solid rgba(255,255,255,.08); background:var(--panel); border-radius:var(--radius-lg); padding:32px; min-height:260px}
-    .logo-tile .logo-text{font-family:var(--font-head); font-weight:900; font-size:clamp(28px,5vw,40px); letter-spacing:.5px; color:#eaf2ff}
-    .logo-tile img{max-width:420px; width:80%; height:auto}
-    .logo-tile img + .logo-text{margin-top:10px}
 
     /* ===== Benefits ===== */
     .benefits{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px}
@@ -117,12 +115,13 @@
       .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
       .lead{ max-width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
 
-      .eyebrow,.case-badge{display:block; width:max-content; margin:0 auto 12px}
+      /* Center case study on mobile as well */
+      .case{max-width:680px}
+      .case .metrics{justify-content:center}
 
       .hero__wrap,.problem,.solution{display:flex; flex-direction:column; align-items:center}
       .hero__img{width:100%; max-width:740px; border-radius:22px; margin-top:14px}
       .hero__wrap>div:first-child{width:100%; max-width:740px}
-      .solution>div:first-child{width:100%; max-width:740px}
       .solution .btn{display:block; margin-left:auto !important; margin-right:auto !important; min-width:54%; max-width:340px}
 
       .hero__cta{display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap}
@@ -214,10 +213,10 @@
     </div>
   </section>
 
-  <!-- CASE STUDY (replaces old "solution" section) -->
+  <!-- RECENT PROJECT (centered) -->
   <section id="solution">
     <div class="container solution">
-      <div>
+      <div class="case">
         <span class="case-badge">Recent Project</span>
         <h2 class="section__title">Tyrerite — Record Month in <em>8 Days</em></h2>
         <p class="section__sub">We helped this business achieve its <strong>highest-ever website visitors for a month</strong> — and it only took <strong>8 days</strong> to reach that new record.</p>
@@ -227,11 +226,6 @@
           <div class="metric">Rapid traffic lift</div>
         </div>
         <div style="margin-top:16px"><a class="btn" href="#book">See what we could do for you</a></div>
-      </div>
-
-      <div class="logo-tile">
-        <img src="assets/tyrerite-logo.png" alt="Tyrerite logo" onload="this.nextElementSibling && (this.nextElementSibling.style.display='none')" />
-        <div class="logo-text">Tyrerite</div>
       </div>
     </div>
   </section>
