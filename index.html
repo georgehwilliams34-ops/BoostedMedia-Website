@@ -3,299 +3,177 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boostedmedia — More Sales, Less Social Media Stress</title>
-  <meta name="description" content="Boostedmedia creates scroll-stopping social media content for UK small businesses. Get more customers while we handle your posts end-to-end." />
+  <title>Terms of Service — Boostedmedia</title>
+  <meta name="description" content="Boostedmedia Terms of Service" />
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
   <style>
     :root{
-      --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb;
-      --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --accent-ink:#0a1320;
+      --bg:#0B0E1A; --panel:#0F1220; --text:#fff; --muted:#c7ccdb;
+      --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400;
       --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px;
       --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font-family:var(--font-body); color:var(--text); background:var(--bg); line-height:1.6; text-rendering:optimizeLegibility}
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; height:auto; display:block}
+    body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65}
+    a{color:#e6f2ff; text-decoration:none}
     .container{max-width:1120px; margin:0 auto; padding:0 20px}
 
-    /* ===== Header ===== */
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:.75rem}
     .brand__logo{width:48px; height:48px; display:grid; place-items:center}
-    .brand__logo img.logo-img{width:100%; height:100%; object-fit:contain; background:transparent}
+    .brand__logo img.logo-img{width:100%; height:100%; object-fit:contain}
     .brand__name{font-family:var(--font-head); font-weight:800; letter-spacing:.2px}
     .nav__links{display:flex; gap:22px; align-items:center}
     .nav__links a{color:var(--muted); font-weight:700}
     .nav__links a:hover{color:#e8f3ff}
     .mobile-toggle{display:none}
-    .mobile-menu{display:none}
 
-    /* ===== Buttons ===== */
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff; font-weight:800; padding:16px 22px; border-radius:14px; border:0; cursor:pointer; box-shadow:0 8px 24px rgba(30,115,190,.25); transition:transform .12s ease, box-shadow .12s ease; text-align:center}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff;
+      font-weight:800; padding:14px 20px; border-radius:14px; border:0; cursor:pointer;
+      box-shadow:0 8px 24px rgba(30,115,190,.25); transition:transform .12s ease, box-shadow .12s ease}
     .btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(30,115,190,.45)}
-    .btn--ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.16)}
+    .btn--ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18)}
 
-    /* ===== Hero & Sections ===== */
-    .hero{padding:72px 0}
-    .hero__wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center}
-    .eyebrow{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
-    h1{font-family:var(--font-head); font-weight:800; font-size:clamp(36px,5.5vw,60px); line-height:1.05; margin:18px 0 10px; letter-spacing:.2px}
-    .lead{font-size:clamp(16px,2.4vw,19px); color:var(--muted)}
-    .hero__cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px}
-    .hero__card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
-    .hero__img{position:relative; border-radius:var(--radius-lg); overflow:hidden; border:1px solid rgba(255,255,255,.08); background:var(--panel)}
+    .hero{padding:64px 0}
+    .eyebrow{display:inline-block; font-weight:800; font-family:var(--font-head); color:#0a1320;
+      background:var(--accent); padding:6px 10px; border-radius:999px}
+    h1{font-family:var(--font-head); font-weight:800; font-size:clamp(32px,5vw,54px); line-height:1.08; margin:18px 0 8px}
+    .lede{color:var(--muted); font-size:clamp(16px,2vw,18px); max-width:70ch}
 
-    section{padding:72px 0}
-    .section__title{font-family:var(--font-head); font-weight:800; font-size:clamp(28px,4vw,44px); margin:0 0 12px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow)}
+    .panel h2{font-family:var(--font-head); font-size:clamp(22px,3.3vw,30px); margin:22px 0 10px}
+    .panel h3{font-family:var(--font-head); font-size:clamp(18px,2.4vw,22px); margin:18px 0 8px}
+    .panel p{margin:10px 0; color:#e9edf6}
+    .panel ul{padding-left:20px}
+    .muted{color:var(--muted)}
+    .toc{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 2px}
+    .toc a{border:1px solid rgba(255,255,255,.16); padding:8px 12px; border-radius:12px; color:#e8f3ff}
 
-    .problem{display:grid; grid-template-columns:.95fr 1.05fr; gap:28px; align-items:center}
-    .solution{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
-    .solution__badge{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
+    footer{margin-top:60px; padding:24px 0; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
+    footer .foot{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap}
 
-    /* ===== Benefits ===== */
-    .benefits{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px}
-    .icon{width:28px; height:28px; display:inline-block; vertical-align:middle; margin-right:8px}
-    .icon svg{width:100%; height:100%; fill:var(--accent)}
-
-    /* ===== Quotes & metrics ===== */
-    .quote{font-size:1.05rem; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; max-width:100%; overflow-wrap:anywhere}
-    .metrics{display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; justify-content:center}
-    .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:12px 16px; border-radius:12px; font-weight:700}
-    #dyn-metrics{transition:opacity .28s ease}
-    #dyn-metrics.is-fading{opacity:0}
-
-    /* ===== Testimonial slider ===== */
-    .t-slider{position:relative; display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; margin:10px 0 12px}
-    .t-track{overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.10); background:var(--panel)}
-    .t-track-inner{display:flex; transition:transform .38s ease; will-change:transform}
-    .t-slide{min-width:100%; padding:0; flex:0 0 100%}
-    .t-prev,.t-next{width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff; font-size:28px; line-height:1; display:grid; place-items:center; cursor:pointer}
-    .t-prev:hover,.t-next:hover{transform:translateY(-2px)}
-
-    /* ===== MOBILE (≤980px) ===== */
     @media (max-width:980px){
       .nav__links{display:none}
       .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--text); padding:10px 14px; border-radius:12px}
-      .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12); box-shadow:0 14px 30px rgba(0,0,0,.35)}
+      .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
       .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
       .nav--open + .mobile-menu{display:flex}
-
-      :root{ --m-pad:60px; --insetX:28px }
-      section{padding:var(--m-pad) 0 !important}
-      .hero{padding:var(--m-pad) 0 !important}
+      /* inset the sides like homepage */
       .container{padding:0 14px}
-
-      h1,.section__title{text-align:center; line-height:1.14; max-width:30ch; margin:0 auto 12px}
-      .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
-      .lead{ max-width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
-      #problem .section__sub{ max-width: calc(100% - 28px); font-size:17px; margin:10px auto 18px; }
-
-      .eyebrow,.solution__badge{display:block; width:max-content; margin:0 auto 12px}
-
-      .hero__wrap,.problem,.solution{display:flex; flex-direction:column; align-items:center}
-      .hero__img{width:100%; max-width:740px; border-radius:22px; margin-top:14px}
-      .hero__wrap>div:first-child{width:100%; max-width:740px}
-      .solution>div:first-child{width:100%; max-width:740px}
-      .solution .btn{display:block; margin-left:auto !important; margin-right:auto !important; min-width:54%; max-width:340px}
-
-      .hero__cta{display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap}
-      .hero__cta .btn{margin:0; min-width:46%; max-width:320px}
-      .hero__card{text-align:center}
-
-      /* BENEFITS: stack 1 per row on mobile */
-      .benefits{grid-template-columns:1fr; gap:14px}
-      .card{width:100%}
-
-      /* Testimonial layout (quote → metrics chips → buttons underneath) */
-      #proof .t-slider{
-        grid-template-columns:1fr 1fr 1fr;
-        grid-template-rows:auto auto auto;
-        row-gap:12px;
-      }
-      #proof .t-track{grid-column:1 / -1; grid-row:1}
-      #proof #dyn-metrics{grid-column:1 / -1; grid-row:2; display:flex; justify-content:center; flex-wrap:wrap}
-      #proof .metrics{flex-direction:row} /* keep chips in a row */
-      #proof .t-prev{grid-row:3; grid-column:1; justify-self:end}
-      #proof .t-next{grid-row:3; grid-column:3; justify-self:start}
-
-      #proof .quote{max-width:100%; margin:0; padding:22px; border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.10)}
-      #book .btn{width:100%; min-height:56px}
-
-      #lead-form{padding:18px 20px; border-radius:18px; margin-top:10px; width:calc(100% - var(--insetX)); margin-left:auto; margin-right:auto}
-      #lead-form>.form-grid{display:grid; grid-template-columns:1fr !important; gap:18px}
-      #lead-form label{font-weight:800; color:#e6ebf7}
-      input,textarea{font-size:18px; padding:18px; min-height:60px; border-radius:16px; width:100%; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); color:var(--text)}
-      textarea{min-height:140px}
-
-      section .btn{display:inline-flex; margin-left:auto !important; margin-right:auto !important}
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav" id="nav">
-      <a href="#top" class="brand" aria-label="Boostedmedia Home">
-        <span class="brand__logo" aria-hidden="true">
-          <img class="logo-img" alt="Boostedmedia logo" width="48" height="48" />
-          <template id="logo-fallback">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:48px;height:48px">
-              <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="20"/>
-              <g transform="translate(50,50) rotate(25) translate(-50,-50)">
-                <rect x="36" y="40" width="28" height="20" rx="10" fill="#1E73BE"/>
-                <polygon points="64,40 76,50 64,60" fill="#F5B400"/>
-                <polygon points="36,44 28,50 36,56" fill="#F5B400"/>
-              </g>
-            </svg>
-          </template>
-        </span>
+      <a href="index.html#top" class="brand" aria-label="Boostedmedia Home">
+        <span class="brand__logo"><img class="logo-img" alt="Boostedmedia logo" width="48" height="48"></span>
         <span class="brand__name">Boostedmedia</span>
       </a>
       <nav class="nav__links">
-        <a href="#problem">Problems We Solve</a>
-        <a href="#solution">How We Help</a>
-        <a href="#benefits">Benefits</a>
-        <a href="#proof">Results</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn" href="#book">Boost Your Business Today!</a>
+        <a href="index.html#problem">Problems We Solve</a>
+        <a href="index.html#solution">How We Help</a>
+        <a href="index.html#benefits">Benefits</a>
+        <a href="index.html#proof">Results</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="btn" href="index.html#book">Boost Your Business Today!</a>
       </nav>
-      <button class="mobile-toggle" aria-label="Open Menu" onclick="document.getElementById('nav').classList.toggle('nav--open')">Menu</button>
+      <button class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('nav--open')">Menu</button>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#problem">Problems We Solve</a>
-      <a href="#solution">How We Help</a>
-      <a href="#benefits">Benefits</a>
-      <a href="#proof">Results</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn" href="#book">Boost Your Business Today!</a>
-      <a href="#top" onclick="document.getElementById('nav').classList.remove('nav--open')" style="text-align:center; color:#98a2b3; padding-top:8px">Close</a>
+    <div class="mobile-menu">
+      <a href="index.html#problem">Problems We Solve</a>
+      <a href="index.html#solution">How We Help</a>
+      <a href="index.html#benefits">Benefits</a>
+      <a href="index.html#proof">Results</a>
+      <a href="index.html#faq">FAQ</a>
+      <a class="btn" href="index.html#book">Boost Your Business Today!</a>
+      <a href="#" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main id="top" class="hero">
-    <div class="container hero__wrap">
-      <div>
-        <span class="eyebrow">Local • Affordable • High Quality</span>
-        <h1>More Sales, Less Social Media Stress for Your Small Business</h1>
-        <p class="lead">You’re juggling everything to grow your business – you <strong>don’t have time</strong> to spend all day on Facebook or Instagram, and frankly, you shouldn’t have to. We get it. Boostedmedia takes the social media burden off your shoulders, so you can focus on what you do best while we turn your online presence into a <strong>customer magnet</strong>.</p>
-        <div class="hero__cta">
-          <a class="btn" href="#book">Boost Your Business Today!</a>
-          <a class="btn btn--ghost" href="#proof">See Real Results</a>
+  <main class="hero">
+    <div class="container">
+      <span class="eyebrow">Terms of Service</span>
+      <h1>Our Agreement with You</h1>
+      <p class="lede">These Terms set out how we deliver our social media services and how we’ll work together.</p>
+      <p class="muted">Last updated: 7 September 2025</p>
+
+      <div class="panel" style="margin-top:18px">
+        <div class="toc">
+          <a href="#scope">Scope</a>
+          <a href="#quotes">Quotes & payment</a>
+          <a href="#client">Client responsibilities</a>
+          <a href="#content">Content & IP</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#confidentiality">Confidentiality</a>
+          <a href="#warranty">Warranties & disclaimers</a>
+          <a href="#liability">Liability</a>
+          <a href="#changes">Changes & delays</a>
+          <a href="#termination">Termination</a>
+          <a href="#law">Governing law</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div class="hero__card" style="margin-top:16px"><strong>FREE Strategy Call:</strong> in 15 minutes we’ll map a weekly content plan for your shop. No pressure, no jargon.</div>
+
+        <h2 id="scope">1) Scope of services</h2>
+        <p>We provide social media content planning, creation, scheduling, and related services as described in your agreed plan or proposal.</p>
+
+        <h2 id="quotes">2) Quotes, fees & payment</h2>
+        <ul>
+          <li>Quoted prices exclude VAT (if applicable) unless stated otherwise.</li>
+          <li>Invoices are due on receipt or as stated in your plan. Late payments may pause services.</li>
+          <li>Monthly plans renew each month until cancelled per Section 10.</li>
+        </ul>
+
+        <h2 id="client">3) Client responsibilities</h2>
+        <ul>
+          <li>Provide timely access to required accounts, brand assets, and approvals.</li>
+          <li>Ensure you have rights/permissions for any materials you supply.</li>
+          <li>Provide clear, timely feedback to keep schedules on track.</li>
+        </ul>
+
+        <h2 id="content">4) Content ownership & licences</h2>
+        <p>Once invoices are fully paid, you own the final deliverables we create specifically for you, except any third-party assets used under their licences. You grant us a limited licence to use your branding and supplied assets solely to deliver the services.</p>
+
+        <h2 id="portfolio">5) Portfolio usage</h2>
+        <p>We may display non-confidential work as examples in our portfolio and marketing. If you prefer we don’t, let us know in writing and we’ll honour that.</p>
+
+        <h2 id="confidentiality">6) Confidentiality</h2>
+        <p>We’ll keep your confidential information safe and use it only to provide the services. This doesn’t apply to information that’s public or independently obtained.</p>
+
+        <h2 id="warranty">7) Warranties & disclaimers</h2>
+        <p>We’ll carry out services with reasonable care and skill. Social media results depend on many factors outside our control; therefore, specific outcomes (e.g., follower counts or sales) are not guaranteed.</p>
+
+        <h2 id="liability">8) Limitation of liability</h2>
+        <p>To the fullest extent permitted by law, our total liability arising from the services is limited to the amount you paid to us in the 3 months before the claim. We’re not liable for indirect or consequential loss.</p>
+
+        <h2 id="changes">9) Changes, delays & force majeure</h2>
+        <p>Schedules may shift if assets or approvals are delayed. Neither party is liable for delays caused by events beyond reasonable control (force majeure).</p>
+
+        <h2 id="termination">10) Cancellation & termination</h2>
+        <ul>
+          <li>You may cancel a monthly plan any time; it will end at the close of your current billing period.</li>
+          <li>Either party may terminate for material breach if not cured within 14 days of written notice.</li>
+          <li>On termination, amounts due remain payable and access we were granted should be revoked.</li>
+        </ul>
+
+        <h2 id="law">11) Governing law</h2>
+        <p>These Terms are governed by the laws of England and Wales, and the courts of England and Wales have exclusive jurisdiction.</p>
+
+        <h2 id="contact">12) Contact</h2>
+        <p>Questions? Email <a href="mailto:boostedmediabusiness@gmail.com">boostedmediabusiness@gmail.com</a>.</p>
+
+        <p style="margin-top:20px"><a class="btn btn--ghost" href="index.html#top">← Back to site</a></p>
       </div>
-      <div class="hero__img"><img src="https://images.unsplash.com/photo-1556741533-411cf82e4e2d?q=80&w=1400&auto=format&fit=crop" alt="Local owner at the till"></div>
     </div>
   </main>
 
-  <!-- PROBLEM -->
-  <section id="problem">
-    <div class="container problem">
-      <div>
-        <h2 class="section__title">Feeling Invisible Online?</h2>
-        <p class="section__sub">You’re not alone. Many small business owners feel <strong>overwhelmed keeping up</strong> with social media. Maybe you have <strong>no idea what to post</strong>. Maybe you feel <strong>pressured to post constantly</strong> because “that’s what the gurus say,” but it’s exhausting. It’s discouraging to put in hours and still see <strong>little engagement</strong> or sales.</p>
-        <ul class="problem__list">
-          <li>Too many platforms and trends to follow.</li>
-          <li>No time to plan or create content consistently.</li>
-          <li>Unclear if posts are actually bringing in customers.</li>
-        </ul>
-      </div>
-      <div class="hero__img"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Owner stressed at laptop"></div>
-    </div>
-  </section>
-
-  <!-- SOLUTION -->
-  <section id="solution">
-    <div class="container solution">
-      <div>
-        <span class="solution__badge">Hands-Off for You • Results On for Business</span>
-        <h2 class="section__title">We’ll Handle the Posts — <em>You</em> Handle the Business</h2>
-        <p class="section__sub">Imagine an active, engaging presence that attracts customers — without you lifting a finger. Boostedmedia creates <strong>scroll-stopping</strong> content at small-business prices. From eye-catching posts and videos to comment replies, we cover it all so <strong>your business gets noticed</strong> and you get back hours every week.</p>
-        <div class="hero__img teamshot"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop" alt="Boostedmedia team with local owner"></div>
-        <div style="margin-top:16px"><a class="btn" href="#book">Boost Your Business Today!</a></div>
-      </div>
-      <!-- If this image ever fails to load, the script below will remove the wrapper automatically -->
-      <div class="hero__img"><img src="https://images.unsplash.com/photo-1555421689-43cad7100751?q=80&w=1400&auto=format&fit=crop" alt="Content creation on phone"></div>
-    </div>
-  </section>
-
-  <!-- BENEFITS -->
-  <section id="benefits">
-    <div class="container">
-      <h2 class="section__title">What You Get with Boostedmedia</h2>
-      <div class="benefits">
-        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-10.59 3.3 1.91a1 1 0 0 0 1-1.73l-3.8-2.2V6a1 1 0 1 0-2 0v4a1 1 0 0 0 .5.87l1 .54z"/></svg></span><h3>More Time for You</h3><p>No more DIY stress. We plan, create, and schedule weekly content so you can focus on customers and growth.</p></div>
-        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 2v14H8V4h8zm-4 16a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span><h3>Reach More Customers Online</h3><p>Our creative, eye-catching posts turn scrollers into buyers. Proven tactics that drive people through your door.</p></div>
-        <div class="card"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v12h14a1 1 0 1 1 0 2H4zm3-5 4-4 3 3 5-5v3a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1h-6a1 1 0 1 0 0 2h3l-4 4-3-3-5 5a1 1 0 0 0 1.4 1.4z"/></svg></span><h3>High Quality at a Small-Business Price</h3><p>Get premium content and management at a budget-friendly rate. Built for local shops who want real results.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL PROOF -->
-  <section id="proof" aria-label="Testimonials">
-    <div class="container">
-      <h2 class="section__title">Don’t Just Take Our Word for It…</h2>
-
-      <div class="t-slider" aria-roledescription="carousel">
-        <button class="t-prev" aria-label="Previous testimonial">‹</button>
-
-        <div class="t-track">
-          <div class="t-track-inner">
-            <!-- Slide 1 -->
-            <article class="t-slide" aria-label="Testimonial 1" data-metrics='["100k+ monthly views","Hands-off content plan","Built for local shops"]'>
-              <div class="quote">
-                “Boostedmedia has handled all our social media posts, and we <strong>couldn’t be happier</strong>.
-                Our stats have <strong>skyrocketed — 100,000 views in one month on Facebook</strong> alone!
-                We 100% recommend Boostedmedia to any business looking to grow online.”<br>— <strong>Sugar Crush</strong>
-              </div>
-            </article>
-
-            <!-- Slide 2 -->
-            <article class="t-slide" aria-label="Testimonial 2" data-metrics='["5★ rated service","Hands-off content plan","Local trades"]'>
-              <div class="quote">
-                “5* service !! Very professional! I would like to say thank you to George for his amazing work
-                by bringing my simple amateur videos to life 👌 and making me a video for my kitchen business.
-                A lot more to come — George we will be in touch again soon 👍👍”<br>— <strong>J A Joinery &amp; Bathrooms</strong>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <button class="t-next" aria-label="Next testimonial">›</button>
-
-        <!-- Orange metric chips now live inside the slider so they sit between quote and buttons on mobile -->
-        <div class="metrics" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORM -->
-  <section id="book">
-    <div class="container">
-      <h2 class="section__title">Book Your Free Strategy Call</h2>
-      <form id="lead-form" class="card">
-        <div class="form-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px">
-          <label>Full Name<br><input required name="name" placeholder="Jane Doe"></label>
-          <label>Business Name<br><input required name="biz" placeholder="Your Shop Ltd"></label>
-          <label>Email<br><input required type="email" name="email" placeholder="you@example.com"></label>
-          <label>Phone<br><input name="phone" placeholder="07…"></label>
-        </div>
-        <label style="display:block; margin-top:12px">City / Area<br><input name="city" placeholder="Scunthorpe & nearby"></label>
-        <label style="display:block; margin-top:12px">What do you need help with?<br><textarea name="needs" rows="4" placeholder="e.g., 3 posts/week, short videos, community reach"></textarea></label>
-        <div style="display:flex; gap:10px; margin-top:16px; align-items:center; flex-wrap:wrap">
-          <button class="btn" type="submit">Boost Your Business Today!</button>
-          <span style="color:var(--muted); font-size:.95rem">No obligation • 15-minute call • Clear next steps</span>
-        </div>
-        <div id="form-alert" class="alert" role="status" aria-live="polite"></div>
-      </form>
-    </div>
-  </section>
-
+  <!-- Homepage footer copied -->
   <footer>
     <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
       <div style="display:flex; align-items:center; gap:10px">
@@ -311,112 +189,22 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth scroll + close mobile menu
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); document.getElementById('nav').classList.remove('nav--open'); }
-      });
-    });
-
-    // Inputs base styling (desktop)
-    document.querySelectorAll('input, textarea').forEach(el=>{
-      el.style.width='100%'; el.style.background='rgba(255,255,255,.04)'; el.style.border='1px solid rgba(255,255,255,.12)'; el.style.color='var(--text)'; el.style.borderRadius='12px'; el.style.padding='12px 14px'; el.style.outline='none';
-    });
-
-    // ===== Robust logo loader (uses assets/logo-icon.png with fallbacks) =====
+    // Robust logo loader (same as homepage)
     (function(){
       const candidates = [
         'assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
-      ].map(u => u + '?v=' + Date.now());
-
-      function attach(img){
-        let i = 0;
-        function tryNext(){
-          if(i >= candidates.length){
-            const tpl = document.getElementById('logo-fallback');
-            if(tpl){ img.replaceWith(tpl.content.cloneNode(true)); }
-            return;
-          }
-          img.src = candidates[i++];
-        }
-        img.addEventListener('error', tryNext);
-        tryNext();
-      }
-      document.querySelectorAll('img.logo-img').forEach(attach);
-    })();
-
-    // ===== Remove any broken non-logo images (prevents "failed to load image" pills) =====
-    document.querySelectorAll('img').forEach(img=>{
-      if(img.classList.contains('logo-img')) return; // logos handled by fallback loader
-      img.addEventListener('error', ()=> {
-        const wrap = img.closest('.hero__img');
-        if(wrap) wrap.remove();
-        else img.remove();
+      ].map(u=>u+'?v='+Date.now());
+      document.querySelectorAll('img.logo-img').forEach(img=>{
+        let i=0;
+        function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
+        img.addEventListener('error', next); next();
       });
-    });
-
-    // ===== Testimonial Slider (2 slides) =====
-    (function(){
-      const slider = document.querySelector('#proof .t-slider'); if(!slider) return;
-      const track = slider.querySelector('.t-track');
-      const inner = slider.querySelector('.t-track-inner');
-      const slides = Array.from(inner.children);
-      const prev = slider.querySelector('.t-prev');
-      const next = slider.querySelector('.t-next');
-      const metrics = slider.querySelector('#dyn-metrics'); // now inside slider
-
-      let index = 0;
-      function width(){ return Math.round(track.getBoundingClientRect().width); }
-      function setWidths(){
-        const w = width();
-        inner.style.width=(w*slides.length)+'px';
-        slides.forEach(s=>{ s.style.width=w+'px'; s.style.minWidth=w+'px'; s.style.flex='0 0 '+w+'px'; });
-        inner.style.transform='translateX('+(-index*w)+'px)';
-      }
-      setWidths();
-      if('ResizeObserver' in window){ new ResizeObserver(setWidths).observe(track); } else { window.addEventListener('resize', setWidths); }
-
-      function paintMetrics(){
-        let arr=[]; try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){}
-        metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join('');
-      }
-      paintMetrics();
-
-      function go(step){
-        const w = width();
-        index = (index + step + slides.length) % slides.length;
-        metrics.classList.add('is-fading');
-        inner.style.transform='translateX('+(-index*w)+'px)';
-        setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320);
-      }
-      prev.addEventListener('click', ()=> go(-1));
-      next.addEventListener('click', ()=> go(1));
-
-      // Swipe on touch
-      let sx=0;
-      track.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
-      track.addEventListener('touchend', e=>{
-        const dx = e.changedTouches[0].clientX - sx;
-        if(Math.abs(dx)>40) go(dx<0?1:-1);
-      }, {passive:true});
     })();
 
-    // Formspree endpoint (live)
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
-    const form = document.getElementById('lead-form');
-    const alertBox = document.getElementById('form-alert');
-    form?.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      try{
-        const res = await fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
-        if(res.ok){ form.reset(); alertBox.className = 'alert alert--ok'; alertBox.textContent = "Thanks! We'll email you shortly."; }
-        else { throw new Error('Submission failed'); }
-      }catch(err){
-        alertBox.className = 'alert alert--err';
-        alertBox.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com';
-      }
+    // Remove any broken non-logo images (prevents "failed to load" artifacts)
+    document.querySelectorAll('img').forEach(img=>{
+      if(img.classList.contains('logo-img')) return;
+      img.addEventListener('error', ()=> img.remove());
     });
   </script>
 </body>
