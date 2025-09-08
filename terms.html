@@ -7,21 +7,14 @@
   <meta name="description" content="Boostedmedia Terms of Service" />
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
   <style>
-    :root{
-      --bg:#0B0E1A; --panel:#0F1220; --text:#fff; --muted:#c7ccdb;
-      --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400;
-      --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px;
-      --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-    }
+    :root{ --bg:#0B0E1A; --panel:#0F1220; --text:#fff; --muted:#c7ccdb; --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px; --radius-lg:26px; --font-head:'articulat-cf', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65}
     a{color:#e6f2ff; text-decoration:none}
     .container{max-width:1120px; margin:0 auto; padding:0 20px}
 
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px);
-      background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:.75rem}
     .brand__logo{width:48px; height:48px; display:grid; place-items:center}
@@ -31,22 +24,18 @@
     .nav__links a{color:var(--muted); font-weight:700}
     .nav__links a:hover{color:#e8f3ff}
     .mobile-toggle{display:none}
+    .mobile-menu{display:none} /* <— keep hidden by default on desktop */
 
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
-      background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff;
-      font-weight:800; padding:14px 20px; border-radius:14px; border:0; cursor:pointer;
-      box-shadow:0 8px 24px rgba(30,115,190,.25); transition:transform .12s ease, box-shadow .12s ease}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff; font-weight:800; padding:14px 20px; border-radius:14px; border:0; cursor:pointer; box-shadow:0 8px 24px rgba(30,115,190,.25); transition:transform .12s ease, box-shadow .12s ease}
     .btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(30,115,190,.45)}
     .btn--ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18)}
 
     .hero{padding:64px 0}
-    .eyebrow{display:inline-block; font-weight:800; font-family:var(--font-head); color:#0a1320;
-      background:var(--accent); padding:6px 10px; border-radius:999px}
+    .eyebrow{display:inline-block; font-weight:800; font-family:var(--font-head); color:#0a1320; background:var(--accent); padding:6px 10px; border-radius:999px}
     h1{font-family:var(--font-head); font-weight:800; font-size:clamp(32px,5vw,54px); line-height:1.08; margin:18px 0 8px}
     .lede{color:var(--muted); font-size:clamp(16px,2vw,18px); max-width:70ch}
 
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow)}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow)}
     .panel h2{font-family:var(--font-head); font-size:clamp(22px,3.3vw,30px); margin:22px 0 10px}
     .panel p{margin:10px 0; color:#e9edf6}
     .panel ul{padding-left:20px}
@@ -61,7 +50,7 @@
       .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
       .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
       .nav--open + .mobile-menu{display:flex}
-      .container{padding:0 14px} /* same inset as home */
+      .container{padding:0 14px}
     }
   </style>
 </head>
@@ -101,7 +90,7 @@
       <p class="muted">Last updated: 7 September 2025</p>
 
       <div class="panel" style="margin-top:18px">
-        <!-- TOC removed per request -->
+        <!-- TOC removed -->
 
         <h2 id="scope">1) Scope of services</h2>
         <p>We provide social media content planning, creation, scheduling, and related services as described in your agreed plan or proposal.</p>
@@ -156,7 +145,6 @@
     </div>
   </main>
 
-  <!-- Footer (same as home) -->
   <footer>
     <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
       <div style="display:flex; align-items:center; gap:10px">
@@ -174,9 +162,7 @@
 
     // Logo loader
     (function(){
-      const candidates = [
-        'assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'
-      ].map(u=>u+'?v='+Date.now());
+      const candidates = ['assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'].map(u=>u+'?v='+Date.now());
       document.querySelectorAll('img.logo-img').forEach(img=>{
         let i=0; function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
         img.addEventListener('error', next); next();
