@@ -54,10 +54,9 @@
 
     .problem{display:grid; grid-template-columns:.95fr 1.05fr; gap:28px; align-items:center}
 
-    /* ===== Recent Project (centered) ===== */
+    /* ===== Recent Project (centered, simplified) ===== */
     .solution{display:block}
     .case{max-width:860px; margin:0 auto}
-    .case .metrics{justify-content:flex-start}
     .case-badge{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
 
     /* ===== Benefits ===== */
@@ -111,13 +110,17 @@
       .hero{padding:var(--m-pad) 0 !important}
       .container{padding:0 14px}
 
+      /* Center the yellow badges on mobile */
+      .eyebrow, .case-badge{
+        display:block !important;
+        width:max-content;
+        margin-left:auto !important;
+        margin-right:auto !important;
+      }
+
       h1,.section__title{text-align:center; line-height:1.14; max-width:30ch; margin:0 auto 12px}
       .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
       .lead{ max-width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
-
-      /* Center case study on mobile as well */
-      .case{max-width:680px}
-      .case .metrics{justify-content:center}
 
       .hero__wrap,.problem,.solution{display:flex; flex-direction:column; align-items:center}
       .hero__img{width:100%; max-width:740px; border-radius:22px; margin-top:14px}
@@ -213,18 +216,18 @@
     </div>
   </section>
 
-  <!-- RECENT PROJECT (centered) -->
+  <!-- RECENT PROJECT (centered & simplified) -->
   <section id="solution">
     <div class="container solution">
       <div class="case">
         <span class="case-badge">Recent Project</span>
         <h2 class="section__title">Tyrerite — Record Month in <em>8 Days</em></h2>
-        <p class="section__sub">We helped this business achieve its <strong>highest-ever website visitors for a month</strong> — and it only took <strong>8 days</strong> to reach that new record.</p>
-        <div class="metrics" style="justify-content:flex-start">
-          <div class="metric">Local brand push</div>
-          <div class="metric">Conversion-focused posts</div>
-          <div class="metric">Rapid traffic lift</div>
-        </div>
+        <p class="section__sub">
+          We helped this business achieve its <strong>highest-ever website visitors for a month</strong> —
+          and it only took <strong>8 days</strong> to hit the new record. By tightening local visibility,
+          rolling out conversion-focused social posts, and promoting time-bound offers, traffic and enquiries
+          surged faster than expected. Want results like this?
+        </p>
         <div style="margin-top:16px"><a class="btn" href="#book">See what we could do for you</a></div>
       </div>
     </div>
