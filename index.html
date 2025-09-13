@@ -87,6 +87,10 @@
     .faq summary::-webkit-details-marker{display:none}
     .faq p{color:#e9edf6; margin:10px 0 0}
 
+    /* Animated FAQ body (JS wraps content in .faq-body) */
+    .faq .faq-body{overflow:hidden; height:0}
+    .faq details[open] .faq-body{ /* set to auto via JS after opening */ }
+
     /* ===== Footer spacing ===== */
     footer{padding:26px 0 40px}
 
@@ -113,7 +117,7 @@
       .eyebrow, .case-badge{display:block !important; width:max-content; margin-left:auto !important; margin-right:auto !important;}
       h1,.section__title{text-align:center; line-height:1.14; max-width:30ch; margin:0 auto 12px}
       .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
-      .lead{ max-width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
+      .lead{ max_width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
 
       .hero__wrap,.problem,.solution{display:flex; flex-direction:column; align-items:center}
       .hero__img{width:100%; max-width:740px; border-radius:22px; margin-top:14px}
@@ -144,6 +148,7 @@
     .reveal--right{transform:translateX(14px)}
     @media (prefers-reduced-motion: reduce){
       .reveal{opacity:1!important; transform:none!important; transition:none!important}
+      .faq .faq-body{transition:none!important}
     }
   </style>
 </head>
@@ -448,35 +453,103 @@
       }, {passive:true});
     })();
 
-    /* ===== Desktop-only FAQ accordion: keep only one <details> open at a time ===== */
+    /* ===== FAQ: animated open/close + desktop-only accordion ===== */
     (function () {
       const mq = window.matchMedia('(min-width: 981px)');
       const items = Array.from(document.querySelectorAll('#faq .faq details'));
       if (!items.length) return;
 
-      function enforceSingleOpenOnLoad() {
-        if (!mq.matches) return;
-        let found = false;
-        items.forEach(d => {
-          if (d.open) {
-            if (found) d.open = false;
-            found = true;
+      // Wrap non-summary content in .faq-body for height animation
+      items.forEach(d => {
+        if (d.querySelector('.faq-body')) return; // already wrapped
+        const body = document.createElement('div');
+        body.className = 'faq-body';
+        // Move all nodes after <summary> into body
+        const nodes = [];
+        let sawSummary = false;
+        Array.from(d.childNodes).forEach(n => {
+          if (!sawSummary && n.nodeType === 1 && n.tagName.toLowerCase() === 'summary') {
+            sawSummary = true;
+            return;
+          }
+          if (sawSummary && (n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim() !== ''))) {
+            nodes.push(n);
           }
         });
-      }
-      function attachHandlers() {
-        items.forEach(d => {
-          d.addEventListener('toggle', () => {
-            if (!mq.matches) return;
-            if (d.open) items.forEach(o => { if (o !== d && o.open) o.open = false; });
-          });
+        nodes.forEach(n => body.appendChild(n));
+        d.appendChild(body);
+        body.style.transition = 'height .28s ease';
+        body.style.height = d.hasAttribute('open') ? 'auto' : '0px';
+      });
+
+      function getBody(d){ return d.querySelector('.faq-body'); }
+
+      function animateOpen(d){
+        const body = getBody(d); if(!body) return;
+        d.setAttribute('open','');             // ensure open state for a11y
+        body.style.height = '0px';
+        // force reflow
+        body.getBoundingClientRect();
+        const h = body.scrollHeight;
+        body.style.height = h + 'px';
+        body.addEventListener('transitionend', function handler(e){
+          if (e.propertyName !== 'height') return;
+          body.removeEventListener('transitionend', handler);
+          body.style.height = 'auto';          // let content grow naturally
         });
       }
-      enforceSingleOpenOnLoad();
-      attachHandlers();
-      mq.addEventListener?.('change', e => { if (e.matches) enforceSingleOpenOnLoad(); });
+
+      function animateClose(d){
+        const body = getBody(d); if(!body) { d.removeAttribute('open'); return; }
+        // set current height explicitly, then collapse to 0
+        body.style.height = body.scrollHeight + 'px';
+        // force reflow
+        body.getBoundingClientRect();
+        body.style.height = '0px';
+        body.addEventListener('transitionend', function handler(e){
+          if (e.propertyName !== 'height') return;
+          body.removeEventListener('transitionend', handler);
+          d.removeAttribute('open');
+        });
+      }
+
+      function closeOthers(current){
+        if (!mq.matches) return; // only enforce single on desktop
+        items.forEach(o => {
+          if (o !== current && o.hasAttribute('open')) animateClose(o);
+        });
+      }
+
+      // Intercept clicks on <summary> to animate
+      items.forEach(d => {
+        const summary = d.querySelector('summary');
+        if(!summary) return;
+        summary.addEventListener('click', (e) => {
+          e.preventDefault(); // prevent native instant toggle
+          const isOpen = d.hasAttribute('open');
+          if (isOpen) {
+            animateClose(d);
+          } else {
+            animateOpen(d);
+            closeOthers(d);
+          }
+        });
+      });
+
+      // If viewport switches to desktop, ensure max one open (keep animations)
+      mq.addEventListener?.('change', e => {
+        if (e.matches) {
+          let firstOpen = null;
+          items.forEach(d => {
+            if (d.hasAttribute('open')) {
+              if (!firstOpen) firstOpen = d;
+              else animateClose(d);
+            }
+          });
+        }
+      });
     })();
-    /* ===== End FAQ accordion ===== */
+    /* ===== End animated FAQ ===== */
 
     // === Fast scroll-reveal animations (footer always visible) ===
     (function(){
@@ -495,7 +568,7 @@
 
       groups.forEach(nodeList => nodeList.forEach(el => el.classList.add('reveal')));
 
-      // Make sure footer is immediately visible
+      // Footer immediately visible
       document.querySelectorAll('footer .container > *').forEach(el => {
         el.classList.remove('reveal');
         el.classList.add('is-in');
@@ -513,8 +586,6 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const el = entry.target;
-
-            // Stagger
             let delay = 0;
             const parent = el.parentElement;
             if (parent) {
@@ -522,7 +593,6 @@
               const idx = siblings.indexOf(el);
               delay = Math.min(idx * 60, 240);
             }
-
             el.style.transitionDelay = delay + 'ms';
             requestAnimationFrame(() => el.classList.add('is-in'));
             io.unobserve(el);
@@ -555,7 +625,7 @@
           form.reset();
           alertBox.className = 'alert alert--ok';
           alertBox.textContent = "Thanks! We'll email you shortly.";
-          openModal();
+          openModal(); // show confirmation popup
         } else {
           throw new Error('Submission failed');
         }
