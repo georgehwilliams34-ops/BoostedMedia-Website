@@ -80,8 +80,8 @@
     .t-next{grid-column:3; grid-row:2; justify-self:center}
     #proof #dyn-metrics{grid-column:2; grid-row:2; display:flex; gap:16px; justify-content:center; align-items:center}
 
-    /* ===== FAQ ===== */
-    .faq{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:8px}
+    /* ===== FAQ (base: mobile-first one column) ===== */
+    .faq{display:grid; grid-template-columns:1fr; gap:16px; margin-top:8px}
     .faq details{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:16px 18px}
     .faq summary{cursor:pointer; list-style:none; font-family:var(--font-head); font-weight:800}
     .faq summary::-webkit-details-marker{display:none}
@@ -110,14 +110,7 @@
       .hero{padding:var(--m-pad) 0 !important}
       .container{padding:0 14px}
 
-      /* Center the yellow badges on mobile */
-      .eyebrow, .case-badge{
-        display:block !important;
-        width:max-content;
-        margin-left:auto !important;
-        margin-right:auto !important;
-      }
-
+      .eyebrow, .case-badge{display:block !important; width:max-content; margin-left:auto !important; margin-right:auto !important;}
       h1,.section__title{text-align:center; line-height:1.14; max-width:30ch; margin:0 auto 12px}
       .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
       .lead{ max-width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
@@ -131,15 +124,29 @@
       .hero__cta .btn{margin:0; min-width:46%; max-width:320px}
       .hero__card{text-align:center}
 
-      /* BENEFITS: stack */
       .benefits{grid-template-columns:1fr; gap:14px}
 
-      /* Testimonials on mobile */
       #proof .t-slider{grid-template-columns:44px 1fr 44px; grid-template-rows:auto auto}
       #proof #dyn-metrics{flex-direction:column}
 
-      /* FAQ: one column */
-      .faq{grid-template-columns:1fr}
+      /* FAQ already 1 column on mobile (kept as grid) */
+    }
+
+    /* ===== DESKTOP: Masonry FAQ (no neighbour stretching) ===== */
+    @media (min-width:981px){
+      /* switch from grid to column masonry */
+      .faq{
+        display:block;           /* override grid */
+        column-count:2;
+        column-gap:16px;
+        margin-top:8px;
+      }
+      .faq details{
+        break-inside:avoid;      /* prevent splitting items */
+        -webkit-column-break-inside:avoid;
+        margin:0 0 16px;
+        display:block;
+      }
     }
   </style>
 </head>
@@ -311,7 +318,7 @@
   <section id="book">
     <div class="container">
       <h2 class="section__title">Book Your Free Strategy Call</h2>
-      <form id="lead-form" class="card">
+    <form id="lead-form" class="card">
         <div class="form-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px">
           <label>Full Name<br><input required name="name" placeholder="Jane Doe"></label>
           <label>Business Name<br><input required name="biz" placeholder="Your Shop Ltd"></label>
@@ -444,6 +451,36 @@
       }, {passive:true});
     })();
 
+    /* ===== Desktop-only FAQ accordion: keep only one <details> open at a time ===== */
+    (function () {
+      const mq = window.matchMedia('(min-width: 981px)');
+      const items = Array.from(document.querySelectorAll('#faq .faq details'));
+      if (!items.length) return;
+
+      function enforceSingleOpenOnLoad() {
+        if (!mq.matches) return;
+        let found = false;
+        items.forEach(d => {
+          if (d.open) {
+            if (found) d.open = false;
+            found = true;
+          }
+        });
+      }
+      function attachHandlers() {
+        items.forEach(d => {
+          d.addEventListener('toggle', () => {
+            if (!mq.matches) return;
+            if (d.open) items.forEach(o => { if (o !== d && o.open) o.open = false; });
+          });
+        });
+      }
+      enforceSingleOpenOnLoad();
+      attachHandlers();
+      mq.addEventListener?.('change', e => { if (e.matches) enforceSingleOpenOnLoad(); });
+    })();
+    /* ===== End FAQ accordion ===== */
+
     // ===== Formspree + Confirmation Modal =====
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
     const form = document.getElementById('lead-form');
@@ -466,7 +503,7 @@
           form.reset();
           alertBox.className = 'alert alert--ok';
           alertBox.textContent = "Thanks! We'll email you shortly.";
-          openModal(); // show confirmation popup
+          openModal();
         } else {
           throw new Error('Submission failed');
         }
