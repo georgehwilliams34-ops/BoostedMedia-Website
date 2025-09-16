@@ -320,7 +320,7 @@
   <section id="book">
     <div class="container">
       <h2 class="section__title reveal">Book Your Free Strategy Call</h2>
-      <form id="lead-form" class="card reveal">
+    <form id="lead-form" class="card reveal">
         <div class="form-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px">
           <label>Full Name<br><input required name="name" placeholder="Jane Doe"></label>
           <label>Business Name<br><input required name="biz" placeholder="Your Shop Ltd"></label>
@@ -635,5 +635,17 @@
       }
     });
   </script>
+
+  <!-- Vercel Speed Insights & Web Analytics -->
+  <script>
+    window.si = window.si || function(){ (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+
+  <script>
+    window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- /Vercel Analytics -->
 </body>
 </html>
