@@ -54,7 +54,7 @@
 
     .problem{display:grid; grid-template-columns:.95fr 1.05fr; gap:28px; align-items:center}
 
-    /* ===== Recent Project (centered, simplified) ===== */
+    /* ===== Recent Project ===== */
     .solution{display:block}
     .case{max-width:860px; margin:0 auto}
     .case-badge{display:inline-block; font-weight:800; font-family:var(--font-head); color:var(--accent-ink); background:var(--accent); padding:6px 10px; border-radius:999px}
@@ -80,26 +80,25 @@
     .t-next{grid-column:3; grid-row:2; justify-self:center}
     #proof #dyn-metrics{grid-column:2; grid-row:2; display:flex; gap:16px; justify-content:center; align-items:center}
 
-    /* ===== FAQ (base: mobile-first one column) ===== */
+    /* ===== FAQ (mobile-first) ===== */
     .faq{display:grid; grid-template-columns:1fr; gap:16px; margin-top:8px}
     .faq details{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:16px 18px}
     .faq summary{cursor:pointer; list-style:none; font-family:var(--font-head); font-weight:800}
     .faq summary::-webkit-details-marker{display:none}
     .faq p{color:#e9edf6; margin:10px 0 0}
-
-    /* Animated FAQ body (JS wraps content in .faq-body) */
     .faq .faq-body{overflow:hidden; height:0}
-    .faq details[open] .faq-body{ /* set to auto via JS after opening */ }
 
     /* ===== Footer spacing ===== */
     footer{padding:26px 0 40px}
 
-    /* ===== Modal (form confirmation) ===== */
-    .modal{position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; z-index:100}
+    /* ===== Modal (confirmation) ===== */
+    .modal{position:fixed; inset:0; padding:16px; background:rgba(0,0,0,.78); display:none; align-items:center; justify-content:center; z-index:10000}
     .modal.is-open{display:flex}
-    .modal__panel{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.12); border-radius:22px; padding:24px; max-width:520px; width:calc(100% - 32px); box-shadow:var(--shadow); text-align:center}
-    .modal__title{font-family:var(--font-head); font-weight:800; font-size:clamp(22px,3vw,28px); margin:0 0 6px}
-    .modal__text{color:var(--muted); margin:0 0 16px}
+    .modal__panel{background:var(--panel); border:1px solid rgba(255,255,255,.18); border-radius:22px; padding:26px 20px; max-width:520px; width:calc(100% - 32px); box-shadow:var(--shadow); text-align:center}
+    .modal__title{font-family:var(--font-head); font-weight:800; font-size:clamp(22px,3vw,28px); margin:0 0 10px}
+    .modal__text{color:#e6ebf5; margin:0 0 18px}
+    .modal__actions{display:flex; justify-content:center}
+    body.no-scroll{overflow:hidden}
 
     /* ===== MOBILE (≤980px) ===== */
     @media (max-width:980px){
@@ -117,8 +116,6 @@
       .eyebrow, .case-badge{display:block !important; width:max-content; margin-left:auto !important; margin-right:auto !important;}
       h1,.section__title{text-align:center; line-height:1.14; max-width:30ch; margin:0 auto 12px}
       .lead,.section__sub{text-align:center; margin:0 auto; font-size:18px; max-width:52ch; line-height:1.75}
-      .lead{ max_width: calc(100% - 28px); font-size:17px; margin-top:10px; margin-bottom:18px }
-
       .hero__wrap,.problem,.solution{display:flex; flex-direction:column; align-items:center}
       .hero__img{width:100%; max-width:740px; border-radius:22px; margin-top:14px}
       .hero__wrap>div:first-child{width:100%; max-width:740px}
@@ -126,22 +123,18 @@
 
       .hero__cta{display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap}
       .hero__card{text-align:center}
-
       .benefits{grid-template-columns:1fr; gap:14px}
-
       #proof .t-slider{grid-template-columns:44px 1fr 44px; grid-template-rows:auto auto}
       #proof #dyn-metrics{flex-direction:column}
-
-      /* FAQ already 1 column on mobile (kept as grid) */
     }
 
-    /* ===== DESKTOP: Masonry FAQ (no neighbour stretching) ===== */
+    /* ===== DESKTOP: Masonry FAQ ===== */
     @media (min-width:981px){
       .faq{ display:block; column-count:2; column-gap:16px; margin-top:8px; }
       .faq details{ break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 16px; display:block; }
     }
 
-    /* === Scroll reveal (fast + respectful of reduced motion) === */
+    /* === Scroll reveal === */
     .reveal{opacity:0; transform:translateY(14px); transition:opacity .35s ease, transform .35s ease; will-change:opacity,transform}
     .reveal.is-in{opacity:1; transform:none}
     .reveal--left{transform:translateX(-14px)}
@@ -225,7 +218,7 @@
     </div>
   </section>
 
-  <!-- RECENT PROJECT (centered & simplified) -->
+  <!-- RECENT PROJECT -->
   <section id="solution">
     <div class="container solution">
       <div class="case reveal">
@@ -261,10 +254,8 @@
 
       <div class="t-slider reveal" aria-roledescription="carousel">
         <button class="t-prev" aria-label="Previous testimonial">‹</button>
-
         <div class="t-track">
           <div class="t-track-inner">
-            <!-- Slide 1 -->
             <article class="t-slide" aria-label="Testimonial 1" data-metrics='["100k+ monthly views","Hands-off content plan","Built for local shops"]'>
               <div class="quote">
                 “Boostedmedia has handled all our social media posts, and we <strong>couldn’t be happier</strong>.
@@ -272,8 +263,6 @@
                 We 100% recommend Boostedmedia to any business looking to grow online.”<br>— <strong>Sugar Crush</strong>
               </div>
             </article>
-
-            <!-- Slide 2 -->
             <article class="t-slide" aria-label="Testimonial 2" data-metrics='["5★ rated service","Hands-off content plan","Local trades"]'>
               <div class="quote">
                 “5* service !! Very professional! I would like to say thank you to George for his amazing work
@@ -283,9 +272,7 @@
             </article>
           </div>
         </div>
-
         <button class="t-next" aria-label="Next testimonial">›</button>
-
         <div class="metrics reveal" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
       </div>
     </div>
@@ -320,7 +307,7 @@
   <section id="book">
     <div class="container">
       <h2 class="section__title reveal">Book Your Free Strategy Call</h2>
-    <form id="lead-form" class="card reveal">
+      <form id="lead-form" class="card reveal">
         <div class="form-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px">
           <label>Full Name<br><input required name="name" placeholder="Jane Doe"></label>
           <label>Business Name<br><input required name="biz" placeholder="Your Shop Ltd"></label>
@@ -331,9 +318,9 @@
         <label style="display:block; margin-top:12px">What do you need help with?<br><textarea name="needs" rows="4" placeholder="e.g., 3 posts/week, short videos, community reach"></textarea></label>
         <div style="display:flex; gap:10px; margin-top:16px; align-items:center; flex-wrap:wrap">
           <button class="btn" type="submit">Boost Your Business Today!</button>
-          <span style="color:var(--muted); font-size:.95rem">No obligation • Quick Chat • Clear next steps</span>
+          <span style="color:var(--muted); font-size:.95rem"></span>
         </div>
-        <div id="form-alert" class="alert" role="status" aria-live="polite"></div>
+        <div id="form-alert" class="alert" role="status" aria-live="polite" style="display:none"></div>
       </form>
     </div>
   </section>
@@ -351,13 +338,12 @@
   </footer>
 
   <!-- Confirmation Modal -->
-  <div class="modal" id="confirm-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+  <div class="modal" id="confirm-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
     <div class="modal__panel">
       <h3 class="modal__title" id="confirm-title">Form sent — thank you!</h3>
-      <p class="modal__text">We’ve received your details. We’ll be in touch by email shortly to book your 15-minute call.</p>
-      <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap">
+      <p class="modal__text" id="confirm-text">We’re looking at your details and will be in touch soon.</p>
+      <div class="modal__actions">
         <button class="btn" id="confirm-close">Okay</button>
-        <a class="btn btn--ghost" href="#top" id="confirm-back">Back to top</a>
       </div>
     </div>
   </div>
@@ -459,22 +445,15 @@
       const items = Array.from(document.querySelectorAll('#faq .faq details'));
       if (!items.length) return;
 
-      // Wrap non-summary content in .faq-body for height animation
       items.forEach(d => {
-        if (d.querySelector('.faq-body')) return; // already wrapped
+        if (d.querySelector('.faq-body')) return;
         const body = document.createElement('div');
         body.className = 'faq-body';
-        // Move all nodes after <summary> into body
         const nodes = [];
         let sawSummary = false;
         Array.from(d.childNodes).forEach(n => {
-          if (!sawSummary && n.nodeType === 1 && n.tagName.toLowerCase() === 'summary') {
-            sawSummary = true;
-            return;
-          }
-          if (sawSummary && (n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim() !== ''))) {
-            nodes.push(n);
-          }
+          if (!sawSummary && n.nodeType === 1 && n.tagName.toLowerCase() === 'summary') { sawSummary = true; return; }
+          if (sawSummary && (n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim() !== ''))) nodes.push(n);
         });
         nodes.forEach(n => body.appendChild(n));
         d.appendChild(body);
@@ -483,78 +462,44 @@
       });
 
       function getBody(d){ return d.querySelector('.faq-body'); }
-
       function animateOpen(d){
         const body = getBody(d); if(!body) return;
-        d.setAttribute('open','');             // ensure open state for a11y
+        d.setAttribute('open','');
         body.style.height = '0px';
-        // force reflow
         body.getBoundingClientRect();
-        const h = body.scrollHeight;
-        body.style.height = h + 'px';
-        body.addEventListener('transitionend', function handler(e){
-          if (e.propertyName !== 'height') return;
-          body.removeEventListener('transitionend', handler);
-          body.style.height = 'auto';          // let content grow naturally
-        });
-      }
-
-      function animateClose(d){
-        const body = getBody(d); if(!body) { d.removeAttribute('open'); return; }
-        // set current height explicitly, then collapse to 0
         body.style.height = body.scrollHeight + 'px';
-        // force reflow
+        body.addEventListener('transitionend', function h(e){ if(e.propertyName!=='height')return; body.removeEventListener('transitionend', h); body.style.height='auto'; });
+      }
+      function animateClose(d){
+        const body = getBody(d); if(!body){ d.removeAttribute('open'); return; }
+        body.style.height = body.scrollHeight + 'px';
         body.getBoundingClientRect();
         body.style.height = '0px';
-        body.addEventListener('transitionend', function handler(e){
-          if (e.propertyName !== 'height') return;
-          body.removeEventListener('transitionend', handler);
-          d.removeAttribute('open');
-        });
+        body.addEventListener('transitionend', function h(e){ if(e.propertyName!=='height')return; body.removeEventListener('transitionend', h); d.removeAttribute('open'); });
       }
-
       function closeOthers(current){
-        if (!mq.matches) return; // only enforce single on desktop
-        items.forEach(o => {
-          if (o !== current && o.hasAttribute('open')) animateClose(o);
-        });
+        if (!mq.matches) return;
+        items.forEach(o => { if (o!==current && o.hasAttribute('open')) animateClose(o); });
       }
-
-      // Intercept clicks on <summary> to animate
       items.forEach(d => {
-        const summary = d.querySelector('summary');
-        if(!summary) return;
-        summary.addEventListener('click', (e) => {
-          e.preventDefault(); // prevent native instant toggle
+        const summary = d.querySelector('summary'); if(!summary) return;
+        summary.addEventListener('click', e => {
+          e.preventDefault();
           const isOpen = d.hasAttribute('open');
-          if (isOpen) {
-            animateClose(d);
-          } else {
-            animateOpen(d);
-            closeOthers(d);
-          }
+          if (isOpen) animateClose(d); else { animateOpen(d); closeOthers(d); }
         });
       });
-
-      // If viewport switches to desktop, ensure max one open (keep animations)
       mq.addEventListener?.('change', e => {
         if (e.matches) {
-          let firstOpen = null;
-          items.forEach(d => {
-            if (d.hasAttribute('open')) {
-              if (!firstOpen) firstOpen = d;
-              else animateClose(d);
-            }
-          });
+          let keep=null; items.forEach(d=>{ if(d.hasAttribute('open')){ if(!keep) keep=d; else animateClose(d); } });
         }
       });
     })();
     /* ===== End animated FAQ ===== */
 
-    // === Fast scroll-reveal animations (footer always visible) ===
+    // === Fast scroll-reveal (footer always visible) ===
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
       const groups = [
         document.querySelectorAll('.hero__wrap > *'),
         document.querySelectorAll('#problem .problem > *'),
@@ -563,43 +508,24 @@
         document.querySelectorAll('#proof .t-slider, #proof .metrics'),
         document.querySelectorAll('#faq .faq details'),
         document.querySelectorAll('#book .card, #book .form-grid > *, #book [type="submit"]')
-        // footer intentionally excluded
       ];
-
-      groups.forEach(nodeList => nodeList.forEach(el => el.classList.add('reveal')));
-
-      // Footer immediately visible
+      groups.forEach(nl => nl.forEach(el => el.classList.add('reveal')));
       document.querySelectorAll('footer .container > *').forEach(el => {
-        el.classList.remove('reveal');
-        el.classList.add('is-in');
-        el.style.transition = 'none';
-        el.style.transform = 'none';
-        el.style.opacity = '1';
+        el.classList.remove('reveal'); el.classList.add('is-in'); el.style.transition='none'; el.style.transform='none'; el.style.opacity='1';
       });
-
-      if (prefersReduced) {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
-        return;
-      }
-
+      if (prefersReduced) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); return; }
       const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const el = entry.target;
-            let delay = 0;
-            const parent = el.parentElement;
-            if (parent) {
-              const siblings = Array.from(parent.children).filter(n => n.classList && n.classList.contains('reveal'));
-              const idx = siblings.indexOf(el);
-              delay = Math.min(idx * 60, 240);
-            }
+            let delay = 0; const parent = el.parentElement;
+            if (parent) { const siblings = Array.from(parent.children).filter(n => n.classList && n.classList.contains('reveal')); delay = Math.min(siblings.indexOf(el)*60, 240); }
             el.style.transitionDelay = delay + 'ms';
             requestAnimationFrame(() => el.classList.add('is-in'));
             io.unobserve(el);
           }
         });
-      }, { root: null, rootMargin: '0px 0px 0px 0px', threshold: 0.06 });
-
+      }, { threshold: 0.06 });
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     })();
 
@@ -609,11 +535,20 @@
     const alertBox = document.getElementById('form-alert');
 
     const modal = document.getElementById('confirm-modal');
-    const openModal = ()=>{ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.getElementById('confirm-close').focus(); };
-    const closeModal = ()=>{ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); };
-
+    const modalTitle = document.getElementById('confirm-title');
+    const modalText  = document.getElementById('confirm-text');
+    const openModal = ()=>{
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('no-scroll');
+      document.getElementById('confirm-close').focus();
+    };
+    const closeModal = ()=>{
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('no-scroll');
+    };
     document.getElementById('confirm-close').addEventListener('click', closeModal);
-    document.getElementById('confirm-back').addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.classList.contains('is-open')) closeModal(); });
 
@@ -623,15 +558,23 @@
         const res = await fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
         if(res.ok){
           form.reset();
-          alertBox.className = 'alert alert--ok';
-          alertBox.textContent = "Thanks! We'll email you shortly.";
-          openModal(); // show confirmation popup
+          // Hide the small inline alert on success – modal handles the message
+          alertBox.className = 'alert';
+          alertBox.textContent = '';
+          alertBox.style.display = 'none';
+
+          // Set modal copy and show
+          modalTitle.textContent = 'Form sent — thank you!';
+          modalText.textContent  = "We’re looking at your details and will be in touch soon.";
+          openModal();
         } else {
           throw new Error('Submission failed');
         }
       }catch(err){
+        // Show inline error only (no modal on error)
         alertBox.className = 'alert alert--err';
         alertBox.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com';
+        alertBox.style.display = 'block';
       }
     });
   </script>
@@ -641,11 +584,9 @@
     window.si = window.si || function(){ (window.siq = window.siq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
-
   <script>
     window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <!-- /Vercel Analytics -->
 </body>
 </html>
