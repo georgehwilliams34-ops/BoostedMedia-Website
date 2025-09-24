@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Boostedmedia — More Sales, Less Social Media Stress</title>
   <meta name="description" content="Boostedmedia creates scroll-stopping social media content for UK small businesses. Get more customers while we handle your posts end-to-end." />
-  <!-- Flag that JS is running so reveal CSS only applies when scripts load -->
-  <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
   <style>
     :root{
@@ -68,15 +66,19 @@
     .icon svg{width:100%; height:100%; fill:var(--accent)}
 
     /* ===== Testimonials ===== */
-    .quote{font-size:1.05rem; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; max-width:100%; overflow-wrap:anywhere; white-space:normal}
+    .quote{font-size:1.05rem; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:22px; max-width:100%; overflow-wrap:anywhere}
+    .metrics{display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; justify-content:center}
+    .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:12px 16px; border-radius:12px; font-weight:700}
+    #dyn-metrics{transition:opacity .28s ease}
+    #dyn-metrics.is-fading{opacity:0}
     .t-slider{display:grid; grid-template-columns:44px 1fr 44px; grid-template-rows:auto auto; row-gap:12px; align-items:center; margin:10px 0 12px}
     .t-track{grid-column:1 / -1; grid-row:1; overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,.10); background:var(--panel)}
     .t-track-inner{display:flex; transition:transform .38s ease; will-change:transform}
-    .t-slide{min-width:100%; padding:16px}
+    .t-slide{min-width:100%; padding:0; flex:0 0 100%}
     .t-prev,.t-next{width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff; font-size:28px; line-height:1; display:grid; place-items:center; cursor:pointer}
-    #dyn-metrics{transition:opacity .28s ease; grid-column:2; grid-row:2; display:flex; gap:16px; justify-content:center; align-items:center}
-    #dyn-metrics.is-fading{opacity:0}
-    .metric{background:rgba(30,115,190,.12); border:1px solid rgba(30,115,190,.28); padding:12px 16px; border-radius:12px; font-weight:700}
+    .t-prev{grid-column:1; grid-row:2; justify-self:center}
+    .t-next{grid-column:3; grid-row:2; justify-self:center}
+    #proof #dyn-metrics{grid-column:2; grid-row:2; display:flex; gap:16px; justify-content:center; align-items:center}
 
     /* ===== FAQ (mobile-first) ===== */
     .faq{display:grid; grid-template-columns:1fr; gap:16px; margin-top:8px}
@@ -86,52 +88,17 @@
     .faq p{color:#e9edf6; margin:10px 0 0}
     .faq .faq-body{overflow:hidden; height:0}
 
-    /* ===== Pricing ===== */
-    .pricing-grid{display:grid; gap:22px; grid-template-columns:repeat(3,1fr)}
-    .price-card{
-      display:flex; flex-direction:column; padding:24px; border-radius:22px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12); box-shadow:var(--shadow);
-      transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
-      min-height:520px;
-    }
-    .price-card:hover{border-color:rgba(245,180,0,.6); box-shadow:0 18px 44px rgba(0,0,0,.5); transform:translateY(-2px)}
-    .pkg-badge{
-      display:inline-block; align-self:center; background:var(--accent); color:var(--accent-ink);
-      font-family:var(--font-head); font-weight:900; padding:10px 18px; border-radius:999px; margin-bottom:12px;
-      text-transform:uppercase; letter-spacing:.4px
-    }
-    .most-popular{
-      align-self:center; margin-top:-4px; margin-bottom:6px; font-weight:900; font-family:var(--font-head);
-      color:#ffe3a1
-    }
-    .features{list-style:none; margin:8px 0 0; padding:0; font-family:var(--font-head)}
-    .features li{font-weight:800; font-size:20px; line-height:1.35; text-align:center; padding:10px 6px; color:#eef3ff}
-    .card-spacer{flex:1}
-    .price-amount{font-family:var(--font-head); text-align:center; font-weight:900; font-size:22px; margin:10px 0 14px}
-    .card-actions{display:flex; justify-content:center}
-    .plan-btn{min-width:180px}
-
     /* ===== Footer spacing ===== */
     footer{padding:26px 0 40px}
 
-    /* ===== Modals ===== */
+    /* ===== Modal (confirmation) ===== */
     .modal{position:fixed; inset:0; padding:16px; background:rgba(0,0,0,.78); display:none; align-items:center; justify-content:center; z-index:10000}
     .modal.is-open{display:flex}
-    .modal__panel{background:var(--panel); border:1px solid rgba(255,255,255,.18); border-radius:22px; padding:26px 20px; max-width:720px; width:calc(100% - 32px); box-shadow:var(--shadow); text-align:center}
+    .modal__panel{background:var(--panel); border:1px solid rgba(255,255,255,.18); border-radius:22px; padding:26px 20px; max-width:520px; width:calc(100% - 32px); box-shadow:var(--shadow); text-align:center}
     .modal__title{font-family:var(--font-head); font-weight:800; font-size:clamp(22px,3vw,28px); margin:0 0 10px}
     .modal__text{color:#e6ebf5; margin:0 0 18px}
     .modal__actions{display:flex; justify-content:center}
     body.no-scroll{overflow:hidden}
-
-    /* Lead form inside modal */
-    .lead-grid{display:grid; gap:12px; grid-template-columns:repeat(2,1fr)}
-    .lead-grid label{font-weight:700}
-    .lead-grid input, .lead-grid textarea{
-      width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12);
-      color:var(--text); border-radius:12px; padding:12px 14px; outline:none;
-    }
-    .lead-grid textarea{grid-column:1 / -1}
 
     /* ===== MOBILE (≤980px) ===== */
     @media (max-width:980px){
@@ -159,11 +126,6 @@
       .benefits{grid-template-columns:1fr; gap:14px}
       #proof .t-slider{grid-template-columns:44px 1fr 44px; grid-template-rows:auto auto}
       #proof #dyn-metrics{flex-direction:column}
-
-      .pricing-grid{grid-template-columns:1fr}
-      .price-card{min-height:unset}
-      .modal__panel{max-width:92vw}
-      .lead-grid{grid-template-columns:1fr}
     }
 
     /* ===== DESKTOP: Masonry FAQ ===== */
@@ -172,13 +134,13 @@
       .faq details{ break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 16px; display:block; }
     }
 
-    /* === Scroll reveal (only when JS is active) === */
-    .js .reveal{opacity:0; transform:translateY(14px); transition:opacity .35s ease, transform .35s ease; will-change:opacity,transform}
-    .js .reveal.is-in{opacity:1; transform:none}
-    .js .reveal--left{transform:translateX(-14px)}
-    .js .reveal--right{transform:translateX(14px)}
+    /* === Scroll reveal === */
+    .reveal{opacity:0; transform:translateY(14px); transition:opacity .35s ease, transform .35s ease; will-change:opacity,transform}
+    .reveal.is-in{opacity:1; transform:none}
+    .reveal--left{transform:translateX(-14px)}
+    .reveal--right{transform:translateX(14px)}
     @media (prefers-reduced-motion: reduce){
-      .js .reveal{opacity:1!important; transform:none!important; transition:none!important}
+      .reveal{opacity:1!important; transform:none!important; transition:none!important}
       .faq .faq-body{transition:none!important}
     }
   </style>
@@ -240,10 +202,391 @@
     </div>
   </main>
 
-  <!-- (Everything else in your file remains the same: sections, pricing, modals, scripts, etc.) -->
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="container problem">
+      <div class="reveal">
+        <h2 class="section__title">Feeling Invisible Online?</h2>
+        <p class="section__sub">You’re not alone. Many small business owners feel <strong>overwhelmed keeping up</strong> with social media. Maybe you have <strong>no idea what to post</strong>. Maybe you feel <strong>pressured to post constantly</strong> because “that’s what the gurus say,” but it’s exhausting. It’s discouraging to put in hours and still see <strong>little engagement</strong> or sales.</p>
+        <ul class="problem__list">
+          <li>Too many platforms and trends to follow.</li>
+          <li>No time to plan or create content consistently.</li>
+          <li>Unclear if posts are actually bringing in customers.</li>
+        </ul>
+      </div>
+      <div class="hero__img reveal reveal--right"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Owner stressed at laptop"></div>
+    </div>
+  </section>
 
-  <!-- Your existing scripts go here -->
-  <!-- ... keep your JS exactly as in the previous version ... -->
+  <!-- RECENT PROJECT -->
+  <section id="solution">
+    <div class="container solution">
+      <div class="case reveal">
+        <span class="case-badge">Recent Project</span>
+        <h2 class="section__title">Tyrerite — Record Month in <em>8 Days</em></h2>
+        <p class="section__sub">
+          We helped this business achieve its <strong>highest-ever website visitors for a month</strong> —
+          and it only took <strong>8 days</strong> to hit the new record. By tightening local visibility,
+          rolling out conversion-focused social posts, and promoting time-bound offers, traffic and enquiries
+          surged faster than expected. Want results like this?
+        </p>
+        <div style="margin-top:16px"><a class="btn" href="#book">See what we could do for you</a></div>
+      </div>
+    </div>
+  </section>
 
+  <!-- BENEFITS -->
+  <section id="benefits">
+    <div class="container">
+      <h2 class="section__title reveal">What You Get with Boostedmedia</h2>
+      <div class="benefits">
+        <div class="card reveal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-10.59 3.3 1.91a1 1 0 0 0 1-1.73l-3.8-2.2V6a1 1 0 1 0-2 0v4a1 1 0 0 0 .5.87l1 .54z"/></svg></span><h3>More Time for You</h3><p>No more DIY stress. We plan, create, and schedule weekly content so you can focus on customers and growth.</p></div>
+        <div class="card reveal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 2v14H8V4h8zm-4 16a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span><h3>Reach More Customers Online</h3><p>Our creative, eye-catching posts turn scrollers into buyers. Proven tactics that drive people through your door.</p></div>
+        <div class="card reveal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v12h14a1 1 0 1 1 0 2H4zm3-5 4-4 3 3 5-5v3a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1h-6a1 1 0 1 0 0 2h3l-4 4-3-3-5 5a1 1 0 0 0 1.4 1.4z"/></svg></span><h3>High Quality at a Small-Business Price</h3><p>Get premium content and management at a budget-friendly rate. Built for local shops who want real results.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section id="proof" aria-label="Testimonials">
+    <div class="container">
+      <h2 class="section__title reveal">Don’t Just Take Our Word for It…</h2>
+
+      <div class="t-slider reveal" aria-roledescription="carousel">
+        <button class="t-prev" aria-label="Previous testimonial">‹</button>
+        <div class="t-track">
+          <div class="t-track-inner">
+            <article class="t-slide" aria-label="Testimonial 1" data-metrics='["100k+ monthly views","Hands-off content plan","Built for local shops"]'>
+              <div class="quote">
+                “Boostedmedia has handled all our social media posts, and we <strong>couldn’t be happier</strong>.
+                Our stats have <strong>skyrocketed — 100,000 views in one month on Facebook</strong> alone!
+                We 100% recommend Boostedmedia to any business looking to grow online.”<br>— <strong>Sugar Crush</strong>
+              </div>
+            </article>
+            <article class="t-slide" aria-label="Testimonial 2" data-metrics='["5★ rated service","Hands-off content plan","Local trades"]'>
+              <div class="quote">
+                “5* service !! Very professional! I would like to say thank you to George for his amazing work
+                by bringing my simple amateur videos to life 👌 and making me a video for my kitchen business.
+                A lot more to come — George we will be in touch again soon 👍👍”<br>— <strong>J A Joinery &amp; Bathrooms</strong>
+              </div>
+            </article>
+          </div>
+        </div>
+        <button class="t-next" aria-label="Next testimonial">›</button>
+        <div class="metrics reveal" id="dyn-metrics" aria-live="polite" aria-label="Result metrics"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section__title reveal">FAQ</h2>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Do I need to be on camera?</summary>
+          <p>Nope. We can create posts with your products, location, customer stories, and graphics. If you like being on camera, we’ll use that too.</p>
+        </details>
+        <details class="reveal">
+          <summary>How soon can we start?</summary>
+          <p>Usually within a week. The 15-minute call sets your content plan and access; then we begin creating and scheduling.</p>
+        </details>
+        <details class="reveal">
+          <summary>Can I review content before it goes live?</summary>
+          <p>Yes. We share a weekly content calendar for quick approvals (or we can run fully hands-off if you prefer).</p>
+        </details>
+        <details class="reveal">
+          <summary>Which platforms do you cover?</summary>
+          <p>Facebook, Instagram, and TikTok by default. We can add others on request.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="book">
+    <div class="container">
+      <h2 class="section__title reveal">Book Your Free Strategy Call</h2>
+      <form id="lead-form" class="card reveal">
+        <div class="form-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px">
+          <label>Full Name<br><input required name="name" placeholder="Jane Doe"></label>
+          <label>Business Name<br><input required name="biz" placeholder="Your Shop Ltd"></label>
+          <label>Email<br><input required type="email" name="email" placeholder="you@example.com"></label>
+          <label>Phone<br><input name="phone" placeholder="07…"></label>
+        </div>
+        <label style="display:block; margin-top:12px">City / Area<br><input name="city" placeholder="Scunthorpe & nearby"></label>
+        <label style="display:block; margin-top:12px">What do you need help with?<br><textarea name="needs" rows="4" placeholder="e.g., 3 posts/week, short videos, community reach"></textarea></label>
+        <div style="display:flex; gap:10px; margin-top:16px; align-items:center; flex-wrap:wrap">
+          <button class="btn" type="submit">Boost Your Business Today!</button>
+          <span style="color:var(--muted); font-size:.95rem"></span>
+        </div>
+        <div id="form-alert" class="alert" role="status" aria-live="polite" style="display:none"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
+      <div style="display:flex; align-items:center; gap:10px">
+        <span class="brand__logo" aria-hidden="true">
+          <img class="logo-img" alt="Boostedmedia logo" width="48" height="48"/>
+        </span>
+        <div><strong style="font-family:var(--font-head); font-weight:800">Boostedmedia</strong><br><span style="color:var(--muted)">Serving Scunthorpe & surrounding areas • UK</span></div>
+      </div>
+      <div style="color:var(--muted)">&copy; <span id="year"></span> Boostedmedia. All rights reserved. &nbsp; <a href="privacy.html">Privacy</a> &nbsp;•&nbsp; <a href="terms.html">Terms</a></div>
+    </div>
+  </footer>
+
+  <!-- Confirmation Modal -->
+  <div class="modal" id="confirm-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+    <div class="modal__panel">
+      <h3 class="modal__title" id="confirm-title">Form sent — thank you!</h3>
+      <p class="modal__text" id="confirm-text">We’re looking at your details and will be in touch soon.</p>
+      <div class="modal__actions">
+        <button class="btn" id="confirm-close">Okay</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll + close mobile menu
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); document.getElementById('nav').classList.remove('nav--open'); }
+      });
+    });
+
+    // Inputs base styling
+    document.querySelectorAll('input, textarea').forEach(el=>{
+      el.style.width='100%'; el.style.background='rgba(255,255,255,.04)'; el.style.border='1px solid rgba(255,255,255,.12)'; el.style.color='var(--text)'; el.style.borderRadius='12px'; el.style.padding='12px 14px'; el.style.outline='none';
+    });
+
+    // Logo loader (with SVG fallback)
+    (function(){
+      const candidates = ['assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'].map(u => u + '?v=' + Date.now());
+      function attach(img){
+        let i = 0;
+        function tryNext(){
+          if(i >= candidates.length){
+            const tpl = document.getElementById('logo-fallback');
+            if(tpl){ img.replaceWith(tpl.content.cloneNode(true)); }
+            return;
+          }
+          img.src = candidates[i++];
+        }
+        img.addEventListener('error', tryNext);
+        tryNext();
+      }
+      document.querySelectorAll('img.logo-img').forEach(attach);
+    })();
+
+    // Remove any broken non-logo images
+    document.querySelectorAll('img').forEach(img=>{
+      if(img.classList.contains('logo-img')) return;
+      img.addEventListener('error', ()=>{
+        const wrap = img.closest('.hero__img');
+        if(wrap) wrap.remove(); else img.remove();
+      });
+    });
+
+    // ===== Testimonial Slider =====
+    (function(){
+      const slider = document.querySelector('#proof .t-slider'); if(!slider) return;
+      const track  = slider.querySelector('.t-track');
+      const inner  = slider.querySelector('.t-track-inner');
+      const slides = Array.from(inner.children);
+      const prev   = slider.querySelector('.t-prev');
+      const next   = slider.querySelector('.t-next');
+      const metrics= slider.querySelector('#dyn-metrics');
+
+      let index = 0;
+      function width(){ return Math.round(track.getBoundingClientRect().width); }
+      function setWidths(){
+        const w = width();
+        inner.style.width=(w*slides.length)+'px';
+        slides.forEach(s=>{ s.style.width=w+'px'; s.style.minWidth=w+'px'; s.style.flex='0 0 '+w+'px'; });
+        inner.style.transform='translateX('+(-index*w)+'px)';
+      }
+      setWidths();
+      if('ResizeObserver' in window){ new ResizeObserver(setWidths).observe(track); } else { window.addEventListener('resize', setWidths); }
+
+      function paintMetrics(){
+        let arr=[]; try{ arr = JSON.parse(slides[index].getAttribute('data-metrics')||'[]'); }catch(e){}
+        metrics.innerHTML = arr.map(t=>`<div class="metric">${t}</div>`).join('');
+      }
+      paintMetrics();
+
+      function go(step){
+        const w = width();
+        index = (index + step + slides.length) % slides.length;
+        metrics.classList.add('is-fading');
+        inner.style.transform='translateX('+(-index*w)+'px)';
+        setTimeout(()=>{ paintMetrics(); metrics.classList.remove('is-fading'); }, 320);
+      }
+      prev.addEventListener('click', ()=> go(-1));
+      next.addEventListener('click', ()=> go(1));
+
+      // Swipe on touch
+      let sx=0;
+      track.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
+      track.addEventListener('touchend', e=>{
+        const dx = e.changedTouches[0].clientX - sx;
+        if(Math.abs(dx)>40) go(dx<0?1:-1);
+      }, {passive:true});
+    })();
+
+    /* ===== FAQ: animated open/close + desktop-only accordion ===== */
+    (function () {
+      const mq = window.matchMedia('(min-width: 981px)');
+      const items = Array.from(document.querySelectorAll('#faq .faq details'));
+      if (!items.length) return;
+
+      items.forEach(d => {
+        if (d.querySelector('.faq-body')) return;
+        const body = document.createElement('div');
+        body.className = 'faq-body';
+        const nodes = [];
+        let sawSummary = false;
+        Array.from(d.childNodes).forEach(n => {
+          if (!sawSummary && n.nodeType === 1 && n.tagName.toLowerCase() === 'summary') { sawSummary = true; return; }
+          if (sawSummary && (n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim() !== ''))) nodes.push(n);
+        });
+        nodes.forEach(n => body.appendChild(n));
+        d.appendChild(body);
+        body.style.transition = 'height .28s ease';
+        body.style.height = d.hasAttribute('open') ? 'auto' : '0px';
+      });
+
+      function getBody(d){ return d.querySelector('.faq-body'); }
+      function animateOpen(d){
+        const body = getBody(d); if(!body) return;
+        d.setAttribute('open','');
+        body.style.height = '0px';
+        body.getBoundingClientRect();
+        body.style.height = body.scrollHeight + 'px';
+        body.addEventListener('transitionend', function h(e){ if(e.propertyName!=='height')return; body.removeEventListener('transitionend', h); body.style.height='auto'; });
+      }
+      function animateClose(d){
+        const body = getBody(d); if(!body){ d.removeAttribute('open'); return; }
+        body.style.height = body.scrollHeight + 'px';
+        body.getBoundingClientRect();
+        body.style.height = '0px';
+        body.addEventListener('transitionend', function h(e){ if(e.propertyName!=='height')return; body.removeEventListener('transitionend', h); d.removeAttribute('open'); });
+      }
+      function closeOthers(current){
+        if (!mq.matches) return;
+        items.forEach(o => { if (o!==current && o.hasAttribute('open')) animateClose(o); });
+      }
+      items.forEach(d => {
+        const summary = d.querySelector('summary'); if(!summary) return;
+        summary.addEventListener('click', e => {
+          e.preventDefault();
+          const isOpen = d.hasAttribute('open');
+          if (isOpen) animateClose(d); else { animateOpen(d); closeOthers(d); }
+        });
+      });
+      mq.addEventListener?.('change', e => {
+        if (e.matches) {
+          let keep=null; items.forEach(d=>{ if(d.hasAttribute('open')){ if(!keep) keep=d; else animateClose(d); } });
+        }
+      });
+    })();
+    /* ===== End animated FAQ ===== */
+
+    // === Fast scroll-reveal (footer always visible) ===
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const groups = [
+        document.querySelectorAll('.hero__wrap > *'),
+        document.querySelectorAll('#problem .problem > *'),
+        document.querySelectorAll('#solution .case, #solution .case .btn'),
+        document.querySelectorAll('#benefits .card'),
+        document.querySelectorAll('#proof .t-slider, #proof .metrics'),
+        document.querySelectorAll('#faq .faq details'),
+        document.querySelectorAll('#book .card, #book .form-grid > *, #book [type="submit"]')
+      ];
+      groups.forEach(nl => nl.forEach(el => el.classList.add('reveal')));
+      document.querySelectorAll('footer .container > *').forEach(el => {
+        el.classList.remove('reveal'); el.classList.add('is-in'); el.style.transition='none'; el.style.transform='none'; el.style.opacity='1';
+      });
+      if (prefersReduced) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            let delay = 0; const parent = el.parentElement;
+            if (parent) { const siblings = Array.from(parent.children).filter(n => n.classList && n.classList.contains('reveal')); delay = Math.min(siblings.indexOf(el)*60, 240); }
+            el.style.transitionDelay = delay + 'ms';
+            requestAnimationFrame(() => el.classList.add('is-in'));
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.06 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+
+    // ===== Formspree + Confirmation Modal =====
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
+    const form = document.getElementById('lead-form');
+    const alertBox = document.getElementById('form-alert');
+
+    const modal = document.getElementById('confirm-modal');
+    const modalTitle = document.getElementById('confirm-title');
+    const modalText  = document.getElementById('confirm-text');
+    const openModal = ()=>{
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('no-scroll');
+      document.getElementById('confirm-close').focus();
+    };
+    const closeModal = ()=>{
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('no-scroll');
+    };
+    document.getElementById('confirm-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.classList.contains('is-open')) closeModal(); });
+
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      try{
+        const res = await fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
+        if(res.ok){
+          form.reset();
+          // Hide the small inline alert on success – modal handles the message
+          alertBox.className = 'alert';
+          alertBox.textContent = '';
+          alertBox.style.display = 'none';
+
+          // Set modal copy and show
+          modalTitle.textContent = 'Form sent — thank you!';
+          modalText.textContent  = "We’re looking at your details and will be in touch soon.";
+          openModal();
+        } else {
+          throw new Error('Submission failed');
+        }
+      }catch(err){
+        // Show inline error only (no modal on error)
+        alertBox.className = 'alert alert--err';
+        alertBox.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com';
+        alertBox.style.display = 'block';
+      }
+    });
+  </script>
+
+  <!-- Vercel Speed Insights & Web Analytics -->
+  <script>
+    window.si = window.si || function(){ (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script>
+    window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
