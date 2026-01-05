@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,7 +52,7 @@
       gap:12px;
     }
 
-    /* ===== FIXED LOGO (same approach as terms/privacy) ===== */
+    /* Logo (same approach as terms/privacy) */
     .brand{
       display:flex; align-items:center; gap:10px;
       font-family:var(--font-head);
@@ -126,8 +127,6 @@
       gap:26px;
       align-items:center;
     }
-
-    /* Kicker */
     .kicker{
       display:inline-block;
       max-width:100%;
@@ -142,7 +141,6 @@
       white-space:normal;
     }
     .kicker b{color:var(--text)}
-
     .hero h1{
       font-family:var(--font-head);
       font-size: clamp(2.2rem, 4vw, 3.6rem);
@@ -260,7 +258,7 @@
       display:inline-block;
     }
 
-    /* ===== Case Studies (Work) ===== */
+    /* ===== Work ===== */
     .case-grid{
       display:grid;
       grid-template-columns:repeat(2, 1fr);
@@ -288,7 +286,12 @@
       width:100%;
       height:100%;
       object-fit:cover;
+      object-position:center;
       transform:scale(1.02);
+    }
+    /* Focus Tyrerite image towards the sign area */
+    .case__media img.work-tyrerite{
+      object-position: 25% 30%;
     }
     .case__media:after{
       content:"";
@@ -380,7 +383,7 @@
     /* FAQ */
     .faq{
       display:grid;
-      grid-template-columns: 1fr; /* now single column since we removed the aside */
+      grid-template-columns: 1fr;
       gap:18px;
       align-items:start;
     }
@@ -476,7 +479,7 @@
       border-color:rgba(255,80,80,.22);
     }
 
-    /* ===== REVEAL SAFETY FIX (prevents blank screen) ===== */
+    /* Reveal safety */
     .reveal{opacity:1; transform:none;}
     .js .reveal{
       opacity:0;
@@ -486,7 +489,7 @@
     .js .reveal.is-in{opacity:1; transform:none}
     .no-scroll{overflow:hidden}
 
-    /* ===== Pricing ===== */
+    /* Pricing */
     .pricing-grid{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -563,7 +566,7 @@
       font-size:.95rem;
     }
 
-    /* ===== Mobile (general) ===== */
+    /* Mobile */
     @media (max-width: 980px){
       .hero{padding:52px 0 30px}
       .hero__grid{grid-template-columns:1fr; gap:18px}
@@ -585,7 +588,6 @@
         border-bottom:1px solid rgba(255,255,255,.10);
       }
 
-      /* Mobile hero centred + nicer */
       .hero .reveal{ text-align:center; }
       .hero p{ margin-left:auto; margin-right:auto; }
       .hero__actions{ justify-content:center; }
@@ -613,7 +615,7 @@
       .modal__actions{flex-direction:column;}
       .modal__actions .btn{width:100%;}
 
-      /* ✅ Remove kicker on mobile only (keep on desktop) */
+      /* Hide kicker on mobile */
       .kicker{display:none !important;}
     }
   </style>
@@ -754,11 +756,10 @@
         </p>
 
         <div class="case-grid">
-          <!-- Case 1 -->
+          <!-- Tyrerite -->
           <article class="case reveal">
             <div class="case__media">
-              <!-- Put Tyrerite.png in same folder as index.html OR /assets/ -->
-              <img src="Tyrerite.png" alt="Tyrerite project" onerror="this.onerror=null;this.src='assets/Tyrerite.png';">
+              <img class="work-tyrerite" src="Tyrerite.png" alt="Tyrerite project" onerror="this.onerror=null;this.src='assets/Tyrerite.png';">
             </div>
             <div class="case__body">
               <div class="case__top">
@@ -786,10 +787,9 @@
             </div>
           </article>
 
-          <!-- Case 2 -->
+          <!-- Essential Spaces -->
           <article class="case reveal">
             <div class="case__media">
-              <!-- Put Essentialspaces.png in same folder as index.html OR /assets/ -->
               <img src="Essentialspaces.png" alt="Essential Spaces project" onerror="this.onerror=null;this.src='assets/Essentialspaces.png';">
             </div>
             <div class="case__body">
@@ -817,11 +817,12 @@
               </div>
             </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <!-- FAQ (removed the quick plan box) -->
+    <!-- FAQ -->
     <section id="faq">
       <div class="container">
         <h2 class="section__title reveal">FAQ</h2>
@@ -831,16 +832,24 @@
           <div class="reveal" style="display:grid; gap:12px">
             <details>
               <summary>How fast can we start?</summary>
-              <p>Usually within 7–14 days. If you need a quick turnaround, we can try to fit you in sooner.</p>
+              <p>Usually within <b>3–7 days</b>. If you need a quick turnaround, we can often start even sooner depending on availability.</p>
             </details>
+
             <details>
               <summary>Do you film on-site?</summary>
               <p>Yes — we come to you. We film in batches so you get weeks of content from one session.</p>
             </details>
+
+            <details>
+              <summary>Do I have to be in the videos?</summary>
+              <p>No — you don’t have to be in any of the videos. However, we highly encourage it because it usually boosts engagement, views, and sales.</p>
+            </details>
+
             <details>
               <summary>Do you post to all platforms?</summary>
               <p>Yes. TikTok, Instagram Reels, Facebook — we tailor the captions and structure for each.</p>
             </details>
+
             <details>
               <summary>Is there a contract?</summary>
               <p>No long contracts. You can cancel anytime. We focus on earning the results every month.</p>
@@ -859,7 +868,6 @@
         </p>
 
         <div class="pricing-grid reveal" aria-label="Pricing table">
-          <!-- Starter -->
           <article class="pricing-card reveal">
             <div class="pricing-top">
               <div class="pricing-name">Starter</div>
@@ -878,7 +886,6 @@
             <div class="pricing-foot">No long contracts • Cancel anytime</div>
           </article>
 
-          <!-- Growth (featured) -->
           <article class="pricing-card pricing-card--featured reveal" aria-label="Most popular plan">
             <div class="pricing-badge">Most Popular</div>
 
@@ -900,7 +907,6 @@
             <div class="pricing-foot">No long contracts • Cancel anytime</div>
           </article>
 
-          <!-- Pro -->
           <article class="pricing-card reveal">
             <div class="pricing-top">
               <div class="pricing-name">Pro</div>
@@ -1040,7 +1046,7 @@
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     })();
 
-    // ===== Logo loader (tries common paths; falls back to SVG) =====
+    // Logo loader (tries common paths; falls back to SVG)
     (function(){
       const candidates = [
         'assets/logo-icon.png','./assets/logo-icon.png',
@@ -1055,7 +1061,6 @@
           if(i >= candidates.length){
             const tpl = document.getElementById('logo-fallback');
             if(tpl){
-              // Replace the IMG with the SVG fallback
               img.replaceWith(tpl.content.cloneNode(true));
             }
             return;
@@ -1068,7 +1073,7 @@
       document.querySelectorAll('img.logo-img').forEach(attach);
     })();
 
-    // ===== Lead capture (buttons -> modal -> Formspree) =====
+    // Lead capture (buttons -> modal -> Formspree)
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
 
     const leadModal = document.getElementById('lead-modal');
