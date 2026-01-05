@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,7 +51,7 @@
       gap:12px;
     }
 
-    /* Logo (same approach as terms/privacy) */
+    /* Logo */
     .brand{
       display:flex; align-items:center; gap:10px;
       font-family:var(--font-head);
@@ -211,7 +210,7 @@
       max-width:70ch;
     }
 
-    /* Cards / grids */
+    /* Services */
     .grid-3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -232,8 +231,6 @@
       letter-spacing:-.2px;
     }
     .card p{margin:0; color:var(--muted); line-height:1.6}
-
-    /* Chips */
     .chip-row{
       display:flex;
       gap:6px;
@@ -292,6 +289,13 @@
     /* Focus Tyrerite image towards the sign area */
     .case__media img.work-tyrerite{
       object-position: 25% 30%;
+    }
+    /* If an image can't load, keep the header pretty */
+    .case__media.has-fallback{
+      background:
+        radial-gradient(800px 240px at 30% 20%, rgba(245,180,0,.22), transparent 55%),
+        radial-gradient(700px 240px at 80% 0%, rgba(30,115,190,.22), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
     }
     .case__media:after{
       content:"";
@@ -759,7 +763,7 @@
           <!-- Tyrerite -->
           <article class="case reveal">
             <div class="case__media">
-              <img class="work-tyrerite" src="Tyrerite.png" alt="Tyrerite project" onerror="this.onerror=null;this.src='assets/Tyrerite.png';">
+              <img class="work-tyrerite" alt="Tyrerite project" data-img="tyrerite">
             </div>
             <div class="case__body">
               <div class="case__top">
@@ -787,10 +791,10 @@
             </div>
           </article>
 
-          <!-- Essential Spaces -->
+          <!-- Essential Spaces (uses your EXACT filename Essentialspaces.png.JPG) -->
           <article class="case reveal">
             <div class="case__media">
-              <img src="Essentialspaces.png" alt="Essential Spaces project" onerror="this.onerror=null;this.src='assets/Essentialspaces.png';">
+              <img alt="Essential Spaces project" data-img="essentialspaces">
             </div>
             <div class="case__body">
               <div class="case__top">
@@ -1073,6 +1077,59 @@
       document.querySelectorAll('img.logo-img').forEach(attach);
     })();
 
+    // Work image loader (tries multiple filenames + folders, includes your EXACT "Essentialspaces.png.JPG")
+    (function(){
+      const map = {
+        tyrerite: [
+          'Tyrerite.png','tyrerite.png','Tyrerite.jpg','tyrerite.jpg','Tyrerite.jpeg','tyrerite.jpeg'
+        ],
+        essentialspaces: [
+          // EXACT file you provided:
+          'Essentialspaces.png.JPG',
+          // common variants:
+          'Essentialspaces.png','EssentialSpaces.png','essentialspaces.png','essentialSpaces.png',
+          'Essentialspaces.jpg','EssentialSpaces.jpg','essentialspaces.jpg',
+          'Essentialspaces.jpeg','EssentialSpaces.jpeg','essentialspaces.jpeg',
+          'Essentialspaces.PNG','EssentialSpaces.PNG',
+          'Essentialspaces.JPG','EssentialSpaces.JPG','essentialspaces.JPG'
+        ]
+      };
+
+      const folders = ['', './', 'assets/', './assets/', 'images/', './images/', 'img/', './img/'];
+
+      function tryLoad(img, key){
+        const names = map[key] || [];
+        const candidates = [];
+        const bust = 'v=' + Date.now();
+
+        folders.forEach(f=>{
+          names.forEach(n=>{
+            candidates.push(f + n + '?' + bust);
+          });
+        });
+
+        let i = 0;
+        function next(){
+          if(i >= candidates.length){
+            // fallback: hide broken icon and apply a nice gradient background
+            img.style.display = 'none';
+            const parent = img.closest('.case__media');
+            if(parent) parent.classList.add('has-fallback');
+            return;
+          }
+          img.src = candidates[i++];
+        }
+
+        img.addEventListener('error', next);
+        next();
+      }
+
+      document.querySelectorAll('img[data-img]').forEach(img=>{
+        const key = img.getAttribute('data-img');
+        tryLoad(img, key);
+      });
+    })();
+
     // Lead capture (buttons -> modal -> Formspree)
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
 
@@ -1199,4 +1256,3 @@
   </script>
 </body>
 </html>
-```
