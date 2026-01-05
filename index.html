@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,25 +50,33 @@
       padding:14px 0;
       gap:12px;
     }
+
+    /* ===== FIXED LOGO (same approach as terms/privacy) ===== */
     .brand{
       display:flex; align-items:center; gap:10px;
       font-family:var(--font-head);
       font-weight:900; letter-spacing:.2px;
       flex: 0 0 auto;
+      min-width: 0;
     }
-    .brand__mark{
+    .brand__logo{
       width:34px; height:34px; border-radius:11px;
-      background: conic-gradient(from 180deg, var(--accent), rgba(30,115,190,.85), rgba(245,180,0,.35), var(--accent));
-      box-shadow:0 10px 25px rgba(245,180,0,.10);
-      position:relative;
+      display:grid; place-items:center;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      box-shadow:0 10px 25px rgba(0,0,0,.25);
+      flex:0 0 auto;
     }
-    .brand__mark:after{
-      content:"";
-      position:absolute; inset:7px;
-      border-radius:9px;
-      background: rgba(11,14,26,.75);
-      border:1px solid rgba(255,255,255,.12);
+    .brand__logo img.logo-img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      background:transparent;
     }
+    .brand__name{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width: 210px;}
+
     .nav__links{
       display:flex; gap:14px; align-items:center;
       color:var(--muted);
@@ -120,9 +127,9 @@
       align-items:center;
     }
 
-    /* FIX: weird “bubble” on mobile */
+    /* Kicker */
     .kicker{
-      display:inline-block;                 /* was inline-flex */
+      display:inline-block;
       max-width:100%;
       padding:8px 12px;
       border-radius:999px;
@@ -135,6 +142,7 @@
       white-space:normal;
     }
     .kicker b{color:var(--text)}
+
     .hero h1{
       font-family:var(--font-head);
       font-size: clamp(2.2rem, 4vw, 3.6rem);
@@ -227,7 +235,7 @@
     }
     .card p{margin:0; color:var(--muted); line-height:1.6}
 
-    /* FIX: make chips fit in one row on desktop */
+    /* Chips */
     .chip-row{
       display:flex;
       gap:6px;
@@ -236,14 +244,14 @@
     }
     .chip{
       display:inline-flex; align-items:center; gap:8px;
-      padding:7px 9px;                 /* tighter */
+      padding:7px 9px;
       border-radius:999px;
       font-weight:800;
       color:var(--muted);
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.10);
-      font-size:.90rem;                 /* slightly smaller */
-      white-space:nowrap;               /* prevents ugly wrapping inside chip */
+      font-size:.90rem;
+      white-space:nowrap;
     }
     .chip i{
       width:8px; height:8px; border-radius:999px;
@@ -255,7 +263,7 @@
     /* ===== Case Studies (Work) ===== */
     .case-grid{
       display:grid;
-      grid-template-columns:repeat(2, 1fr); /* now only 2 cards */
+      grid-template-columns:repeat(2, 1fr);
       gap:16px;
     }
     .case{
@@ -270,14 +278,23 @@
     }
     .case__media{
       height:150px;
-      background-size:cover;
-      background-position:center;
       position:relative;
+      overflow:hidden;
+      background: #0b0e1a;
+    }
+    .case__media img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform:scale(1.02);
     }
     .case__media:after{
       content:"";
       position:absolute; inset:0;
       background: linear-gradient(180deg, rgba(11,14,26,.05), rgba(11,14,26,.78) 95%);
+      pointer-events:none;
     }
     .case__body{
       padding:18px;
@@ -363,7 +380,7 @@
     /* FAQ */
     .faq{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
+      grid-template-columns: 1fr; /* now single column since we removed the aside */
       gap:18px;
       align-items:start;
     }
@@ -384,15 +401,6 @@
     }
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0; color:var(--muted); line-height:1.6}
-    .faq-aside{
-      background:linear-gradient(180deg, rgba(30,115,190,.18), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius-lg);
-      padding:18px;
-      box-shadow:var(--shadow);
-    }
-    .faq-aside h3{margin:0 0 8px; font-family:var(--font-head); font-weight:900}
-    .faq-aside p{margin:0 0 14px; color:var(--muted); line-height:1.6}
 
     /* Footer */
     footer{
@@ -560,7 +568,6 @@
       .hero{padding:52px 0 30px}
       .hero__grid{grid-template-columns:1fr; gap:18px}
       .grid-3{grid-template-columns:1fr}
-      .faq{grid-template-columns:1fr}
       .pricing-grid{grid-template-columns:1fr; gap:14px}
       .pricing-card--featured{transform:none}
       .case-grid{grid-template-columns:1fr; gap:14px}
@@ -588,13 +595,13 @@
     @media (max-width: 600px){
       .container{padding: 0 14px;}
       section{padding: 44px 0;}
-
       .hero h1{font-size: 2.05rem;}
       .hero p{font-size: 1.02rem;}
 
       .nav__cta a.btn{display:none;}
       .menu-btn{display:inline-flex;}
 
+      .case__media{height: 140px;}
       .case__actions .btn{flex: 1 1 100%;}
       .modal{padding: 12px;}
       .modal__panel{
@@ -605,6 +612,9 @@
       .modal__grid{grid-template-columns:1fr;}
       .modal__actions{flex-direction:column;}
       .modal__actions .btn{width:100%;}
+
+      /* ✅ Remove kicker on mobile only (keep on desktop) */
+      .kicker{display:none !important;}
     }
   </style>
 </head>
@@ -615,8 +625,20 @@
     <div class="container">
       <div class="nav__inner">
         <a class="brand" href="#top" aria-label="Boostedmedia home">
-          <span class="brand__mark" aria-hidden="true"></span>
-          <span>Boostedmedia</span>
+          <span class="brand__logo" aria-hidden="true">
+            <img class="logo-img" alt="Boostedmedia logo" width="34" height="34" />
+            <template id="logo-fallback">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:34px;height:34px">
+                <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="20"/>
+                <g transform="translate(50,50) rotate(25) translate(-50,-50)">
+                  <rect x="36" y="40" width="28" height="20" rx="10" fill="#1E73BE"/>
+                  <polygon points="64,40 76,50 64,60" fill="#F5B400"/>
+                  <polygon points="36,44 28,50 36,56" fill="#F5B400"/>
+                </g>
+              </svg>
+            </template>
+          </span>
+          <span class="brand__name">Boostedmedia</span>
         </a>
 
         <nav class="nav__links" id="navLinks" aria-label="Site navigation">
@@ -652,13 +674,11 @@
               <a class="btn btn--accent" href="#book">See Pricing</a>
               <a class="btn" href="#services">What We Do</a>
             </div>
-
-            <!-- REMOVED: 3 “things we do” pills under hero -->
           </div>
 
           <aside class="hero__card reveal" aria-label="Results snapshot">
             <div class="stat">
-              <div class="stat__num">291K+</div>
+              <div class="stat__num">291K</div>
               <div>
                 <div class="stat__lbl">Views in 30 days</div>
                 <div class="stat__sub">Recent client performance</div>
@@ -725,7 +745,7 @@
       </div>
     </section>
 
-    <!-- WORK (2 simple case studies) -->
+    <!-- WORK -->
     <section id="work">
       <div class="container">
         <h2 class="section__title reveal">Work</h2>
@@ -736,7 +756,10 @@
         <div class="case-grid">
           <!-- Case 1 -->
           <article class="case reveal">
-            <div class="case__media" style="background-image:url('https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1400&q=70');"></div>
+            <div class="case__media">
+              <!-- Put Tyrerite.png in same folder as index.html OR /assets/ -->
+              <img src="Tyrerite.png" alt="Tyrerite project" onerror="this.onerror=null;this.src='assets/Tyrerite.png';">
+            </div>
             <div class="case__body">
               <div class="case__top">
                 <div>
@@ -765,7 +788,10 @@
 
           <!-- Case 2 -->
           <article class="case reveal">
-            <div class="case__media" style="background-image:url('https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=70');"></div>
+            <div class="case__media">
+              <!-- Put Essentialspaces.png in same folder as index.html OR /assets/ -->
+              <img src="Essentialspaces.png" alt="Essential Spaces project" onerror="this.onerror=null;this.src='assets/Essentialspaces.png';">
+            </div>
             <div class="case__body">
               <div class="case__top">
                 <div>
@@ -791,11 +817,11 @@
               </div>
             </div>
           </article>
-
         </div>
       </div>
     </section>
 
+    <!-- FAQ (removed the quick plan box) -->
     <section id="faq">
       <div class="container">
         <h2 class="section__title reveal">FAQ</h2>
@@ -820,12 +846,6 @@
               <p>No long contracts. You can cancel anytime. We focus on earning the results every month.</p>
             </details>
           </div>
-
-          <aside class="faq-aside reveal">
-            <h3>Want a quick plan?</h3>
-            <p>Tell me your business type and I’ll recommend a content plan that works locally.</p>
-            <a class="btn btn--accent" href="#book">View Pricing</a>
-          </aside>
         </div>
       </div>
     </section>
@@ -982,9 +1002,7 @@
   </div>
 
   <script>
-    // IMPORTANT: enables reveal animations safely (prevents blank page)
     document.documentElement.classList.add('js');
-
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Mobile menu
@@ -1020,6 +1038,34 @@
         });
       }, { threshold: 0.06 });
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+
+    // ===== Logo loader (tries common paths; falls back to SVG) =====
+    (function(){
+      const candidates = [
+        'assets/logo-icon.png','./assets/logo-icon.png',
+        'logo.png','./logo.png',
+        '/assets/logo-icon.png','/logo.png',
+        'assets/logo.png','./assets/logo.png'
+      ].map(u => u + '?v=' + Date.now());
+
+      function attach(img){
+        let i = 0;
+        function tryNext(){
+          if(i >= candidates.length){
+            const tpl = document.getElementById('logo-fallback');
+            if(tpl){
+              // Replace the IMG with the SVG fallback
+              img.replaceWith(tpl.content.cloneNode(true));
+            }
+            return;
+          }
+          img.src = candidates[i++];
+        }
+        img.addEventListener('error', tryNext);
+        tryNext();
+      }
+      document.querySelectorAll('img.logo-img').forEach(attach);
     })();
 
     // ===== Lead capture (buttons -> modal -> Formspree) =====
@@ -1149,5 +1195,3 @@
 </body>
 </html>
 ```
-
-If you want next polish: I can make the hero headline **shorter + punchier on mobile only** (like 2 lines max) without changing desktop.
