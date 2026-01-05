@@ -1,120 +1,259 @@
+<!-- ===========================
+   FILE: terms.html
+   =========================== -->
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy — Boostedmedia</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Terms of Service — Boostedmedia</title>
+  <meta name="description" content="Boostedmedia Terms of Service.">
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
+
   <style>
-    :root{ --bg:#0B0E1A; --panel:#0F1220; --text:#ffffff; --muted:#c7ccdb; --brand:#1E73BE; --brand-dark:#0C4A7F; --accent:#F5B400; --font-head:'articulat-cf', system-ui; --font-body:Inter, system-ui; --radius:18px; }
+    :root{
+      --bg:#0B0E1A;
+      --text:#EAF0FF;
+      --muted:rgba(234,240,255,.72);
+      --line:rgba(255,255,255,.10);
+      --accent:#F5B400;
+      --accent-ink:#14110A;
+      --radius:18px;
+      --radius-lg:24px;
+      --shadow:0 14px 40px rgba(0,0,0,.35);
+      --font-head:"articulat-cf", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --font-body:"articulat-cf", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
     *{box-sizing:border-box}
-    body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.6}
-    a{color:#e6f2ff; text-decoration:none}
-    .container{max-width:1000px; margin:0 auto; padding:0 20px}
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,14,26,.9); border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:.75rem}
-    .brand__logo{width:48px; height:48px; display:grid; place-items:center}
-    .brand__logo img.logo-img{width:100%; height:100%; object-fit:contain}
-    .brand__name{font-family:var(--font-head); font-weight:800}
-    .nav__links{display:flex; gap:18px; align-items:center}
-    .nav__links a{color:#cfd5e6; font-weight:700}
-    .btn{display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--brand),var(--brand-dark)); color:#eaf6ff; font-weight:800; padding:12px 18px; border-radius:12px; border:0; cursor:pointer}
-    .mobile-toggle{display:none}
-    .mobile-menu{display:none}
+    body{
+      margin:0;
+      font-family:var(--font-body);
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(30,115,190,.35), transparent 60%),
+        radial-gradient(800px 500px at 90% 0%, rgba(245,180,0,.18), transparent 55%),
+        linear-gradient(180deg, #070914 0%, var(--bg) 35%, #070914 100%);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1160px; margin:0 auto; padding:0 18px}
 
-    main{padding:60px 0 40px 0} /* extra gap above footer */
-    h1{font-family:var(--font-head); font-weight:800; font-size:clamp(28px,4vw,42px); margin:0 0 14px}
-    .panel{background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px}
-    h2{font-family:var(--font-head); margin:26px 0 10px; font-size:clamp(20px,2.4vw,26px)}
+    /* Header */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,14,26,.66);
+      border-bottom:1px solid var(--line);
+    }
+    .nav__inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-family:var(--font-head);
+      font-weight:900; letter-spacing:.2px;
+      min-width:0;
+    }
+    .brand__logo{
+      width:34px; height:34px; border-radius:11px;
+      display:grid; place-items:center;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      box-shadow:0 10px 25px rgba(0,0,0,.25);
+      flex:0 0 auto;
+    }
+    .brand__logo img.logo-img{width:100%; height:100%; object-fit:contain; display:block;}
+    .brand__name{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:210px;}
 
-    footer{margin-top:44px; padding-top:18px; border-top:1px solid rgba(255,255,255,.06)}
-    @media (max-width:980px){
+    .nav__links{
+      display:flex; gap:14px; align-items:center;
+      color:var(--muted);
+      font-weight:800;
+      flex:1 1 auto;
+      justify-content:center;
+      min-width:0;
+    }
+    .nav__links a{padding:8px 10px; border-radius:12px; white-space:nowrap;}
+    .nav__links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .nav__cta{display:flex; gap:10px; align-items:center; flex:0 0 auto}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:900;
+      cursor:pointer;
+    }
+    .btn--accent{
+      background: linear-gradient(135deg, var(--accent), #ffd35a);
+      border-color: rgba(245,180,0,.70);
+      color:var(--accent-ink);
+    }
+    .btn--ghost{background:transparent}
+    .menu-btn{display:none}
+
+    main{padding:50px 0 60px}
+    .page-title{
+      font-family:var(--font-head);
+      font-weight:900;
+      font-size:2.1rem;
+      letter-spacing:-.3px;
+      margin:0 0 10px;
+    }
+    .page-sub{color:var(--muted); margin:0 0 22px; line-height:1.6; max-width:70ch;}
+    .paper{
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .paper h2{
+      font-family:var(--font-head);
+      font-weight:900;
+      margin:22px 0 10px;
+      letter-spacing:-.2px;
+    }
+    .paper p, .paper li{color:rgba(234,240,255,.80); line-height:1.7}
+    .paper ul{margin:10px 0 0; padding-left:18px}
+
+    footer{
+      padding:40px 0;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+    }
+    .foot{display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;}
+    .social{display:flex; gap:10px; flex-wrap:wrap}
+    .social a{padding:10px 12px; border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(255,255,255,.04)}
+
+    @media (max-width: 980px){
       .nav__links{display:none}
-      .mobile-toggle{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.18); color:#fff; padding:10px 14px; border-radius:12px}
-      .mobile-menu{display:none; flex-direction:column; gap:12px; padding:16px; background:rgba(11,14,26,.98); border-bottom:1px solid rgba(255,255,255,.12)}
-      .mobile-menu a{display:block; padding:14px 12px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:800; color:#e8f3ff; text-align:center}
-      .nav--open + .mobile-menu{display:flex}
-      .container{padding:0 14px}
+      .menu-btn{display:inline-flex}
+      .nav__links.is-open{
+        display:flex;
+        position:absolute;
+        left:0; right:0;
+        top:64px;
+        flex-direction:column;
+        padding:12px;
+        background:rgba(11,14,26,.95);
+        border-bottom:1px solid rgba(255,255,255,.10);
+      }
+    }
+    @media (max-width: 600px){
+      .container{padding:0 14px;}
+      .nav__cta a.btn{display:none;}
+      .menu-btn{display:inline-flex;}
+      main{padding:36px 0 52px}
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav" id="nav">
-      <a href="index.html#top" class="brand">
-        <span class="brand__logo"><img class="logo-img" alt="Boostedmedia logo" width="48" height="48"></span>
-        <span class="brand__name">Boostedmedia</span>
-      </a>
-      <nav class="nav__links">
-        <a href="index.html#problem">Problems We Solve</a>
-        <a href="index.html#solution">How We Help</a>
-        <a href="index.html#benefits">Benefits</a>
-        <a href="index.html#proof">Results</a>
-        <a href="index.html#faq">FAQ</a>
-        <a class="btn" href="index.html#book">Boost Your Business Today!</a>
-      </nav>
-      <button class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('nav--open')">Menu</button>
-    </div>
-    <div class="mobile-menu">
-      <a href="index.html#problem">Problems We Solve</a>
-      <a href="index.html#solution">How We Help</a>
-      <a href="index.html#benefits">Benefits</a>
-      <a href="index.html#proof">Results</a>
-      <a href="index.html#faq">FAQ</a>
-      <a class="btn" href="index.html#book">Boost Your Business Today!</a>
-      <a href="index.html#top" style="text-align:center; color:#98a2b3; padding-top:8px" onclick="document.getElementById('nav').classList.remove('nav--open')">Close</a>
+  <header class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a class="brand" href="index.html#top" aria-label="Boostedmedia home">
+          <span class="brand__logo" aria-hidden="true">
+            <img class="logo-img" alt="Boostedmedia logo" width="34" height="34" />
+            <template id="logo-fallback">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:34px;height:34px">
+                <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="20"/>
+                <g transform="translate(50,50) rotate(25) translate(-50,-50)">
+                  <rect x="36" y="40" width="28" height="20" rx="10" fill="#1E73BE"/>
+                  <polygon points="64,40 76,50 64,60" fill="#F5B400"/>
+                  <polygon points="36,44 28,50 36,56" fill="#F5B400"/>
+                </g>
+              </svg>
+            </template>
+          </span>
+          <span class="brand__name">Boostedmedia</span>
+        </a>
+
+        <nav class="nav__links" id="navLinks" aria-label="Site navigation">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#work">Work</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="index.html#book">Pricing</a>
+        </nav>
+
+        <div class="nav__cta">
+          <a class="btn btn--ghost" href="index.html#work">View Work</a>
+          <a class="btn btn--accent" href="index.html#book">Get Pricing</a>
+          <button class="btn menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Privacy Policy</h1>
-    <div class="panel">
-      <p>We only collect the information we need to deliver and improve our services (e.g., contact details you submit via forms). We don’t sell your data.</p>
+  <main>
+    <div class="container">
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="page-sub">Update this page with your final Terms. (This is a clean placeholder that matches your new design.)</p>
 
-      <h2>What we collect</h2>
-      <p>Names, emails, phone numbers, and messages you provide. Basic analytics (aggregated, not identifying) to see how our site performs.</p>
+      <div class="paper">
+        <h2>1. Services</h2>
+        <p>We provide content creation and social media services as agreed in writing.</p>
 
-      <h2>How we use it</h2>
-      <p>To contact you about your enquiry, deliver services, and improve our website. You can ask us to delete your data at any time.</p>
+        <h2>2. Payments</h2>
+        <p>Invoices are due as stated. Late payments may pause work until resolved.</p>
 
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:boostedmediabusiness@gmail.com">boostedmediabusiness@gmail.com</a></p>
+        <h2>3. Cancellations</h2>
+        <p>Cancel anytime unless otherwise agreed. Work completed up to the cancellation date remains payable.</p>
 
-      <h2>Updates</h2>
-      <p>We may update this policy occasionally; the latest version will always be here.</p>
+        <h2>4. Contact</h2>
+        <p>Email: boostedmediabusiness@gmail.com</p>
+      </div>
     </div>
   </main>
 
   <footer>
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
-      <div style="display:flex; align-items:center; gap:10px">
-        <span class="brand__logo" aria-hidden="true">
-          <img class="logo-img" alt="Boostedmedia logo" width="48" height="48"/>
-        </span>
-        <div><strong style="font-family:var(--font-head); font-weight:800">Boostedmedia</strong><br><span style="color:#c7ccdb">Serving Scunthorpe & surrounding areas • UK</span></div>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="year"></span> Boostedmedia. All rights reserved.</div>
+        <div class="social">
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
       </div>
-      <div style="color:#c7ccdb">&copy; <span id="year"></span> Boostedmedia. All rights reserved. &nbsp; <a href="privacy.html">Privacy</a> &nbsp;•&nbsp; <a href="terms.html">Terms</a></div>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Logo loader
-    (function(){
-      const candidates = ['assets/logo-icon.png','./assets/logo-icon.png','logo.png','./logo.png','/assets/logo-icon.png','/logo.png'].map(u=>u+'?v='+Date.now());
-      document.querySelectorAll('img.logo-img').forEach(img=>{
-        let i=0; function next(){ if(i>=candidates.length) return; img.src=candidates[i++]; }
-        img.addEventListener('error', next); next();
-      });
-    })();
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', ()=> navLinks.classList.toggle('is-open'));
 
-    // Remove any broken non-logo images
-    document.querySelectorAll('img').forEach(img=>{
-      if(img.classList.contains('logo-img')) return;
-      img.addEventListener('error', ()=> img.remove());
-    });
+    // Logo loader (same as index)
+    (function(){
+      const candidates = [
+        'assets/logo-icon.png','./assets/logo-icon.png',
+        'logo.png','./logo.png',
+        '/assets/logo-icon.png','/logo.png',
+        'assets/logo.png','./assets/logo.png'
+      ].map(u => u + '?v=' + Date.now());
+
+      function attach(img){
+        let i = 0;
+        function tryNext(){
+          if(i >= candidates.length){
+            const tpl = document.getElementById('logo-fallback');
+            if(tpl){ img.replaceWith(tpl.content.cloneNode(true)); }
+            return;
+          }
+          img.src = candidates[i++];
+        }
+        img.addEventListener('error', tryNext);
+        tryNext();
+      }
+      document.querySelectorAll('img.logo-img').forEach(attach);
+    })();
   </script>
 </body>
 </html>
