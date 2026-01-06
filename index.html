@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en-GB">
 <head>
@@ -30,7 +31,7 @@
   <meta name="twitter:description" content="Scroll-stopping short-form videos + content plans + posting for UK small businesses.">
   <meta name="twitter:image" content="https://boostedmedia.biz/assets/logo-icon.png">
 
-  <!-- Performance: speed up Typekit + preload logo -->
+  <!-- Performance -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="dns-prefetch" href="//use.typekit.net">
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
@@ -67,33 +68,6 @@
         "name":"Boostedmedia",
         "publisher":{"@id":"https://boostedmedia.biz/#org"},
         "inLanguage":"en-GB"
-      },
-      {
-        "@type":"Service",
-        "@id":"https://boostedmedia.biz/#service-shortform",
-        "name":"Short-form video creation",
-        "provider":{"@id":"https://boostedmedia.biz/#org"},
-        "areaServed":{"@type":"Country","name":"United Kingdom"},
-        "serviceType":"Social media video production",
-        "description":"Scroll-stopping TikTok/Reels that build attention and drive enquiries."
-      },
-      {
-        "@type":"Service",
-        "@id":"https://boostedmedia.biz/#service-planning",
-        "name":"Content planning",
-        "provider":{"@id":"https://boostedmedia.biz/#org"},
-        "areaServed":{"@type":"Country","name":"United Kingdom"},
-        "serviceType":"Social media strategy",
-        "description":"A clear monthly content strategy so every post has a purpose and direction."
-      },
-      {
-        "@type":"Service",
-        "@id":"https://boostedmedia.biz/#service-management",
-        "name":"Social media management",
-        "provider":{"@id":"https://boostedmedia.biz/#org"},
-        "areaServed":{"@type":"Country","name":"United Kingdom"},
-        "serviceType":"Social media management",
-        "description":"Consistent posting and optimisation across TikTok, Instagram Reels, and Facebook."
       },
       {
         "@type":"FAQPage",
@@ -230,6 +204,7 @@
       user-select:none;
       text-align:center;
       gap:10px;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.22)}
     .btn--accent{
@@ -300,7 +275,6 @@
       pointer-events:none;
     }
 
-    /* NEW: hero card header label (moves "Recent client performance" to the top like your red highlight) */
     .hero__cardhead{
       display:flex;
       align-items:center;
@@ -629,7 +603,7 @@
       font-size:.95rem;
     }
 
-    /* NEW: WhatsApp block under pricing */
+    /* WhatsApp block under pricing */
     .whatsapp-wrap{
       margin-top:18px;
       display:flex;
@@ -814,7 +788,7 @@
       .whatsapp-card{flex-direction:column; align-items:stretch;}
       .whatsapp-card .btn{width:100%;}
 
-      /* ✅ Mobile modal usability fix: allow the modal PANEL to scroll */
+      /* ✅ Mobile modal usability fix */
       .modal{
         align-items:flex-start;
         overflow:auto;
@@ -1254,16 +1228,23 @@
     const yearEl = $('#year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Mobile menu
+    // Mobile menu (fixed: ensure it always toggles on tap)
     const menuBtn = $('#menuBtn');
     const navLinks = $('#navLinks');
     if (menuBtn && navLinks){
-      menuBtn.addEventListener('click', ()=> navLinks.classList.toggle('is-open'));
+      const toggleMenu = (e) => {
+        e.preventDefault();
+        navLinks.classList.toggle('is-open');
+      };
+      menuBtn.addEventListener('click', toggleMenu, { passive:false });
+      menuBtn.addEventListener('touchstart', toggleMenu, { passive:false });
+
       navLinks.addEventListener('click', (e)=>{
         const a = e.target.closest('a[href^="#"]');
         if (a) navLinks.classList.remove('is-open');
       });
     }
+
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a[href^="#"]');
       if (a && navLinks) navLinks.classList.remove('is-open');
@@ -1301,7 +1282,7 @@
       revealEls.forEach(el => io.observe(el));
     })();
 
-    // Work image loader
+    // Work image loader (FIXED: no syntax errors)
     (function(){
       const map = {
         tyrerite: [
@@ -1317,7 +1298,7 @@
         ]
       };
 
-      const folders = ['', './', 'assets/', './assets/', 'images/', './images/', 'img/', './img/];
+      const folders = ['', './', 'assets/', './assets/', 'images/', './images/', 'img/', './img/'];
 
       function tryLoad(img, key){
         const names = map[key] || [];
@@ -1414,10 +1395,12 @@
       if(leadModal && leadModal.classList.contains('is-open')) closeLeadModal();
     });
 
-    // Open lead modal from pricing buttons + "Get a plan like this"
+    // Open lead modal from pricing buttons + "Get a plan like this" (fixed + works on mobile)
     document.addEventListener('click', (e)=>{
       const btn = e.target.closest('.pricing-btn, #work .case__actions button');
       if(!btn) return;
+
+      e.preventDefault();
 
       const plan = btn.getAttribute('data-plan') || 'Get Started Today!';
       if(leadPlanInput) leadPlanInput.value = plan;
@@ -1474,3 +1457,4 @@
   </script>
 </body>
 </html>
+```
