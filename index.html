@@ -813,6 +813,26 @@
 
       .whatsapp-card{flex-direction:column; align-items:stretch;}
       .whatsapp-card .btn{width:100%;}
+
+      /* ✅ Mobile modal usability fix: allow the modal PANEL to scroll */
+      .modal{
+        align-items:flex-start;
+        overflow:auto;
+        padding:12px;
+      }
+      .modal__panel{
+        max-height: calc(100dvh - 24px);
+        overflow:auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .modal__actions{
+        position: sticky;
+        bottom: 0;
+        background: rgba(15,19,38,.94);
+        padding-top: 12px;
+        margin-top: 14px;
+        border-top: 1px solid rgba(255,255,255,.10);
+      }
     }
   </style>
 </head>
@@ -824,7 +844,6 @@
       <div class="nav__inner">
         <a class="brand" href="#top" aria-label="Boostedmedia home">
           <span class="brand__logo" aria-hidden="true">
-            <!-- Set direct src for speed + reliability -->
             <img class="logo-img" src="assets/logo-icon.png" alt="Boostedmedia logo" width="34" height="34" decoding="async" />
             <template id="logo-fallback">
               <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:34px;height:34px">
@@ -1298,7 +1317,7 @@
         ]
       };
 
-      const folders = ['', './', 'assets/', './assets/', 'images/', './images/', 'img/', './img/'];
+      const folders = ['', './', 'assets/', './assets/', 'images/', './images/', 'img/', './img/];
 
       function tryLoad(img, key){
         const names = map[key] || [];
