@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Boostedmedia — Social Media & Content</title>
   <meta name="description" content="Boostedmedia helps local businesses grow with scroll-stopping videos, content plans, and social media management.">
+
+  <!-- Performance: speed up Typekit + general DNS -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="dns-prefetch" href="//use.typekit.net">
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  <link rel="dns-prefetch" href="//p.typekit.net">
+
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
 
   <style>
@@ -489,6 +496,7 @@
       opacity:0;
       transform:translateY(14px);
       transition:opacity .6s ease, transform .6s ease;
+      will-change: transform, opacity;
     }
     .js .reveal.is-in{opacity:1; transform:none}
     .no-scroll{overflow:hidden}
@@ -632,7 +640,8 @@
       <div class="nav__inner">
         <a class="brand" href="#top" aria-label="Boostedmedia home">
           <span class="brand__logo" aria-hidden="true">
-            <img class="logo-img" alt="Boostedmedia logo" width="34" height="34" />
+            <!-- Performance: decoding async, and we set src quickly in JS -->
+            <img class="logo-img" alt="Boostedmedia logo" width="34" height="34" decoding="async" />
             <template id="logo-fallback">
               <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:34px;height:34px">
                 <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="20"/>
@@ -657,7 +666,7 @@
         <div class="nav__cta">
           <a class="btn btn--ghost" href="#work">View Work</a>
           <a class="btn btn--accent" href="#book">Get Pricing</a>
-          <button class="btn menu-btn" id="menuBtn" type="button" aria-label="Open menu">Menu</button>
+          <button class="btn menu-btn" id="menuBtn" aria-label="Open menu" type="button">Menu</button>
         </div>
       </div>
     </div>
@@ -698,10 +707,10 @@
               </div>
             </div>
             <div class="stat">
-              <div class="stat__num">80K</div>
+              <div class="stat__num">10K</div>
               <div>
-                <div class="stat__lbl">Views from one video</div>
-                <div class="stat__sub">Built to drive enquiries</div>
+                <div class="stat__lbl">Website visitors in 30 days</div>
+                <div class="stat__sub">Local intent traffic</div>
               </div>
             </div>
           </aside>
@@ -763,7 +772,8 @@
           <!-- Tyrerite -->
           <article class="case reveal">
             <div class="case__media">
-              <img class="work-tyrerite" alt="Tyrerite project" data-img="tyrerite">
+              <!-- Performance: lazy-load below the fold -->
+              <img class="work-tyrerite" alt="Tyrerite project" data-img="tyrerite" loading="lazy" decoding="async">
             </div>
             <div class="case__body">
               <div class="case__top">
@@ -791,10 +801,10 @@
             </div>
           </article>
 
-          <!-- Essential Spaces (uses your EXACT filename Essentialspaces.png.JPG) -->
+          <!-- Essential Spaces -->
           <article class="case reveal">
             <div class="case__media">
-              <img alt="Essential Spaces project" data-img="essentialspaces">
+              <img alt="Essential Spaces project" data-img="essentialspaces" loading="lazy" decoding="async">
             </div>
             <div class="case__body">
               <div class="case__top">
@@ -961,12 +971,12 @@
         <div class="modal__grid">
           <label>
             Email <span style="color:var(--accent)">*</span>
-            <input required type="email" name="email" id="lead-email" placeholder="you@example.com">
+            <input required type="email" name="email" id="lead-email" placeholder="you@example.com" autocomplete="email">
           </label>
 
           <label>
             Business name <span style="color:var(--accent)">*</span>
-            <input required type="text" name="business_name" id="lead-business" placeholder="Your Business Ltd">
+            <input required type="text" name="business_name" id="lead-business" placeholder="Your Business Ltd" autocomplete="organization">
           </label>
 
           <label>
@@ -1012,81 +1022,104 @@
   </div>
 
   <script>
+    // -----------------------------
+    // Performance tweaks:
+    // - Removed Date.now() cache-busting so images can be cached properly.
+    // - Fewer DOM queries (cached selectors).
+    // - Event delegation where sensible.
+    // - Lazy-load work images (done in HTML).
+    // -----------------------------
+
     document.documentElement.classList.add('js');
-    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    // Footer year
+    const yearEl = $('#year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn?.addEventListener('click', ()=>{
-      navLinks.classList.toggle('is-open');
-    });
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', ()=>{
-        navLinks.classList.remove('is-open');
+    const menuBtn = $('#menuBtn');
+    const navLinks = $('#navLinks');
+    if (menuBtn && navLinks){
+      menuBtn.addEventListener('click', ()=> navLinks.classList.toggle('is-open'));
+      navLinks.addEventListener('click', (e)=>{
+        const a = e.target.closest('a[href^="#"]');
+        if (a) navLinks.classList.remove('is-open');
       });
-    });
+    }
+    // Close menu when clicking any in-page anchor anywhere
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a[href^="#"]');
+      if (a && navLinks) navLinks.classList.remove('is-open');
+    }, { passive:true });
 
     // Reveal observer (safe)
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealEls = $$('.reveal');
+      if(!revealEls.length) return;
+
       if(prefersReduced){
-        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-in'));
+        revealEls.forEach(el=>el.classList.add('is-in'));
         return;
       }
+
       const io = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            const el = entry.target;
-            const siblings = Array.from(el.parentElement?.children || []);
-            let delay = 0;
-            if(siblings.length > 1){ delay = Math.min(siblings.indexOf(el)*60, 240); }
-            el.style.transitionDelay = delay + 'ms';
-            requestAnimationFrame(() => el.classList.add('is-in'));
-            io.unobserve(el);
+        for (const entry of entries){
+          if(!entry.isIntersecting) continue;
+          const el = entry.target;
+          const parent = el.parentElement;
+          if (parent){
+            const siblings = Array.from(parent.children);
+            const idx = siblings.indexOf(el);
+            if (idx > -1){
+              const delay = Math.min(idx * 60, 240);
+              el.style.transitionDelay = delay + 'ms';
+            }
           }
-        });
+          requestAnimationFrame(() => el.classList.add('is-in'));
+          io.unobserve(el);
+        }
       }, { threshold: 0.06 });
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      revealEls.forEach(el => io.observe(el));
     })();
 
-    // Logo loader (tries common paths; falls back to SVG)
+    // Logo loader (no cache-busting -> faster repeat visits)
     (function(){
       const candidates = [
         'assets/logo-icon.png','./assets/logo-icon.png',
         'logo.png','./logo.png',
         '/assets/logo-icon.png','/logo.png',
         'assets/logo.png','./assets/logo.png'
-      ].map(u => u + '?v=' + Date.now());
+      ];
 
       function attach(img){
         let i = 0;
-        function tryNext(){
+        const tryNext = ()=>{
           if(i >= candidates.length){
-            const tpl = document.getElementById('logo-fallback');
-            if(tpl){
-              img.replaceWith(tpl.content.cloneNode(true));
-            }
+            const tpl = $('#logo-fallback');
+            if(tpl) img.replaceWith(tpl.content.cloneNode(true));
             return;
           }
           img.src = candidates[i++];
-        }
+        };
         img.addEventListener('error', tryNext);
         tryNext();
       }
-      document.querySelectorAll('img.logo-img').forEach(attach);
+      $$('img.logo-img').forEach(attach);
     })();
 
-    // Work image loader (tries multiple filenames + folders, includes your EXACT "Essentialspaces.png.JPG")
+    // Work image loader (kept robust, but no cache-busting so it can cache)
     (function(){
       const map = {
         tyrerite: [
           'Tyrerite.png','tyrerite.png','Tyrerite.jpg','tyrerite.jpg','Tyrerite.jpeg','tyrerite.jpeg'
         ],
         essentialspaces: [
-          // EXACT file you provided:
           'Essentialspaces.png.JPG',
-          // common variants:
           'Essentialspaces.png','EssentialSpaces.png','essentialspaces.png','essentialSpaces.png',
           'Essentialspaces.jpg','EssentialSpaces.jpg','essentialspaces.jpg',
           'Essentialspaces.jpeg','EssentialSpaces.jpeg','essentialspaces.jpeg',
@@ -1100,164 +1133,154 @@
       function tryLoad(img, key){
         const names = map[key] || [];
         const candidates = [];
-        const bust = 'v=' + Date.now();
-
-        folders.forEach(f=>{
-          names.forEach(n=>{
-            candidates.push(f + n + '?' + bust);
-          });
-        });
+        for (const f of folders){
+          for (const n of names){
+            candidates.push(f + n);
+          }
+        }
 
         let i = 0;
-        function next(){
+        const next = ()=>{
           if(i >= candidates.length){
-            // fallback: hide broken icon and apply a nice gradient background
             img.style.display = 'none';
             const parent = img.closest('.case__media');
             if(parent) parent.classList.add('has-fallback');
             return;
           }
           img.src = candidates[i++];
-        }
+        };
 
         img.addEventListener('error', next);
         next();
       }
 
-      document.querySelectorAll('img[data-img]').forEach(img=>{
+      $$('img[data-img]').forEach(img=>{
         const key = img.getAttribute('data-img');
-        tryLoad(img, key);
+        if(key) tryLoad(img, key);
       });
     })();
 
     // Lead capture (buttons -> modal -> Formspree)
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
 
-    const leadModal = document.getElementById('lead-modal');
-    const leadForm = document.getElementById('lead-email-form');
-    const leadPlanInput = document.getElementById('lead-plan');
-    const leadAlert = document.getElementById('lead-email-alert');
+    const leadModal = $('#lead-modal');
+    const leadForm = $('#lead-email-form');
+    const leadPlanInput = $('#lead-plan');
+    const leadAlert = $('#lead-email-alert');
 
-    const leadEmailInput = document.getElementById('lead-email');
-    const leadBizInput   = document.getElementById('lead-business');
-    const leadGoalsInput = document.getElementById('lead-goals');
+    const leadEmailInput = $('#lead-email');
+    const leadBizInput   = $('#lead-business');
+    const leadGoalsInput = $('#lead-goals');
 
-    const confirmModal = document.getElementById('confirm-modal');
-    const confirmTitle = document.getElementById('confirm-title');
-    const confirmText  = document.getElementById('confirm-text');
+    const confirmModal = $('#confirm-modal');
+    const confirmTitle = $('#confirm-title');
+    const confirmText  = $('#confirm-text');
+    const confirmClose = $('#confirm-close');
 
     const openLeadModal = () => {
+      if(!leadModal) return;
       leadModal.classList.add('is-open');
       leadModal.setAttribute('aria-hidden','false');
       document.body.classList.add('no-scroll');
-      setTimeout(()=> leadEmailInput?.focus(), 0);
+      setTimeout(()=> leadEmailInput && leadEmailInput.focus(), 0);
     };
 
     const closeLeadModal = () => {
+      if(!leadModal) return;
       leadModal.classList.remove('is-open');
       leadModal.setAttribute('aria-hidden','true');
       document.body.classList.remove('no-scroll');
-      leadAlert.style.display = 'none';
-      leadAlert.textContent = '';
-      leadAlert.className = 'alert';
+      if(leadAlert){
+        leadAlert.style.display = 'none';
+        leadAlert.textContent = '';
+        leadAlert.className = 'alert';
+      }
     };
 
     const openConfirmModal = () => {
+      if(!confirmModal) return;
       confirmModal.classList.add('is-open');
       confirmModal.setAttribute('aria-hidden','false');
       document.body.classList.add('no-scroll');
-      document.getElementById('confirm-close').focus();
+      setTimeout(()=> confirmClose && confirmClose.focus(), 0);
     };
 
     const closeConfirmModal = () => {
+      if(!confirmModal) return;
       confirmModal.classList.remove('is-open');
       confirmModal.setAttribute('aria-hidden','true');
       document.body.classList.remove('no-scroll');
     };
 
-    document.getElementById('confirm-close').addEventListener('click', closeConfirmModal);
-    confirmModal.addEventListener('click', (e)=>{ if(e.target === confirmModal) closeConfirmModal(); });
+    if(confirmClose) confirmClose.addEventListener('click', closeConfirmModal);
+    if(confirmModal) confirmModal.addEventListener('click', (e)=>{ if(e.target === confirmModal) closeConfirmModal(); });
 
-    document.getElementById('lead-cancel')?.addEventListener('click', closeLeadModal);
-    leadModal.addEventListener('click', (e)=>{ if(e.target === leadModal) closeLeadModal(); });
+    const leadCancel = $('#lead-cancel');
+    if(leadCancel) leadCancel.addEventListener('click', closeLeadModal);
+    if(leadModal) leadModal.addEventListener('click', (e)=>{ if(e.target === leadModal) closeLeadModal(); });
 
     window.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape'){
-        if(confirmModal.classList.contains('is-open')) closeConfirmModal();
-        if(leadModal.classList.contains('is-open')) closeLeadModal();
-      }
+      if(e.key !== 'Escape') return;
+      if(confirmModal && confirmModal.classList.contains('is-open')) closeConfirmModal();
+      if(leadModal && leadModal.classList.contains('is-open')) closeLeadModal();
     });
 
-    // Open lead modal from pricing buttons + case study buttons
-    document.querySelectorAll('.pricing-btn, #work .case__actions button').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const plan = btn.getAttribute('data-plan') || 'Pricing';
-        leadPlanInput.value = plan;
-        document.getElementById('lead-title').textContent = `Get Started — ${plan}`;
-        openLeadModal();
-      });
+    // Faster: event delegation for ALL "Get Started" buttons
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.pricing-btn, #work .case__actions button');
+      if(!btn) return;
+      const plan = btn.getAttribute('data-plan') || 'Pricing';
+      if(leadPlanInput) leadPlanInput.value = plan;
+      const leadTitle = $('#lead-title');
+      if(leadTitle) leadTitle.textContent = `Get Started — ${plan}`;
+      openLeadModal();
     });
 
-    leadForm?.addEventListener('submit', async (e)=>{
-      e.preventDefault();
+    if(leadForm){
+      leadForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
 
-      const email = (leadEmailInput.value || '').trim();
-      const biz   = (leadBizInput.value || '').trim();
-      const goals = (leadGoalsInput.value || '').trim();
+        const email = (leadEmailInput?.value || '').trim();
+        const biz   = (leadBizInput?.value || '').trim();
+        const goals = (leadGoalsInput?.value || '').trim();
 
-      const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-      if(!validEmail){
-        leadAlert.className = 'alert alert--err';
-        leadAlert.textContent = 'Please enter a valid email address.';
-        leadAlert.style.display = 'block';
-        leadEmailInput.focus();
-        return;
-      }
-      if(!biz){
-        leadAlert.className = 'alert alert--err';
-        leadAlert.textContent = 'Please enter your business name.';
-        leadAlert.style.display = 'block';
-        leadBizInput.focus();
-        return;
-      }
-      if(!goals){
-        leadAlert.className = 'alert alert--err';
-        leadAlert.textContent = 'Please tell me your goals (what you want to achieve).';
-        leadAlert.style.display = 'block';
-        leadGoalsInput.focus();
-        return;
-      }
+        const showErr = (msg, focusEl)=>{
+          if(!leadAlert) return;
+          leadAlert.className = 'alert alert--err';
+          leadAlert.textContent = msg;
+          leadAlert.style.display = 'block';
+          if(focusEl) focusEl.focus();
+        };
 
-      try{
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method:'POST',
-          headers:{'Accept':'application/json'},
-          body:new FormData(leadForm)
-        });
+        if(!validEmail) return showErr('Please enter a valid email address.', leadEmailInput);
+        if(!biz) return showErr('Please enter your business name.', leadBizInput);
+        if(!goals) return showErr('Please tell me your goals (what you want to achieve).', leadGoalsInput);
 
-        if(res.ok){
-          const chosenPlan = leadPlanInput.value || 'Pricing';
-          leadForm.reset();
-          closeLeadModal();
+        try{
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method:'POST',
+            headers:{'Accept':'application/json'},
+            body:new FormData(leadForm)
+          });
 
-          confirmTitle.textContent = 'Thanks — message received!';
-          confirmText.textContent  = `I’ll reply to your email shortly about: ${chosenPlan}.`;
-          openConfirmModal();
-        } else {
-          throw new Error('Submission failed');
+          if(res.ok){
+            const chosenPlan = leadPlanInput?.value || 'Pricing';
+            leadForm.reset();
+            closeLeadModal();
+
+            if(confirmTitle) confirmTitle.textContent = 'Thanks — message received!';
+            if(confirmText)  confirmText.textContent  = `I’ll reply to your email shortly about: ${chosenPlan}.`;
+            openConfirmModal();
+          } else {
+            throw new Error('Submission failed');
+          }
+        }catch(err){
+          showErr('Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com');
         }
-      }catch(err){
-        leadAlert.className = 'alert alert--err';
-        leadAlert.textContent = 'Something went wrong. You can also email us directly: boostedmediabusiness@gmail.com';
-        leadAlert.style.display = 'block';
-      }
-    });
+      });
+    }
   </script>
-
-  <!-- IMPORTANT:
-       index.html MUST end here.
-       If you paste terms.html or privacy.html below this line,
-       they will show underneath the homepage. -->
 </body>
 </html>
