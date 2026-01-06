@@ -11,7 +11,6 @@
   <link rel="dns-prefetch" href="//use.typekit.net">
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="dns-prefetch" href="//p.typekit.net">
-
   <link rel="stylesheet" href="https://use.typekit.net/awo1axj.css">
 
   <style>
@@ -113,6 +112,7 @@
       transition:transform .15s ease, background .15s ease, border .15s ease;
       user-select:none;
       text-align:center;
+      gap:10px;
     }
     .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.22)}
     .btn--accent{
@@ -182,6 +182,29 @@
       transform:rotate(15deg);
       pointer-events:none;
     }
+
+    /* NEW: hero card header label (moves "Recent client performance" to the top like your red highlight) */
+    .hero__cardhead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:2px 0 10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      margin-bottom:6px;
+    }
+    .hero__cardhead .label{
+      font-weight:900;
+      font-family:var(--font-head);
+      letter-spacing:-.2px;
+    }
+    .hero__cardhead .sub{
+      color:var(--muted);
+      font-weight:800;
+      font-size:.92rem;
+      text-align:right;
+    }
+
     .stat{
       display:grid;
       grid-template-columns:auto 1fr;
@@ -293,11 +316,7 @@
       object-position:center;
       transform:scale(1.02);
     }
-    /* Focus Tyrerite image towards the sign area */
-    .case__media img.work-tyrerite{
-      object-position: 25% 30%;
-    }
-    /* If an image can't load, keep the header pretty */
+    .case__media img.work-tyrerite{object-position: 25% 30%;}
     .case__media.has-fallback{
       background:
         radial-gradient(800px 240px at 30% 20%, rgba(245,180,0,.22), transparent 55%),
@@ -416,91 +435,6 @@
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0; color:var(--muted); line-height:1.6}
 
-    /* Footer */
-    footer{
-      padding:40px 0;
-      border-top:1px solid rgba(255,255,255,.10);
-      color:var(--muted);
-    }
-    .foot{display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;}
-    .social{display:flex; gap:10px; flex-wrap:wrap}
-    .social a{padding:10px 12px; border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(255,255,255,.04)}
-
-    /* Modal */
-    .modal{
-      position:fixed; inset:0;
-      background:rgba(0,0,0,.72) !important;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:999;
-      backdrop-filter: blur(8px);
-    }
-    .modal.is-open{display:flex}
-    .modal__panel{
-      width:min(620px, 100%);
-      background: rgba(15,19,38,.94) !important;
-      border: 1px solid rgba(255,255,255,.16) !important;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 22px 70px rgba(0,0,0,.60) !important;
-      padding:18px;
-      text-align:left;
-    }
-    .modal__title{
-      font-family:var(--font-head);
-      font-weight:900;
-      margin:6px 0 8px;
-      font-size:1.4rem;
-    }
-    .modal__text{color:var(--muted); margin:0 0 16px; line-height:1.6}
-    .modal__grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
-    }
-    .modal label{display:block; font-weight:800}
-    .modal input, .modal textarea{
-      width:100% !important;
-      margin-top:8px;
-      background: rgba(0,0,0,.35) !important;
-      border: 1px solid rgba(255,255,255,.18) !important;
-      color: var(--text) !important;
-      border-radius:12px !important;
-      padding:12px 14px !important;
-      outline:none !important;
-      font-family:var(--font-body);
-    }
-    .modal textarea{resize:vertical; min-height:120px}
-    .modal input::placeholder, .modal textarea::placeholder{color: rgba(234,240,255,.55);}
-    .modal__actions{display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; margin-top:14px}
-
-    .alert{
-      margin-top:14px;
-      padding:12px 12px;
-      border-radius:14px;
-      background:rgba(245,180,0,.12);
-      border:1px solid rgba(245,180,0,.22);
-      color:rgba(234,240,255,.92);
-      font-weight:800;
-      line-height:1.5;
-    }
-    .alert--err{
-      background:rgba(255,80,80,.12);
-      border-color:rgba(255,80,80,.22);
-    }
-
-    /* Reveal safety */
-    .reveal{opacity:1; transform:none;}
-    .js .reveal{
-      opacity:0;
-      transform:translateY(14px);
-      transition:opacity .6s ease, transform .6s ease;
-      will-change: transform, opacity;
-    }
-    .js .reveal.is-in{opacity:1; transform:none}
-    .no-scroll{overflow:hidden}
-
     /* Pricing */
     .pricing-grid{
       display:grid;
@@ -578,6 +512,134 @@
       font-size:.95rem;
     }
 
+    /* NEW: WhatsApp block under pricing */
+    .whatsapp-wrap{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+    }
+    .whatsapp-card{
+      width:min(760px, 100%);
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius-lg);
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .whatsapp-text{
+      display:grid;
+      gap:4px;
+      min-width:0;
+    }
+    .whatsapp-text b{
+      font-family:var(--font-head);
+      font-weight:900;
+      letter-spacing:-.2px;
+    }
+    .whatsapp-text span{color:var(--muted); font-weight:800}
+    .btn--wa{
+      background:rgba(37, 211, 102, .14);
+      border-color:rgba(37, 211, 102, .26);
+    }
+    .btn--wa:hover{
+      background:rgba(37, 211, 102, .20);
+      border-color:rgba(37, 211, 102, .34);
+    }
+    .wa-dot{
+      width:10px;height:10px;border-radius:999px;
+      background:rgb(37, 211, 102);
+      box-shadow:0 0 0 5px rgba(37,211,102,.14);
+      flex:0 0 auto;
+    }
+
+    /* Footer */
+    footer{
+      padding:40px 0;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+    }
+    .foot{display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;}
+    .social{display:flex; gap:10px; flex-wrap:wrap}
+    .social a{padding:10px 12px; border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(255,255,255,.04)}
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.72) !important;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:999;
+      backdrop-filter: blur(8px);
+    }
+    .modal.is-open{display:flex}
+    .modal__panel{
+      width:min(620px, 100%);
+      background: rgba(15,19,38,.94) !important;
+      border: 1px solid rgba(255,255,255,.16) !important;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 22px 70px rgba(0,0,0,.60) !important;
+      padding:18px;
+      text-align:left;
+    }
+    .modal__title{
+      font-family:var(--font-head);
+      font-weight:900;
+      margin:6px 0 8px;
+      font-size:1.4rem;
+    }
+    .modal__text{color:var(--muted); margin:0 0 16px; line-height:1.6}
+    .modal__grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    .modal label{display:block; font-weight:800}
+    .modal input, .modal textarea{
+      width:100% !important;
+      margin-top:8px;
+      background: rgba(0,0,0,.35) !important;
+      border: 1px solid rgba(255,255,255,.18) !important;
+      color: var(--text) !important;
+      border-radius:12px !important;
+      padding:12px 14px !important;
+      outline:none !important;
+      font-family:var(--font-body);
+    }
+    .modal textarea{resize:vertical; min-height:120px}
+    .modal input::placeholder, .modal textarea::placeholder{color: rgba(234,240,255,.55);}
+    .modal__actions{display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; margin-top:14px}
+
+    .alert{
+      margin-top:14px;
+      padding:12px 12px;
+      border-radius:14px;
+      background:rgba(245,180,0,.12);
+      border:1px solid rgba(245,180,0,.22);
+      color:rgba(234,240,255,.92);
+      font-weight:800;
+      line-height:1.5;
+    }
+    .alert--err{
+      background:rgba(255,80,80,.12);
+      border-color:rgba(255,80,80,.22);
+    }
+
+    /* Reveal */
+    .reveal{opacity:1; transform:none;}
+    .js .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:opacity .6s ease, transform .6s ease;
+      will-change: transform, opacity;
+    }
+    .js .reveal.is-in{opacity:1; transform:none}
+    .no-scroll{overflow:hidden}
+
     /* Mobile */
     @media (max-width: 980px){
       .hero{padding:52px 0 30px}
@@ -604,6 +666,9 @@
       .hero p{ margin-left:auto; margin-right:auto; }
       .hero__actions{ justify-content:center; }
       .kicker{ margin-left:auto; margin-right:auto; }
+
+      .hero__cardhead{justify-content:center}
+      .hero__cardhead .sub{display:none;}
     }
 
     @media (max-width: 600px){
@@ -627,8 +692,10 @@
       .modal__actions{flex-direction:column;}
       .modal__actions .btn{width:100%;}
 
-      /* Hide kicker on mobile */
       .kicker{display:none !important;}
+
+      .whatsapp-card{flex-direction:column; align-items:stretch;}
+      .whatsapp-card .btn{width:100%;}
     }
   </style>
 </head>
@@ -640,7 +707,6 @@
       <div class="nav__inner">
         <a class="brand" href="#top" aria-label="Boostedmedia home">
           <span class="brand__logo" aria-hidden="true">
-            <!-- Performance: decoding async, and we set src quickly in JS -->
             <img class="logo-img" alt="Boostedmedia logo" width="34" height="34" decoding="async" />
             <template id="logo-fallback">
               <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boostedmedia" style="width:34px;height:34px">
@@ -692,11 +758,17 @@
           </div>
 
           <aside class="hero__card reveal" aria-label="Results snapshot">
+            <!-- moved label to the top (like your red highlight) -->
+            <div class="hero__cardhead">
+              <div class="label">Recent client performance</div>
+              <div class="sub">Last 30 days</div>
+            </div>
+
             <div class="stat">
               <div class="stat__num">291K</div>
               <div>
                 <div class="stat__lbl">Views in 30 days</div>
-                <div class="stat__sub">Recent client performance</div>
+                <div class="stat__sub">Short-form reach</div>
               </div>
             </div>
             <div class="stat">
@@ -772,7 +844,6 @@
           <!-- Tyrerite -->
           <article class="case reveal">
             <div class="case__media">
-              <!-- Performance: lazy-load below the fold -->
               <img class="work-tyrerite" alt="Tyrerite project" data-img="tyrerite" loading="lazy" decoding="async">
             </div>
             <div class="case__body">
@@ -795,7 +866,8 @@
               </ul>
 
               <div class="case__actions">
-                <button class="btn btn--small" type="button" data-plan="Case Study — Tyrerite">Get a plan like this</button>
+                <!-- changed data-plan to a simple title -->
+                <button class="btn btn--small" type="button" data-plan="Get Started Today!">Get a plan like this</button>
                 <a class="btn btn--small btn--ghost" href="#book">See pricing</a>
               </div>
             </div>
@@ -826,7 +898,8 @@
               </ul>
 
               <div class="case__actions">
-                <button class="btn btn--small" type="button" data-plan="Case Study — Essential Spaces">Get a plan like this</button>
+                <!-- changed data-plan to a simple title -->
+                <button class="btn btn--small" type="button" data-plan="Get Started Today!">Get a plan like this</button>
                 <a class="btn btn--small btn--ghost" href="#book">See pricing</a>
               </div>
             </div>
@@ -940,6 +1013,23 @@
             <div class="pricing-foot">No long contracts • Cancel anytime</div>
           </article>
         </div>
+
+        <!-- WhatsApp CTA (below pricing options) -->
+        <div class="whatsapp-wrap reveal">
+          <div class="whatsapp-card" role="note" aria-label="WhatsApp contact">
+            <div class="whatsapp-text">
+              <b>Want to ask something specific?</b>
+              <span>Message or call me on WhatsApp and I’ll reply ASAP.</span>
+            </div>
+
+            <!-- UK number: +44 7568 554323 (WhatsApp format must be country code, no leading 0) -->
+            <a class="btn btn--wa" href="https://wa.me/447568554323" target="_blank" rel="noopener">
+              <span class="wa-dot" aria-hidden="true"></span>
+              WhatsApp me
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1022,14 +1112,6 @@
   </div>
 
   <script>
-    // -----------------------------
-    // Performance tweaks:
-    // - Removed Date.now() cache-busting so images can be cached properly.
-    // - Fewer DOM queries (cached selectors).
-    // - Event delegation where sensible.
-    // - Lazy-load work images (done in HTML).
-    // -----------------------------
-
     document.documentElement.classList.add('js');
 
     const $ = (sel, root=document) => root.querySelector(sel);
@@ -1049,13 +1131,12 @@
         if (a) navLinks.classList.remove('is-open');
       });
     }
-    // Close menu when clicking any in-page anchor anywhere
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a[href^="#"]');
       if (a && navLinks) navLinks.classList.remove('is-open');
     }, { passive:true });
 
-    // Reveal observer (safe)
+    // Reveal observer
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const revealEls = $$('.reveal');
@@ -1087,7 +1168,7 @@
       revealEls.forEach(el => io.observe(el));
     })();
 
-    // Logo loader (no cache-busting -> faster repeat visits)
+    // Logo loader
     (function(){
       const candidates = [
         'assets/logo-icon.png','./assets/logo-icon.png',
@@ -1112,7 +1193,7 @@
       $$('img.logo-img').forEach(attach);
     })();
 
-    // Work image loader (kept robust, but no cache-busting so it can cache)
+    // Work image loader
     (function(){
       const map = {
         tyrerite: [
@@ -1160,7 +1241,7 @@
       });
     })();
 
-    // Lead capture (buttons -> modal -> Formspree)
+    // Lead capture
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvykgp';
 
     const leadModal = $('#lead-modal');
@@ -1225,14 +1306,16 @@
       if(leadModal && leadModal.classList.contains('is-open')) closeLeadModal();
     });
 
-    // Faster: event delegation for ALL "Get Started" buttons
+    // Open lead modal from pricing buttons + "Get a plan like this"
     document.addEventListener('click', (e)=>{
       const btn = e.target.closest('.pricing-btn, #work .case__actions button');
       if(!btn) return;
-      const plan = btn.getAttribute('data-plan') || 'Pricing';
+
+      const plan = btn.getAttribute('data-plan') || 'Get Started Today!';
       if(leadPlanInput) leadPlanInput.value = plan;
+
       const leadTitle = $('#lead-title');
-      if(leadTitle) leadTitle.textContent = `Get Started — ${plan}`;
+      if(leadTitle) leadTitle.textContent = 'Get Started Today!';
       openLeadModal();
     });
 
@@ -1266,12 +1349,11 @@
           });
 
           if(res.ok){
-            const chosenPlan = leadPlanInput?.value || 'Pricing';
             leadForm.reset();
             closeLeadModal();
 
             if(confirmTitle) confirmTitle.textContent = 'Thanks — message received!';
-            if(confirmText)  confirmText.textContent  = `I’ll reply to your email shortly about: ${chosenPlan}.`;
+            if(confirmText)  confirmText.textContent  = 'I’ll reply to your email shortly with next steps.';
             openConfirmModal();
           } else {
             throw new Error('Submission failed');
